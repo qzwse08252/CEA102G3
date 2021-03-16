@@ -315,7 +315,7 @@ public class ExperOrderServlet extends HttpServlet {
 						exper_now_price, exper_order_status, exper_apply_sum);
 
 				/*************************** 3.新增完成,準備轉交(Send the Success view) ***********/
-				String url = "/back-end/exper_order/listAllExperOrder.jsp";
+				String url = "/back-end/experience/listOneExperience.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
 				successView.forward(req, res);
 
