@@ -89,10 +89,15 @@
 
 .itine-item {
 	height: 40px;
+	border-radius:10px;
 }
 
 .itine-item:nth-child(odd) {
 	background-color: #C1E4F9;
+}
+
+.itine-item:nth-child(even) {
+	background-color: #d9e7fd;
 }
 
 .itine-item-name {

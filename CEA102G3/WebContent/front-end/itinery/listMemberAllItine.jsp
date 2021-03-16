@@ -83,6 +83,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 <style>
+
 .page-content {
 	margin-top: 150px;
 	width: 60%;
@@ -92,8 +93,19 @@
 	border-width: 2px !important;
 }
 
+.new-file{
+	transition:all 0.5s;
+	
+}
+
 .new-file:hover {
+	
 	cursor: pointer;
+	font-size:20px;
+	margin-top: -4px;
+	color:#2315f3;
+	font-weight:bold;
+	
 }
 
 .filelist {
@@ -108,6 +120,10 @@
 
 .file:nth-child(odd) {
 	background-color: #C1E4F9;
+}
+
+.file:nth-child(even) {
+	background-color: #d9e7fd;
 }
 
 .builder {
