@@ -6,8 +6,8 @@
 <%-- <jsp:useBean id="memberVO" scope="session" class="com.member.model.MemberVO"/> --%>
 <jsp:useBean id="notifySvc" scope="request" class="com.notify.model.NotifyService"/>
 
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html> 
+<html lang= "en"  >
 
 <head>  
 <meta charset="utf-8">
