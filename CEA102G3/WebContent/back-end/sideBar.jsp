@@ -55,8 +55,8 @@
 				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/experience/listOneExperience.jsp">體驗管理</a> 
 				<div class="collapse-divider"></div>
 				<h4 class="collapse-header">體驗報名管理:</h4>
-				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_appli/sellListOneExperAppli.jsp">瀏覽報名明細</a> 
-				<a class="collapse-item" href="#">回應體驗檢舉</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_appli/sellListOneExperAppli.jsp">體驗報名訂單</a> 
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_report/listAllExperReport.jsp">體驗檢舉審查</a>
 			</div>
 		</div>
 		
