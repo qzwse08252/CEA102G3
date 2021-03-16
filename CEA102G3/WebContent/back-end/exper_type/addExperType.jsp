@@ -29,13 +29,13 @@
 	href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min_backend.css"
 	rel="stylesheet">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
+	href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/assets/css/untitled.css">
+	href="<%=request.getContextPath()%>/resources/css/untitled.css">
 
 <style>
 .bg-gradient-primary {
@@ -49,7 +49,7 @@
 }
 
 .portfolio-block {
-	background-image:url("<%=request.getContextPath()%>/resources/assets/img/ski3.jpg")
+	background-image:url("<%=request.getContextPath()%>/resources/img/ski3.jpg")
 }
 </style>
 
