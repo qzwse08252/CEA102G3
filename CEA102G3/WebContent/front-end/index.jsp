@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>index.jsp</title>
+    <title>index.jsp</title> 
 
      <!-- Custom fonts for this template-->
     <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
