@@ -83,6 +83,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 <style>
+
 .page-content {
 	margin-top: 150px;
 	width: 60%;
@@ -92,8 +93,19 @@
 	border-width: 2px !important;
 }
 
+.new-file{
+	transition:all 0.5s;
+	
+}
+
 .new-file:hover {
+	
 	cursor: pointer;
+	font-size:20px;
+	margin-top: -4px;
+	color:#2315f3;
+	font-weight:bold;
+	
 }
 
 .filelist {
@@ -108,6 +120,10 @@
 
 .file:nth-child(odd) {
 	background-color: #C1E4F9;
+}
+
+.file:nth-child(even) {
+	background-color: #d9e7fd;
 }
 
 .builder {
@@ -487,6 +503,7 @@
 						}
 						
 					});
+					sendMessage("aboutItineMember",memberNo);
 					
 					
 				},
@@ -517,6 +534,7 @@
 					success:function(data){
 // 						alert(data);
 						swal("好的","已經拒絕此邀約","info");
+						sendMessage("aboutItineMember",builder);
 					},
 					error:function(){
 						window.alert("存入通知failed");
@@ -544,6 +562,7 @@
 					success:function(data){
 // 						alert(data);
 						swal("太棒了","已經加入此行程","success");
+						sendMessage("aboutItineMember",builder);
 					},
 					error:function(){
 						window.alert("存入通知failed");

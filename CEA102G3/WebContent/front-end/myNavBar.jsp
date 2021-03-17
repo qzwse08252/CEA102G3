@@ -113,7 +113,7 @@
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-bell fa-fw fa-lg"></i>
 <!--                     Counter - Alerts -->
-                    <span class="badge badge-danger badge-counter">3+</span>
+                    <span class="badge badge-danger badge-counter" id="counterAlerts">${countAlert}</span>
                 </a>
 <!--                 Dropdown - Alerts -->
                 <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -264,7 +264,12 @@
  	</c:if>
     <!-- End of Topbar -->
 
-
+	<!-- CounterAlerts JS -->
+	<%@ include file="/front-end/file/counterAlertsJS.file" %>
+	
+	<c:if test="${memberVO.memberNo != null}">
+		<%@ include file="/front-end/file/notifyWebSocket.file" %>
+	</c:if>
 
    
 
