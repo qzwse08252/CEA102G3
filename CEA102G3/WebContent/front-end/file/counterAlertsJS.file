@@ -34,12 +34,11 @@
     function listOneMemberNotify() {
         $.ajax({
             url: "<%=request.getContextPath()%>/notify/notifyServlet.do",
-            type: "POSt",
+            type: "POST",
             data: {
                 action: "listOneMemberNotify",
                 notifyPerson: '${memberVO.memberNo}'
             },
-            dataType: "json",
             success: function (data) {
                 clearNotify();
                 $(data).each(function (i, item) {
