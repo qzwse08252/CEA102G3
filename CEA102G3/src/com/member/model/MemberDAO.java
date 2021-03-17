@@ -289,13 +289,13 @@ public class MemberDAO implements MemberDAO_interface {
 
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(FIND_BY_EMAIL);
-			System.out.println("FIND_BY_EMAIL:" + FIND_BY_EMAIL);
+//			System.out.println("FIND_BY_EMAIL:" + FIND_BY_EMAIL);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				System.out.println("Account:"+rs.getString("Account"));
-				System.out.println("Email:"+rs.getString("Email"));
+//				System.out.println("Account:"+rs.getString("Account"));
+//				System.out.println("Email:"+rs.getString("Email"));
 				memberVO = new MemberVO();
 				memberVO.setMemberNo(rs.getInt("Member_No"));
 				memberVO.setAccount(rs.getString("Account"));
@@ -353,13 +353,13 @@ public class MemberDAO implements MemberDAO_interface {
 
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(FIND_BY_ACCOUNT);
-			System.out.println("FIND_BY_ACCOUNT:" + FIND_BY_ACCOUNT);
+//			System.out.println("FIND_BY_ACCOUNT:" + FIND_BY_ACCOUNT);
 			pstmt.setString(1, account);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				System.out.println("Account:"+rs.getString("Account"));
-				System.out.println("Email:"+rs.getString("Email"));
+//				System.out.println("Account:"+rs.getString("Account"));
+//				System.out.println("Email:"+rs.getString("Email"));
 				memberVO = new MemberVO();
 				memberVO.setMemberNo(rs.getInt("Member_No"));
 				memberVO.setAccount(rs.getString("Account"));

@@ -158,7 +158,7 @@ public class FriendInvitJDBCDAO implements FriendInvit_interface {
 			pstmt = con.prepareStatement(FIND_BY_2MEMNO);
 			pstmt.setInt(1, memberNo1);
 			pstmt.setInt(2, memberNo2);
-			System.out.println("findBy2MemNo_SQL:" + FIND_BY_2MEMNO + "   " + memberNo1 + "  " + memberNo2);
+//			System.out.println("findBy2MemNo_SQL:" + FIND_BY_2MEMNO + "   " + memberNo1 + "  " + memberNo2);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -319,9 +319,9 @@ public class FriendInvitJDBCDAO implements FriendInvit_interface {
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				friendInvitNo = rs.getInt(1);
-				System.out.println("自增主鍵值= " + friendInvitNo + "(剛新增成功的朋友邀請編號)");
+//				System.out.println("自增主鍵值= " + friendInvitNo + "(剛新增成功的朋友邀請編號)");
 			} else {
-				System.out.println("未取得自增主鍵值");
+//				System.out.println("未取得自增主鍵值");
 			}
 
 			NotifyJDBCDAO dao = new NotifyJDBCDAO();

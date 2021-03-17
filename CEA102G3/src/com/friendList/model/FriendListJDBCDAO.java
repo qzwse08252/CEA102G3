@@ -111,7 +111,7 @@ public class FriendListJDBCDAO implements FriendList_interface {
 			pstmt.setInt(1, memberNo);
 			pstmt.setInt(2, friendNo);
 
-			System.out.println("findByPrimaryKey_SQL:" + FIND_BY_PK + "   " + memberNo + "  " + friendNo);
+//			System.out.println("findByPrimaryKey_SQL:" + FIND_BY_PK + "   " + memberNo + "  " + friendNo);
 
 			rs = pstmt.executeQuery();
 
@@ -162,7 +162,7 @@ public class FriendListJDBCDAO implements FriendList_interface {
 			pstmt = con.prepareStatement(FIND_BY_NAME);
 			pstmt.setInt(1, memberNo);
 			pstmt.setString(2, name);
-			System.out.println("findByMemberName:" + FIND_BY_NAME + "   " + memberNo + "  " + name);
+//			System.out.println("findByMemberName:" + FIND_BY_NAME + "   " + memberNo + "  " + name);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
