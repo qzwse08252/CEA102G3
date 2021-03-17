@@ -15,13 +15,12 @@ public interface FriendList_interface {
 	public FriendListVO findByPrimaryKey(Integer memberNo, Integer friendNo);
 
 	public List<MemberVO> findByMemberName(Integer memberNo, String name);
-
+	
 	public List<FriendListVO> findByMemberNo(Integer memberNo);
 
 	public List<FriendListVO> getAll();
-
+	
 	public void insertFriListWithDelFriInvit(FriendListVO friendListVO, Integer friendInvitNo);
-
-	public void insertFriListWithDelFriInvitAndNotify(FriendListVO friendListVO, Integer friendInvitNo,
-			NotifyVO notifyVO);
+	
+	public void insertFriListWithDelFriInvitAndNotify(FriendListVO friendListVO, Integer friendInvitNo, NotifyVO notifyVO);
 }

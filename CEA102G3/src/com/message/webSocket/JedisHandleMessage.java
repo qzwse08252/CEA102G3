@@ -2,6 +2,8 @@ package com.message.webSocket;
 
 import java.util.List;
 
+import com.member.model.MemberVO;
+
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
