@@ -37,7 +37,20 @@ function init() {
 //            showPic();
         }
     });
-
+    
+    
+    // 檢查密碼
+    let sendRegister = document.getElementById("sendRegister");
+    if(sendRegister){
+    	sendRegister.addEventListener('click', function(e) {
+        	console.log('checkPwd:'+checkPwd());
+        	if(!checkPwd()){
+        		alert("密碼不一致，請重新輸入密碼!");
+        		e.preventDefault();
+        	}
+        });
+    }
+    
     
 
 }
@@ -58,5 +71,19 @@ function addPicJs(){
     console.log(jsSrc);
     title[0].before(jsSrc);
 }
+
+function checkPwd(){
+	let password = document.getElementById("password").value;
+	let repeatPassword = document.getElementById("repeatPassword").value;
+	let isCorrect = true;
+	if(password !== repeatPassword){
+		isCorrect = false;
+	}
+	console.log('password:'+password);
+	console.log('repeatPassword:'+repeatPassword);
+	return isCorrect;
+}
+
+
 
 window.addEventListener('load', init);

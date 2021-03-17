@@ -13,7 +13,29 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js"></script> -->
+
+     <!-- Custom fonts for this template-->
+    <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/hamburgers.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nav-bar.css">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 
 <style>
 
@@ -36,7 +58,7 @@
 <%-- <%@ include file="/front-end/footer/footer_lib.file" %>  --%>
 </head>
 <body>
-<c:import url="/front-end/NavPage2.jsp"></c:import>
+<c:import url="/front-end/myNavBar.jsp"></c:import>
 <%-- <%@ include file="/front-end/footer/navbar.file" %>  --%>
 
 <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
@@ -120,10 +142,10 @@
 				success : function(data) {
 					clearFriend();
 					$(data).each(function(i, item){
-						console.log("memberNo:"+item.memberNo);
-						console.log("name:"+item.name);
-						console.log("IMG:"+item.imgTag);
-						console.log("#########init#############");
+// 						console.log("memberNo:"+item.memberNo);
+// 						console.log("name:"+item.name);
+// 						console.log("IMG:"+item.imgTag);
+// 						console.log("#########init#############");
 // 						$('#friendTable').append("<tr><td><div class='friendListItems'> "+item.imgTag+" "+item.name
 // 							+" <input type='hidden' name='friendNo' id='friendNo' value='"+item.memberNo+"'> </div></td>"
 						$('#friendTable').append("<tr><td><div class='friendListItems'> "
@@ -167,10 +189,10 @@
 				success : function(data) {
 					clearFriend();
 					$(data).each(function(i, item){
-						console.log("memberNo:"+item.memberNo);
-						console.log("name:"+item.name);
-						console.log("IMG:"+item.imgTag);
-						console.log("#########queryFriend############");
+// 						console.log("memberNo:"+item.memberNo);
+// 						console.log("name:"+item.name);
+// 						console.log("IMG:"+item.imgTag);
+// 						console.log("#########queryFriend############");
 						$('#friendTable').append("<tr><td><div class='friendListItems'> "+item.imgTag+" "+item.name
 								+" <input type='hidden' name='friendNo' class='friendNo' value='"+item.memberNo+"'> </div></td>"
 								+" <td>"+ item.unfriend+"</td></tr>");
@@ -204,8 +226,8 @@
 					dataType: "json",
 					success : function(data) {
 						$(data).each(function(i, item){
-							console.log("friendName:"+item.friendName);
-							console.log("result:"+item.result);
+// 							console.log("friendName:"+item.friendName);
+// 							console.log("result:"+item.result);
 // 							$("#allFriendInfo").before(`<div class='alert alert-warning alert-dismissible fade show' role='alert'>
 // 										<div id='alert_content'>已成功解除與${'${item.friendName}'}好友關係</div>
 // 										<button type='button' class='close' data-dismiss='alert' aria-label='Close'>
@@ -224,7 +246,8 @@
 		//點選好友來聊天
 		function clickToChat(){
 			$('#friendTable tr td .friendListItems').click(function(){
-				alert($(this).find('form').submit());
+// 				alert($(this).find('form').submit());
+				$(this).find('form').submit();
 			});
 		}
 		
@@ -248,12 +271,12 @@
 				success : function(data) {
 					clearMember();
 					$(data).each(function(i, item){
-						console.log("memberNo:"+item.memberNo);
-						console.log("name:"+item.name);
-						console.log("IMG:"+item.imgTag);
-						console.log("addFriend:"+item.addFriend);
-						console.log("friendTag:"+item.friendTag);
-						console.log("#########queryFriend############");
+// 						console.log("memberNo:"+item.memberNo);
+// 						console.log("name:"+item.name);
+// 						console.log("IMG:"+item.imgTag);
+// 						console.log("addFriend:"+item.addFriend);
+// 						console.log("friendTag:"+item.friendTag);
+// 						console.log("#########queryFriend############");
 						$('#searchMemberTable').append("<tr><td><div class='addFriendItems'> "+item.imgTag+" "+item.memberNo+" "+item.name
 								+" <input type='hidden' name='"+item.memberNo+"' id='"+item.memberNo+"'> "
 								+(item.addFriend != null ? item.addFriend : item.friendTag)+" </div></td></tr>");
@@ -309,14 +332,14 @@
 			success : function(data) {
 				cleanFriendInviteInfo();
 				$(data).each(function(i, item){
-					console.log("friendInvitNo:"+item.friendInvitNo);
-					console.log("adder:"+item.adder);
-					console.log("confirmer:"+item.confirmer);
-					console.log("adderNo:"+item.adderNo);
-					console.log("adderName:"+item.adderName);
-					console.log("IMG:"+item.imgTag);
-					console.log("comfirmToFriend:"+item.comfirmToFriend);
-					console.log("#########getFriendInvitByMemberNo############");
+// 					console.log("friendInvitNo:"+item.friendInvitNo);
+// 					console.log("adder:"+item.adder);
+// 					console.log("confirmer:"+item.confirmer);
+// 					console.log("adderNo:"+item.adderNo);
+// 					console.log("adderName:"+item.adderName);
+// 					console.log("IMG:"+item.imgTag);
+// 					console.log("comfirmToFriend:"+item.comfirmToFriend);
+// 					console.log("#########getFriendInvitByMemberNo############");
 					$('#friendInvitTable').append("<tr><td><div class='comfirmToFriendItems'> "+item.imgTag+" "+item.adderNo+" "+item.adderName
 							+" <input type='hidden' name='adder' id='adder' value='"+item.adder+"'> "
 							+" <input type='hidden' name='confirmer' id='confirmer' value='"+item.confirmer+"'> "
@@ -336,6 +359,7 @@
 // 			alert("LoginNo:"+$(this).parent().find('input#confirmer').val());
 // 			alert("friendNO:"+$(this).parent().find('input#adder').val());
 // 			alert("friendInvitNo:"+$(this).parent().find('input#friendInvitNo').val());
+			let notifyPerson = $(this).parent().find('input#adder').val();
 			$.ajax({
 				url : "<%=request.getContextPath()%>/friendList/friendListServlet.do",
 				type : "POSt",
@@ -350,10 +374,11 @@
 // 					alert("AJAX-成功_addFriendInviteBtn!");
 					$("#addFriendInviteBtn").attr('disabled', true);
 					$(data).each(function(i, item){item.result});
-					console.log("------------");
-					console.log($(this).parent());
+// 					console.log("------------");
+// 					console.log($(this).parent());
 					loadFriendInvite();
-					
+					toastr.warning("與"+data[0].friendName+"已成為好友");
+					sendMessage("acceptFriendInvitation", parseInt(notifyPerson)); //確認好友後，用webSocket通知對方
 				},
 				error: function(){alert("AJAX-發生錯誤囉addFriendInviteBtn!")}
 			});

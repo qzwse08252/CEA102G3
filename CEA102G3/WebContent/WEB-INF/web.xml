@@ -86,8 +86,6 @@
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/front-end/friendList/*</url-pattern>
 		<url-pattern>/front-end/member/EditProfile.jsp</url-pattern>
-		<url-pattern>/front-end/NavPage.jsp</url-pattern>
-		<url-pattern>/front-end/NavPage2.jsp</url-pattern>
 		<!-- 中佑 -->
 		<!-- <url-pattern>/front-end/myNavBar.jsp</url-pattern> -->
 		<url-pattern>/front-end/itinery/*</url-pattern>

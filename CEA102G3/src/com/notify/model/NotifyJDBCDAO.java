@@ -17,7 +17,7 @@ public class NotifyJDBCDAO implements Notify_interface {
 //	private static final String UPDATE_STMT = "UPDATE Notify SET Notify_Person = ?, Notify_Content = ?, Notify_Time = ? WHERE Notify_No = ?";
 //	private static final String DELETE_STMT = "DELETE FROM Notify WHERE Notify_No = ?";
 	private static final String FIND_BY_PK = "SELECT * FROM Notify WHERE Notify_No = ?";
-	private static final String FIND_BY_NOTIFYPERSON = "SELECT * FROM Notify WHERE Notify_Person = ? order by Notify_Time";
+	private static final String FIND_BY_NOTIFYPERSON = "SELECT * FROM Notify WHERE Notify_Person = ? order by Notify_Time desc";
 	private static final String GET_ALL = "SELECT * FROM Notify";
 
 	static {
@@ -41,7 +41,6 @@ public class NotifyJDBCDAO implements Notify_interface {
 			pstmt.setInt(1, notifyVO.getNotifyPerson());
 			pstmt.setString(2, notifyVO.getNotifyContent());
 			pstmt.setTimestamp(3, notifyVO.getNotifyTime());
-			;
 			pstmt.executeUpdate();
 
 		} catch (SQLException se) {
@@ -134,7 +133,6 @@ public class NotifyJDBCDAO implements Notify_interface {
 				notifyVO.setNotifyNo(rs.getInt("Notify_No"));
 				notifyVO.setNotifyPerson(rs.getInt("Notify_Person"));
 				notifyVO.setNotifyContent(rs.getString("Notify_Content"));
-//				notifyVO.setNotifTime(rs.getDate("Notify_Time"));
 				notifyVO.setNotifyTime(rs.getTimestamp("Notify_Time"));
 
 			}
@@ -186,7 +184,6 @@ public class NotifyJDBCDAO implements Notify_interface {
 				notifyVO.setNotifyNo(rs.getInt("Notify_No"));
 				notifyVO.setNotifyPerson(rs.getInt("Notify_Person"));
 				notifyVO.setNotifyContent(rs.getString("Notify_Content"));
-//				notifyVO.setNotifTime(rs.getDate("Notify_Time"));
 				notifyVO.setNotifyTime(rs.getTimestamp("Notify_Time"));
 				list.add(notifyVO);
 			}
@@ -237,7 +234,6 @@ public class NotifyJDBCDAO implements Notify_interface {
 				notifyVO.setNotifyNo(rs.getInt("Notify_No"));
 				notifyVO.setNotifyPerson(rs.getInt("Notify_Person"));
 				notifyVO.setNotifyContent(rs.getString("Notify_Content"));
-//				notifyVO.setNotifTime(rs.getDate("Notify_Time"));
 				notifyVO.setNotifyTime(rs.getTimestamp("Notify_Time"));
 				list.add(notifyVO);
 			}
@@ -292,8 +288,7 @@ public class NotifyJDBCDAO implements Notify_interface {
 					System.err.println("rolled back-由-notify");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. "
-							+ excep.getMessage());
+					throw new RuntimeException("rollback error occured. " + excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + se.getMessage());
