@@ -21,9 +21,9 @@ import javax.sql.DataSource;
 @WebServlet("/GetPicture")
 public class GetPicture extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	Connection con;
-       
+
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		res.setContentType("image/gif");
 		ServletOutputStream out = res.getOutputStream();
@@ -31,13 +31,12 @@ public class GetPicture extends HttpServlet {
 		try {
 			Statement stmt = con.createStatement();
 			String id = req.getParameter("id").trim();
-			ResultSet rs = stmt.executeQuery(
-				"SELECT MEMBER_PIC FROM MEMBER WHERE MEMBER_NO = " + id);
-			
+			ResultSet rs = stmt.executeQuery("SELECT MEMBER_PIC FROM MEMBER WHERE MEMBER_NO = " + id);
+
 			if (rs.next()) {
 				BufferedInputStream in = new BufferedInputStream(rs.getBinaryStream("MEMBER_PIC"));
-				System.out.println("###ID:"+id);
-				System.out.println("$$$"+(in.available() > 0 ? "有圖片" : "沒圖片"));
+//				System.out.println("###ID:" + id);
+//				System.out.println("$$$" + (in.available() > 0 ? "有圖片" : "沒圖片"));
 				byte[] buf = new byte[4 * 1024]; // 4K buffer
 				int len;
 				while ((len = in.read(buf)) != -1) {
@@ -45,7 +44,7 @@ public class GetPicture extends HttpServlet {
 				}
 				in.close();
 			} else {
-				System.out.println("else....");
+//				System.out.println("else....");
 				InputStream in = getServletContext().getResourceAsStream("/resources/img/undraw_profile.png");
 				byte[] b = new byte[in.available()];
 				in.read(b);
@@ -55,7 +54,7 @@ public class GetPicture extends HttpServlet {
 			rs.close();
 			stmt.close();
 		} catch (Exception e) {
-			System.out.println(e);
+//			System.out.println(e);
 			InputStream in = getServletContext().getResourceAsStream("/resources/img/undraw_profile.png");
 			byte[] b = new byte[in.available()];
 			in.read(b);
@@ -64,10 +63,11 @@ public class GetPicture extends HttpServlet {
 		}
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
-	
+
 	public void init() throws ServletException {
 		try {
 			Context ctx = new javax.naming.InitialContext();
@@ -82,9 +82,10 @@ public class GetPicture extends HttpServlet {
 
 	public void destroy() {
 		try {
-			if (con != null) con.close();
+			if (con != null)
+				con.close();
 		} catch (SQLException e) {
-			System.out.println(e);
+			e.printStackTrace();
 		}
 	}
 

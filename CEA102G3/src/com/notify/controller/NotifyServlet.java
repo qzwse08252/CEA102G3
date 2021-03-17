@@ -63,9 +63,8 @@ public class NotifyServlet extends HttpServlet {
 			out.close();
 
 		} else if ("listOneMemberNotify".equals(action)) {
-			System.out.println("---in--action:" + action);
+//			System.out.println("---in--action:" + action);
 			String notifyPersonStr = req.getParameter("notifyPerson");
-			System.out.println("notifyPersonStr:"+notifyPersonStr);
 			JSONArray array = new JSONArray();
 
 			if (notifyPersonStr != null && !notifyPersonStr.isEmpty()) {

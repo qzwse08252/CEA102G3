@@ -42,7 +42,7 @@
 <%--     <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script> --%>
 <!--     <style> -->
         
-    </style>
+<!--     </style> -->
 
 </head>
 
@@ -116,12 +116,11 @@
                     <span class="badge badge-danger badge-counter" id="counterAlerts">${countAlert}</span>
                 </a>
 <!--                 Dropdown - Alerts -->
-                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                    aria-labelledby="alertsDropdown">
-                    <h6 class="dropdown-header">
-                        Alerts Center
-                    </h6>
-                  	<!-- 動態產生通知欄位,只顯示5個 -->
+                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in dropdownAlertlist"
+					aria-labelledby="alertsDropdown">
+					<h6 class="dropdown-header">Alerts Center</h6>
+					
+					<!-- 動態產生通知欄位,只顯示5個 -->
 					<c:if test="${memberVO.memberNo != null}">
 						<c:forEach var="notifyPer" items="${notifySvc.getOneNotifyByPerson(memberVO.memberNo)}" end="4" step="1">
 							<a class="dropdown-item d-flex align-items-center" href="<%=request.getContextPath()%>/notify/notifyServlet.do?notifyNo=${notifyPer.notifyNo}&action=listOneNotify">
@@ -137,8 +136,9 @@
 							</a> 
 					</c:forEach>
 					</c:if>
-                    <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-                </div>
+					
+					<a class="dropdown-item text-center small text-gray-500" href="<%=request.getContextPath()%>/front-end/notify/NotifyAll.jsp">Show All Alerts</a>
+				</div>
             </li>
 
             <div class="topbar-divider d-none d-sm-block"></div>
@@ -148,7 +148,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 medium">${memberVO.name}</span>
-                    <img class="img-profile rounded-circle " src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo }">
+                    <img class="img-profile rounded-circle" src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo }">
                 </a>
 <!--                 Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -270,9 +270,6 @@
 	<c:if test="${memberVO.memberNo != null}">
 		<%@ include file="/front-end/file/notifyWebSocket.file" %>
 	</c:if>
-
-   
-
 
 </body>
 

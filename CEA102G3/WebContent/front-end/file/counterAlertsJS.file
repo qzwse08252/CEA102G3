@@ -39,10 +39,8 @@
                 action: "listOneMemberNotify",
                 notifyPerson: '${memberVO.memberNo}'
             },
- 
             success: function (data) {
                 clearNotify();
-                
                 $(data).each(function (i, item) {
                 	if(i <5){
                 		$('div.dropdownAlertlist').append(`
