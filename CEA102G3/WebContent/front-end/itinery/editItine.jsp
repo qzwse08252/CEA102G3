@@ -1176,10 +1176,10 @@ p[speaker=${memberVO.name}]{
         		
         	}
         	
-        	$("#send-message").off("click").click(sendMessage);
+        	$("#send-message").off("click").click(sendBoardMessage);
         	$("#send-message").prev().keyup(function(event){
         		if(event.keyCode==13){
-        			sendMessage();
+        			sendBoardMessage();
         		}
         	})
         	
@@ -1187,7 +1187,7 @@ p[speaker=${memberVO.name}]{
         }
 			
         
-        function sendMessage(){
+        function sendBoardMessage(){
 			let messageData ={
 				"action": "message",
 				"itineID":${param.itineNo},
