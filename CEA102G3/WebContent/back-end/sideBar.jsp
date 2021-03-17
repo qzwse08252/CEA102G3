@@ -142,7 +142,7 @@
 
 	<!-- Nav Item - Members -->
 	<li class="nav-item">
-		<a class="nav-link" href="<%=request.getContextPath()%>/back-end/member/getAllMember.jsp">
+		<a class="nav-link" href="#"> 
 		<i class="fas fa-user-edit"></i> 
 		<span>會員管理</span>
 		</a>

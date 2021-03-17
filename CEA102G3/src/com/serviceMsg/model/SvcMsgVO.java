@@ -9,7 +9,7 @@ public class SvcMsgVO {
 	private String content;
 	private Timestamp time;
 	private Boolean direction;
-
+	
 	public SvcMsgVO() {
 		super();
 	}
@@ -61,5 +61,5 @@ public class SvcMsgVO {
 	public void setDirection(Boolean direction) {
 		this.direction = direction;
 	}
-
+	
 }

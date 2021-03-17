@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.friendInvit.model.FriendInvitJDBCDAO;
+import com.friendInvit.model.FriendInvitService;
 import com.member.model.MemberVO;
 import com.notify.model.NotifyVO;
 
@@ -18,8 +19,12 @@ public class FriendListJDBCDAO implements FriendList_interface {
 	public static final String USER = "root";
 	private static final String PASSWORD = "123456";
 	private static final String INSERT_STMT = "INSERT INTO Friend_List(Member_No, Friend_No) VALUES (?, ?)";
+//	private static final String UPDATE_STMT = "UPDATE Friend_List SET Adder = ?, Confirmer = ? WHERE Friend_Invit_No = ?";
 	private static final String DELETE_STMT = "DELETE FROM Friend_List WHERE (Member_No = ? AND Friend_No = ?) or (Member_No = ? AND Friend_No = ?)";
+//	private static final String FIND_BY_PK = "SELECT * FROM Friend_List WHERE Member_No = ? AND Friend_No = ?";
+//	private static final String FIND_BY_PK = "select * from ( SELECT Friend_No FriendList FROM Friend_List WHERE Member_No = ? union SELECT Member_No FriendList FROM Friend_List WHERE Friend_No = ? )aa where FriendList = ?";
 	private static final String FIND_BY_PK = "call findFriendListByPK(?,?)";
+//	private static final String FIND_BY_NAME = "SELECT * FROM Member WHERE NAME like ? and member_no in (SELECT Friend_No FriendList FROM Friend_List WHERE Member_No = ? union SELECT Member_No FriendList FROM Friend_List WHERE Friend_No = ?)";
 	private static final String FIND_BY_NAME = "call findFriendByMemberName(?,?)";
 	private static final String FIND_BY_MEMNO = "SELECT Friend_No FriendList FROM Friend_List WHERE Member_No = ? union SELECT Member_No FriendList FROM Friend_List WHERE Friend_No = ?";
 	private static final String GET_ALL = "SELECT * FROM Friend_List";
@@ -108,11 +113,14 @@ public class FriendListJDBCDAO implements FriendList_interface {
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(FIND_BY_PK);
+//			pstmt.setInt(1, memberNo);
+//			pstmt.setInt(2, memberNo);
+//			pstmt.setInt(3, friendNo);
 			pstmt.setInt(1, memberNo);
 			pstmt.setInt(2, friendNo);
-
-//			System.out.println("findByPrimaryKey_SQL:" + FIND_BY_PK + "   " + memberNo + "  " + friendNo);
-
+			
+			System.out.println("findByPrimaryKey_SQL:"+FIND_BY_PK+"   "+memberNo+"  "+friendNo);
+			
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -148,7 +156,7 @@ public class FriendListJDBCDAO implements FriendList_interface {
 		}
 		return friendListVO;
 	}
-
+	
 	@Override
 	public List<MemberVO> findByMemberName(Integer memberNo, String name) {
 		List<MemberVO> list = new ArrayList<MemberVO>();
@@ -160,9 +168,13 @@ public class FriendListJDBCDAO implements FriendList_interface {
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			pstmt = con.prepareStatement(FIND_BY_NAME);
+//			pstmt.setString(1, "%"+name+"%");
+//			pstmt.setInt(2, memberNo);
+//			pstmt.setInt(3, memberNo);
 			pstmt.setInt(1, memberNo);
+//			pstmt.setString(2, "%"+name+"%");
 			pstmt.setString(2, name);
-//			System.out.println("findByMemberName:" + FIND_BY_NAME + "   " + memberNo + "  " + name);
+			System.out.println("findByMemberName:"+FIND_BY_NAME+"   "+memberNo+"  "+name);
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
@@ -173,7 +185,7 @@ public class FriendListJDBCDAO implements FriendList_interface {
 				memberVO.setEmail(rs.getString("Email"));
 				list.add(memberVO);
 			}
-
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("A database error occured. " + e.getMessage());
 		} finally {
@@ -311,12 +323,12 @@ public class FriendListJDBCDAO implements FriendList_interface {
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			con.setAutoCommit(false);
-
+			
 			pstmt = con.prepareStatement(INSERT_STMT);
 			pstmt.setInt(1, friendListVO.getMemberNo());
 			pstmt.setInt(2, friendListVO.getFriendNo());
 			pstmt.executeUpdate();
-
+			
 			FriendInvitJDBCDAO dao = new FriendInvitJDBCDAO();
 			dao.delete2(friendInvitNo, con);
 
@@ -330,7 +342,8 @@ public class FriendListJDBCDAO implements FriendList_interface {
 					System.err.println("rolled back-由-friendList");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. " + excep.getMessage());
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + e.getMessage());
@@ -361,12 +374,12 @@ public class FriendListJDBCDAO implements FriendList_interface {
 		try {
 			con = DriverManager.getConnection(URL, USER, PASSWORD);
 			con.setAutoCommit(false);
-
+			
 			pstmt = con.prepareStatement(INSERT_STMT);
 			pstmt.setInt(1, friendListVO.getMemberNo());
 			pstmt.setInt(2, friendListVO.getFriendNo());
 			pstmt.executeUpdate();
-
+			
 			FriendInvitJDBCDAO dao = new FriendInvitJDBCDAO();
 //			dao.delete2(friendInvitNo, con);
 			dao.delete3(friendInvitNo, notifyVO, con);
@@ -381,7 +394,8 @@ public class FriendListJDBCDAO implements FriendList_interface {
 					System.err.println("rolled back-由-friendList");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. " + excep.getMessage());
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + e.getMessage());
