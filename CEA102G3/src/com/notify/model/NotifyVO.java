@@ -4,12 +4,12 @@ import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Timestamp;
 
-public class NotifyVO implements Serializable {
+public class NotifyVO implements Serializable{
 	private Integer notifyNo;
 	private Integer notifyPerson;
 	private String notifyContent;
 	private Timestamp notifyTime;
-
+	
 	public NotifyVO() {
 	}
 

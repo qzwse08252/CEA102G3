@@ -67,7 +67,7 @@ public class FriendInvitDAO implements FriendInvit_interface {
 		}
 
 	}
-
+	
 	@Override
 	public void delete(Integer friendInvitNo) {
 		Connection con = null;
@@ -148,28 +148,28 @@ public class FriendInvitDAO implements FriendInvit_interface {
 
 		return friendInvitVO;
 	}
-
+	
 	@Override
 	public FriendInvitVO findBy2MemNo(Integer memberNo1, Integer memberNo2) {
 		FriendInvitVO friendInvitVO = null;
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-
+		
 		try {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(FIND_BY_2MEMNO);
 			pstmt.setInt(1, memberNo1);
 			pstmt.setInt(2, memberNo2);
 			rs = pstmt.executeQuery();
-
+			
 			while (rs.next()) {
 				friendInvitVO = new FriendInvitVO();
 				friendInvitVO.setFriendInvitNo(rs.getInt("Friend_Invit_No"));
 				friendInvitVO.setAdder(rs.getInt("Adder"));
 				friendInvitVO.setConfirmer(rs.getInt("Confirmer"));
 			}
-
+			
 		} catch (SQLException e) {
 			throw new RuntimeException("A database error occured. " + e.getMessage());
 		} finally {
@@ -195,10 +195,10 @@ public class FriendInvitDAO implements FriendInvit_interface {
 				}
 			}
 		}
-
+		
 		return friendInvitVO;
 	}
-
+	
 	@Override
 	public List<FriendInvitVO> findByMemNo(Integer memberNo) {
 		List<FriendInvitVO> list = new ArrayList<FriendInvitVO>();
@@ -309,26 +309,26 @@ public class FriendInvitDAO implements FriendInvit_interface {
 		try {
 			con = ds.getConnection();
 			con.setAutoCommit(false);
-
-			String cols[] = { "Friend_Invit_No" };
+			
+			String cols[] = {"Friend_Invit_No"};
 			pstmt = con.prepareStatement(INSERT_STMT, cols);
 			pstmt.setInt(1, friendInvitVO.getAdder());
 			pstmt.setInt(2, friendInvitVO.getConfirmer());
 			pstmt.executeUpdate();
-
-			// 掘取對應的自增主鍵值
+			
+			//掘取對應的自增主鍵值
 //			String friendInvitNo = null;
 			ResultSet rs = pstmt.getGeneratedKeys();
 			if (rs.next()) {
 				friendInvitNo = rs.getInt(1);
-				System.out.println("自增主鍵值= " + friendInvitNo + "(剛新增成功的朋友邀請編號)");
+				System.out.println("自增主鍵值= " + friendInvitNo +"(剛新增成功的朋友邀請編號)");
 			} else {
 				System.out.println("未取得自增主鍵值");
 			}
-
+			
 			NotifyDAO notifyDAO = new NotifyDAO();
 			notifyDAO.insert(notifyVO);
-
+			
 			con.commit();
 			con.setAutoCommit(true);
 
@@ -340,7 +340,8 @@ public class FriendInvitDAO implements FriendInvit_interface {
 					System.err.println("rolled back-由-friendInvit");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. " + excep.getMessage());
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + e.getMessage());
@@ -380,7 +381,8 @@ public class FriendInvitDAO implements FriendInvit_interface {
 					System.err.println("rolled back-由-friendInvit");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. " + excep.getMessage());
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + se.getMessage());
@@ -403,7 +405,7 @@ public class FriendInvitDAO implements FriendInvit_interface {
 			pstmt = con.prepareStatement(DELETE_STMT);
 			pstmt.setInt(1, friendInvitNo);
 			pstmt.executeUpdate();
-
+			
 			NotifyDAO dao = new NotifyDAO();
 			dao.insert2(notifyVO, con);
 
@@ -415,7 +417,8 @@ public class FriendInvitDAO implements FriendInvit_interface {
 					System.err.println("rolled back-由-friendInvit");
 					con.rollback();
 				} catch (SQLException excep) {
-					throw new RuntimeException("rollback error occured. " + excep.getMessage());
+					throw new RuntimeException("rollback error occured. "
+							+ excep.getMessage());
 				}
 			}
 			throw new RuntimeException("A database error occured. " + se.getMessage());

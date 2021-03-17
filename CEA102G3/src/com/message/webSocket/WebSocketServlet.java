@@ -19,16 +19,20 @@ public class WebSocketServlet extends HttpServlet {
 	}
 
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+//		System.out.println("WebSocketServlet");
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
+//		System.out.println("action---" + action);
 		if ("friendChat".equals(action)) {
+//			System.out.println("--action:" + action);
 			String friendUserNoStr = req.getParameter("friendNo");
 			if (friendUserNoStr != null && !friendUserNoStr.isEmpty()) {
 				Integer friendUserNo = new Integer(friendUserNoStr);
 				MemberService memberSvc = new MemberService();
 				MemberVO friendVO = memberSvc.getOneMember(friendUserNo);
 				String friendUserName = friendVO.getName();
-
+//				System.out.println("friendUserName:" + friendUserName);
+				
 				req.setAttribute("friendUserNo", friendUserNo);
 				req.setAttribute("friendUserName", friendUserName);
 				req.setAttribute("userName", ((MemberVO) req.getSession().getAttribute("memberVO")).getName());
