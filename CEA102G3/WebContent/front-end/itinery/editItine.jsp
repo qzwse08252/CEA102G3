@@ -904,7 +904,7 @@ p[speaker=${memberVO.name}]{
                         console.log(schedule);
                         let itineItemVO = {
                         		action : "delete",
-                        		attraNo : $(this).parent().attr("attraNo"),
+                        		attraNo : $(this).parent().attr("attrano"),
                         }
                         pushItineTable(itineItemVO);
                         
@@ -914,7 +914,7 @@ p[speaker=${memberVO.name}]{
                         	data: {
                         		action: "deleteByAjax",
                         		Itine_No: "${param.itineNo}",
-                        		Attra_No: $(this).parent().attr("attraNo"),
+                        		Attra_No: $(this).parent().attr("attrano"),
                         	},
                         	success: function(data){
                         		console.log(data);
@@ -1053,17 +1053,26 @@ p[speaker=${memberVO.name}]{
         				//修改變數
         				$.each(schedule.itineItems,function(idx,itineItem){
         					if(itineItem.Attra_No==messageData.attraNo){
+        						console.log("delete check");
         						schedule.itineItems.splice(idx,1);
         						console.log("delete success");
         						return;
         					}
         				});
         				//修改dom
+        				
         				$(".itine-item").each(function(){
+        					console.log("delete search");
         					if($(this).attr("attrano")==messageData.attraNo){
         						$(this).remove();
         					}
         				});
+//         				$(".itine-item").each(function(){
+//         					console.log("delete search");
+//         					if($(this).attr("attrano")==messageData.attraNo){
+//         						$(this).remove();
+//         					}
+//         				});
         					console.log(schedule);
         			}
         			
@@ -1176,10 +1185,10 @@ p[speaker=${memberVO.name}]{
         		
         	}
         	
-        	$("#send-message").off("click").click(sendMessage);
+        	$("#send-message").off("click").click(sendBoardMessage);
         	$("#send-message").prev().keyup(function(event){
         		if(event.keyCode==13){
-        			sendMessage();
+        			sendBoardMessage();
         		}
         	})
         	
@@ -1187,7 +1196,7 @@ p[speaker=${memberVO.name}]{
         }
 			
         
-        function sendMessage(){
+        function sendBoardMessage(){
 			let messageData ={
 				"action": "message",
 				"itineID":${param.itineNo},
