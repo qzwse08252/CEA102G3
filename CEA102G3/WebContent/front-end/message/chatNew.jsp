@@ -65,7 +65,7 @@ ul li {
 
 .friend{
     display: block;
-    border: 1px solid black;
+/*     border: 1px solid black; */
 }
 
 .timeStyle{
@@ -168,7 +168,7 @@ ul li {
 				friendWebSocket.send(JSON.stringify(jsonObj));
 // 				refreshFriendList(jsonObj);
 			} else if ("history" === jsonObj.type) {
-				debugger;
+// 				debugger;
 				messagesArea.innerHTML = '';
 				var ul = document.createElement('ul');
 				ul.id = "area";
@@ -194,7 +194,7 @@ ul li {
 // 				li.innerHTML = jsonObj.message+"<br><div class='timeStyle' style='font-size: 8px; color: gray;'>"+jsonObj.timeStamp+"</div>";
 				li.innerHTML = "<div class='msgContent'>"+jsonObj.message+"</div><div class='timeStyle'>"+jsonObj.timeStamp+"</div>";
 // 				$('.timeStyle').css({'font-size': '8px', 'color': 'gray'});
-				console.log(li);
+// 				console.log(li);
 				document.getElementById("area").appendChild(li);
 				messagesArea.scrollTop = messagesArea.scrollHeight;
 				showM();
@@ -226,7 +226,7 @@ ul li {
 				"message" : message,
 				"timeStamp" : moment(new Date()).format("YYYY-MM-DD, H:mm:ss")
 			};
-			console.log("chatNew sendMessage...before send");
+// 			console.log("chatNew sendMessage...before send");
 			friendWebSocket.send(JSON.stringify(jsonObj));
 			inputMessage.value = "";
 			inputMessage.focus();

@@ -1,15 +1,12 @@
 package util;
 
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -20,29 +17,27 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMessage.RecipientType;
-import javax.servlet.ServletContext;
-import javax.servlet.ServletContextEvent;
-import javax.servlet.ServletContextListener;
 
 import redis.clients.jedis.Jedis;
 
 public class MailUtil {
 	private String subject = "";
 	private String txt = null;
-	private InputStream is = null;
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		MailUtil aa = new MailUtil();
 		HashMap<String, String> confMap = new HashMap<String, String>();
-		confMap.put("configPath", "C:\\CEA102_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\CEA102G3_0221_ajax\\config.properties");
-		confMap.put("activatePagePath", "C:\\CEA102_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\CEA102G3_0221_ajax\\front-end\\member\\ActivateMember.html");
-		confMap.put("contextPath", "/CEA102G3_0221_ajax");
+		confMap.put("configPath",
+				"C:\\CEA102_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\CEA102G3\\config.properties");
+		confMap.put("activatePagePath",
+				"C:\\CEA102_Project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\CEA102G3\\front-end\\member\\ActivateMember.html");
+		confMap.put("contextPath", "/CEA102G3");
 		confMap.put("subject", "會員註冊確認信");
 		confMap.put("toMail", "bubugp@gmail.com");
 		confMap.put("account", "666");
 		confMap.put("whichMail", "activateMail");
 		aa.sendMail(confMap);
-		System.out.println("-------------");
+//		System.out.println("-------------");
 //		System.out.println(new MailUtil().getActTemplate());
 	}
 
@@ -55,28 +50,30 @@ public class MailUtil {
 		String toMail = confMap.get("toMail");
 		String account = confMap.get("account");
 		String whichMail = confMap.get("whichMail");
-		String forgetPwdUrl = "http://localhost:8081"+confMap.get("forgetPwdUrl");
-		
+		String forgetPwdUrl = "http://localhost:8081" + confMap.get("forgetPwdUrl");
+
 		txt = getActTemplate(activatePagePath).toString();
 		String url = "";
 		if ("activateMail".equals(whichMail)) {
-			url = "http://localhost:8081"+contextPath+"/member/member.do?action=registerCheck&token="+memberToken(toMail);
+			url = "http://localhost:8081" + contextPath + "/member/member.do?action=registerCheck&token="
+					+ memberToken(toMail, false);
 		} else if ("forgotPasswordMail".equals(whichMail)) {
-			url = "http://localhost:8081"+contextPath+"/member/loginHandler.do?action=forgotPasswordCheck&token="+memberToken(toMail);
+			url = "http://localhost:8081" + contextPath + "/member/loginHandler.do?action=forgotPasswordCheck&token="
+					+ memberToken(toMail, true);
 		}
-		
-		String imgUrl = "http://localhost:8081"+contextPath+"/resources/img/logo.PNG";
+
+		String imgUrl = "http://localhost:8081" + contextPath + "/resources/img/logo.PNG";
 		txt = txt.replaceAll("urlStr", url);
 		txt = txt.replaceAll("accountStr", account);
 		txt = txt.replaceAll("imgUrl", imgUrl);
 		txt = txt.replaceAll("forgetPwdUrlStr", forgetPwdUrl);
-		
+
 		Properties mailInfo = new Properties();
 		mailInfo.load(new FileInputStream(configPath));
 		String userName = mailInfo.getProperty("mail.userName");
 		String password = mailInfo.getProperty("mail.password");
-		System.out.println("userName:"+userName);
-		
+//		System.out.println("userName:" + userName);
+
 		// 設定連線為smtp
 		mailInfo.setProperty("mail.transport.protocol", mailInfo.getProperty("mail.transport.protocol"));
 
@@ -97,7 +94,7 @@ public class MailUtil {
 
 		// 顯示連線資訊
 		mailInfo.put("mail.debug", mailInfo.getProperty("mail.debug"));
-		
+
 		Auth auth = new Auth(userName, password);
 		Session session = Session.getDefaultInstance(mailInfo, auth);
 		// ---------------------------------------------------------Message郵件格式
@@ -107,30 +104,30 @@ public class MailUtil {
 			// class
 			InternetAddress sender = new InternetAddress(userName);
 			message.setSender(sender);
-			
+
 			// 收件者
 			message.setRecipient(RecipientType.TO, new InternetAddress(toMail));
-			
+
 			// 標題
 			message.setSubject(subject);
-			
+
 			// 內容/格式
 			message.setContent(txt, "text/html;charset = UTF-8");
-			
+
 			// ---------------------------------------------------------Transport傳送Message
 			Transport transport = session.getTransport();
-			
+
 			// transport將message送出
 			transport.send(message);
-			
+
 			// 關閉Transport
 			transport.close();
-			
+
 		} catch (MessagingException e) {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public StringBuffer getActTemplate(String activatePagePath) {
 		String str;
 		StringBuffer sb = new StringBuffer();
@@ -141,28 +138,33 @@ public class MailUtil {
 			if (isr != null) {
 				BufferedReader br = new BufferedReader(isr);
 				while ((str = br.readLine()) != null) {
-					System.out.println(str);
+//					System.out.println(str);
 					sb.append(str);
 				}
+				br.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return sb;
 	}
-	
-	public String memberToken(String toMail) {
+
+	public String memberToken(String toMail, boolean isTimer) {
 		Jedis jedis = null;
 		String token = null;
 		try {
 			jedis = new Jedis("localhost", 6379);
 			jedis.auth("123456");
-			System.out.println(jedis.ping());
+//			System.out.println(jedis.ping());
 			token = genAuthCode();
-			System.out.println("setMemberToken:"+token);
+//			System.out.println("setMemberToken:" + token);
 			jedis.set(token, toMail);
-//			jedis.expire(token, 24*60*60);
-			jedis.expire(token, 3*60*60);
+			if (isTimer) {
+				jedis.expire(token, 3 * 60 * 60);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		} finally {
 			if (jedis != null) {
 				jedis.close();
@@ -221,7 +223,7 @@ public class MailUtil {
 		}
 		return authCode;
 	}
-	
+
 }
 
 class Auth extends Authenticator {
