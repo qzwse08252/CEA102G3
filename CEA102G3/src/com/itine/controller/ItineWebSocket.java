@@ -78,14 +78,14 @@ public class ItineWebSocket {
 		
 		System.out.println("somemessage received : "+ messageData);
 		
-		String speaker;
-		String message;
 		try {
 			JSONObject messageDataObj = new JSONObject(messageData);
-			speaker = messageDataObj.getString("speaker");
-			message = messageDataObj.getString("message");
-			JedisHandleBoardMessage.saveBoardMessage(itineID, speaker, message);
-			System.out.println("存入資料庫成功!");
+			if("message".equals(messageDataObj.getString("action"))) {
+				String speaker = messageDataObj.getString("speaker");
+				String message = messageDataObj.getString("message");
+				JedisHandleBoardMessage.saveBoardMessage(itineID, speaker, message);
+				System.out.println("存入資料庫成功!");
+			}
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

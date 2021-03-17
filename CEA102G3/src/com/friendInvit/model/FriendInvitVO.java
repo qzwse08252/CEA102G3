@@ -4,7 +4,7 @@ public class FriendInvitVO {
 	private Integer friendInvitNo;
 	private Integer adder;
 	private Integer confirmer;
-	
+
 	public FriendInvitVO() {
 		super();
 	}
@@ -32,5 +32,5 @@ public class FriendInvitVO {
 	public void setConfirmer(Integer confirmer) {
 		this.confirmer = confirmer;
 	}
-	
+
 }

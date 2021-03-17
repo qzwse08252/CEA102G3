@@ -1,6 +1,5 @@
 <%@page import="com.member.model.*"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
@@ -9,22 +8,36 @@ MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
 
 <!-- Custom fonts for this template-->
-<link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet"
-	type="text/css">
-<link
-	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+<link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
-<%-- <link href="<%=request.getContextPath()%>/resources/css/register.css" rel="stylesheet"> --%>
 
 <!-- Custom styles for this template-->
 <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet">
 <title>Register</title>
+
+<style>
+	.bg-register-image{
+		background : url("<%=request.getContextPath()%>/resources/img/climb.jpg")!important;
+	}
+	.form__status.is-alert {
+    	background: #c9302c;
+    	color: #FFF;
+    	border-radius: 10px;
+    	text-indent: 1rem;
+	}
+	.form__status.is-warning {
+    	background: #ec971f;
+    	color: #FFF;
+    	border-radius: 10px;
+    	text-indent: 1rem;
+	}
+</style>
 </head>
 <body class="bg-gradient-primary">
 
@@ -93,11 +106,8 @@ MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
                                     <div class="col-sm-6 mb-3 mb-sm-0" id="preview"></div>
                                     <input type="file" class="form-control form-control-user" id="memberPic" name="memberPic">
                                 </div>
-                                <%-- <a href="login.html" class="btn btn-primary btn-user btn-block">
-                                    Register Account
-                                </a> --%>
                                 <input type="hidden" name="action" value="addtMem">
-                                <input type="submit" class="btn btn-primary btn-user btn-block" value="send">
+                                <input type="submit" id="sendRegister" class="btn btn-primary btn-user btn-block" value="send">
                             </form>
                             <hr>
                             <div class="text-center">
@@ -125,4 +135,50 @@ MemberVO memberVO = (MemberVO) request.getAttribute("memberVO");
     <script src="<%=request.getContextPath()%>/resources/js/register.js"></script>
 
 </body>
+
+<script type="text/javascript">
+
+function clearDupAlert(){
+	$('.form__status').each(function(index){
+        $(this).remove();
+    });
+}
+
+// ajax檢查帳號/email是否有被註冊過
+$("#account, #email").blur(function() {
+	$.ajax({
+		url : "<%=request.getContextPath()%>/member/member.do",
+		type : "POSt",
+		data : {
+			account : $("#account").val(),
+			email : $("#email").val(),
+			action : "checkIsRegister"
+		},
+		dataType: "json",
+		success : function(data) {
+			clearDupAlert();
+			$(data).each(function(i, item){
+					console.log("accountCheck:"+item.accountCheck);
+					console.log("emailCheck:"+item.emailCheck);
+				if(item.accountCheck){
+					$('#account').closest('div.form-group').append(`
+							<div id="uid-msg" class="form__status is-alert">
+							<i class="fas fa-times-circle">已有人使用!</i>
+							</div>`);
+				}
+				
+				if(item.emailCheck){
+					$('#email').closest('div.form-group').append(`
+							<div id="err-msg" class="form__status is-warning">
+							<i class="fas fa-exclamation-circle">此信箱已註冊</i>
+							</div>`);
+				}
+				
+			});
+		},
+		error: function(){alert("AJAX-發生錯誤囉!檢查帳號/email是否有被註冊過")}
+	});
+});
+</script>
+
 </html>
