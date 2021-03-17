@@ -148,7 +148,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 medium">${memberVO.name}</span>
-                    <img class="img-profile rounded-circle w-auto h-100" src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo }">
+                    <img class="img-profile rounded-circle" src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo }">
                 </a>
 <!--                 Dropdown - User Information -->
                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
