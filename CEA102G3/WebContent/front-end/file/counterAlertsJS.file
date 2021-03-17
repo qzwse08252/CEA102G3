@@ -39,6 +39,7 @@
                 action: "listOneMemberNotify",
                 notifyPerson: '${memberVO.memberNo}'
             },
+            dataType: "json",
             success: function (data) {
                 clearNotify();
                 $(data).each(function (i, item) {
