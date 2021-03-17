@@ -32,14 +32,14 @@ public class FriendListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
-//		System.out.println("action---" + action);
+		System.out.println("action---" + action);
 
 		if ("queryFriend".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer memberNo = new Integer(req.getParameter("memNO").trim());
 			String searchFriend = req.getParameter("searchFriend").trim();
-//			System.out.println("memberNo:" + memberNo);
-//			System.out.println("searchFriend:" + searchFriend);
+			System.out.println("memberNo:" + memberNo);
+			System.out.println("searchFriend:" + searchFriend);
 
 			JSONArray array = new JSONArray();
 			FriendListService friendListSvc = new FriendListService();
@@ -50,23 +50,21 @@ public class FriendListServlet extends HttpServlet {
 				for (MemberVO mem : frineds) {
 					try {
 
-//						System.out.println("memberNo:" + mem.getMemberNo());
-//						System.out.println("name:" + mem.getName());
-//						System.out.println("----------------------");
+						System.out.println("memberNo:" + mem.getMemberNo());
+						System.out.println("name:" + mem.getName());
+						System.out.println("----------------------");
 
 						JSONObject obj = new JSONObject();
 						obj.put("memberNo", mem.getMemberNo());
 						obj.put("name", mem.getName());
 						obj.put("imgTag", "<img src='" + req.getContextPath() + "/GetPicture?id=" + mem.getMemberNo()
 								+ "' style='width: 50px; height: 50px;'>");
-						obj.put("unfriend",
-								"<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
+						obj.put("unfriend", "<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
 						array.put(obj);
 					} catch (JSONException e) {
 						e.printStackTrace();
 					}
 				}
-
 			} else if (searchFriend != null && searchFriend.isEmpty() && memberNo != null) {
 				List<FriendListVO> friendListVO = friendListSvc.getOneFriendListByMemNo(memberNo);
 				MemberService memberSvc = new MemberService();
@@ -81,17 +79,16 @@ public class FriendListServlet extends HttpServlet {
 				for (MemberVO mem : friends) {
 					try {
 
-//						System.out.println("memberNo:" + mem.getMemberNo());
-//						System.out.println("name:" + mem.getName());
-//						System.out.println("----------------------");
+						System.out.println("memberNo:" + mem.getMemberNo());
+						System.out.println("name:" + mem.getName());
+						System.out.println("----------------------");
 
 						JSONObject obj = new JSONObject();
 						obj.put("memberNo", mem.getMemberNo());
 						obj.put("name", mem.getName());
 						obj.put("imgTag", "<img src='" + req.getContextPath() + "/GetPicture?id=" + mem.getMemberNo()
 								+ "' style='width: 50px; height: 50px;'>");
-						obj.put("unfriend",
-								"<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
+						obj.put("unfriend", "<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
 						array.put(obj);
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -105,11 +102,10 @@ public class FriendListServlet extends HttpServlet {
 			out.write(array.toString());
 			out.flush();
 			out.close();
-
 		} else if ("listAllFriend".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer memNO = new Integer(req.getParameter("memNO").trim());
-//			System.out.println("memNO:" + memNO);
+			System.out.println("memNO:" + memNO);
 			JSONArray array = new JSONArray();
 
 			if (memNO != null) {
@@ -127,17 +123,16 @@ public class FriendListServlet extends HttpServlet {
 				for (MemberVO mem : friends) {
 					try {
 
-//						System.out.println("memberNo:" + mem.getMemberNo());
-//						System.out.println("name:" + mem.getName());
-//						System.out.println("----------------------");
+						System.out.println("memberNo:" + mem.getMemberNo());
+						System.out.println("name:" + mem.getName());
+						System.out.println("----------------------");
 
 						JSONObject obj = new JSONObject();
 						obj.put("memberNo", mem.getMemberNo());
 						obj.put("name", mem.getName());
 						obj.put("imgTag", "<img src='" + req.getContextPath() + "/GetPicture?id=" + mem.getMemberNo()
 								+ "' style='width: 50px; height: 50px;'>");
-						obj.put("unfriend",
-								"<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
+						obj.put("unfriend", "<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
 						array.put(obj);
 					} catch (JSONException e) {
 						e.printStackTrace();
@@ -154,11 +149,11 @@ public class FriendListServlet extends HttpServlet {
 			out.close();
 
 		} else if ("queryMemberForAddFriend".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer memNO = new Integer(req.getParameter("memNO").trim());
 			String searchMember = req.getParameter("searchMember").trim();
-//			System.out.println("memNO:" + memNO);
-//			System.out.println("searchMember:" + searchMember);
+			System.out.println("memNO:" + memNO);
+			System.out.println("searchMember:" + searchMember);
 
 			List<MemberVO> queryMemResults = null;
 			JSONArray array = new JSONArray();
@@ -167,11 +162,11 @@ public class FriendListServlet extends HttpServlet {
 				MemberService memSvc = new MemberService();
 				queryMemResults = memSvc.getAllByName(searchMember);
 
-//				for (MemberVO memberVO : queryMemResults) {
-//					System.out.println("memberNo:" + memberVO.getMemberNo());
-//					System.out.println("account:" + memberVO.getAccount());
-//					System.out.println("name:" + memberVO.getName());
-//				}
+				for (MemberVO memberVO : queryMemResults) {
+					System.out.println("memberNo:" + memberVO.getMemberNo());
+					System.out.println("account:" + memberVO.getAccount());
+					System.out.println("name:" + memberVO.getName());
+				}
 
 				/*---------------------------------------------*/
 				for (MemberVO usb : queryMemResults) {
@@ -190,9 +185,9 @@ public class FriendListServlet extends HttpServlet {
 							System.out.println("memberNo:" + usb.getMemberNo() + "is not friend!");
 //							obj.put("addFriend", "<button id=\"addFriend\" name=\"addFriend\">加入好友</button>");
 							obj.put("friendTag", "");
-
+							
 						} else {
-//							System.out.println("===memberNo:" + usb.getMemberNo() + "is friend!");
+							System.out.println("===memberNo:" + usb.getMemberNo() + "is friend!");
 							obj.put("friendTag", "<i class=\"fas fa-heart\"></i>");
 						}
 
@@ -214,7 +209,7 @@ public class FriendListServlet extends HttpServlet {
 			out.close();
 
 		} else if ("getOneMemInfo".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer loginNo = new Integer(req.getParameter("loginNo").trim());
 			Integer memNO = new Integer(req.getParameter("memNO").trim());
 			MemberService memSvc = new MemberService();
@@ -234,29 +229,34 @@ public class FriendListServlet extends HttpServlet {
 					FriendListVO loginFriendListVO = friendListSvc.getOneFriendList(loginNo, memNO);
 					FriendInvitService friendInvitSvc = new FriendInvitService();
 					FriendInvitVO friendInvitVO = friendInvitSvc.getOneFInvitBy2MemNo(loginNo, memNO);
-//					System.out.println("=============================");
-//					System.out.println("loginFriendListVO:" + (loginFriendListVO == null));
-//					System.out.println("friendInvitVO:" + (friendInvitVO == null));
+					System.out.println("=============================");
+					System.out.println("loginFriendListVO:"+(loginFriendListVO == null));
+					System.out.println("friendInvitVO:"+(friendInvitVO == null));
 //					if (loginFriendListVO == null && friendInvitVO == null) {
-					obj.put("addFriendInvite",
-							"<button class=\"btn btn-info\" id=\"addFriendInviteBtn\" name=\"addFriendInviteBtn\">加入好友</button>");
+					obj.put("addFriendInvite", "<button class=\"btn btn-info\" id=\"addFriendInviteBtn\" name=\"addFriendInviteBtn\">加入好友</button>");
 					if (loginFriendListVO == null && friendInvitVO == null) {
-						if (loginNo.equals(memNO)) { // 排除可以加自己好友...
-							obj.put("isInvitedOrIsFriend", "yes");
-						} else {
-							obj.put("isInvitedOrIsFriend", "no");
-						}
-					} else if (loginFriendListVO == null && friendInvitVO != null) {
+						obj.put("isInvitedOrIsFriend", "no");
+					} else if (loginFriendListVO == null && friendInvitVO != null){
 						obj.put("isInvitedOrIsFriend", "yes");
 					} else {
 						obj.put("isInvitedOrIsFriend", "yes");
 					}
-
-					// 如果friendListt查的到資料＝>顯示解除好友按鈕
+					
+					//如果friendListt查的到資料＝>顯示解除好友按鈕
 					if (loginFriendListVO != null) {
-						obj.put("unfriend",
-								"<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
+						obj.put("unfriend", "<button class=\"btn btn-outline-danger\" id=\"unfriendBtn\" name=\"unfriend\">解除好友</button>");
 					}
+					
+//					if (loginFriendListVO == null) {
+////						obj.put("addFriend", "<button id=\"addFriendBtn\" name=\"addFriend\">加入好友</button>");
+//						if (friendInvitVO != null) {
+//							obj.put("isInvitedOrIsFriend", "yes");
+//						} else {
+//							obj.put("isInvitedOrIsFriend", "no");
+//						}
+//					} else {
+//						obj.put("isInvitedOrIsFriend", "yes");
+//					}
 
 					memInfoArray.put(obj);
 				} catch (JSONException e) {
@@ -270,34 +270,31 @@ public class FriendListServlet extends HttpServlet {
 				out.flush();
 				out.close();
 			}
-
 		} else if ("addFriend".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer loginNo = new Integer(req.getParameter("loginNo"));
 			Integer friendNO = new Integer(req.getParameter("friendNO"));
 			Integer friendInvitNo = new Integer(req.getParameter("friendInvitNo"));
-
+			
 			JSONArray array = new JSONArray();
 
 			if (loginNo != null && friendNO != null && friendInvitNo != null) {
-				// insert data to friendList
-//				System.out.println("insert data to friendList....");
+				//insert data to friendList
+				System.out.println("insert data to friendList....");
 				JSONObject obj = new JSONObject();
 				try {
 					MemberService memSvc = new MemberService();
 					MemberVO loginMemVO = memSvc.getOneMember(loginNo);
-
+					
 					Integer notifyPerson = friendNO;
 					String notifyContent = "與" + loginMemVO.getName() + "已成為好友";
 					Timestamp notifyTime = new Timestamp(System.currentTimeMillis());
-
+					
 					FriendListService friendListSvc = new FriendListService();
 //					friendListSvc.addFriendListWithDelFriInvit(loginNo, friendNO, friendInvitNo);
-					friendListSvc.addFriendListWithDelFriInvitAndNotify(loginNo, friendNO, friendInvitNo, notifyPerson,
-							notifyContent, notifyTime);
-
+					friendListSvc.addFriendListWithDelFriInvitAndNotify(loginNo, friendNO, friendInvitNo, notifyPerson, notifyContent, notifyTime);
+					
 					obj.put("result", "true");
-					obj.put("friendName", memSvc.getOneMember(friendNO).getName());
 					array.put(obj);
 				} catch (JSONException e) {
 					e.printStackTrace();
@@ -310,17 +307,16 @@ public class FriendListServlet extends HttpServlet {
 				out.flush();
 				out.close();
 			}
-
 		} else if ("unfriend".equals(action)) {
-//			System.out.println("---in--action:" + action);
+			System.out.println("---in--action:" + action);
 			Integer loginNo = new Integer(req.getParameter("loginNo").trim());
 			Integer friendNo = new Integer(req.getParameter("friendNo").trim());
-
+			
 			JSONArray array = new JSONArray();
 
 			if (loginNo != null && friendNo != null) {
-				// delete data from friendList
-//				System.out.println("delete data from friendList....");
+				//delete data from friendList
+				System.out.println("delete data from friendList....");
 				JSONObject obj = new JSONObject();
 				try {
 					MemberService memSvc = new MemberService();

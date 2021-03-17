@@ -3,43 +3,15 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <jsp:useBean id="memberVO" scope="session" class="com.member.model.MemberVO"/>
-<%-- --${memberVO }--memberVO--${memberVO.name} --%>
+--${memberVO }--memberVO--${memberVO.name}
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-     <!-- Custom fonts for this template-->
-    <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
-    <link
-        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-        rel="stylesheet">
-
-    <!-- Custom styles for this template-->
-    <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/hamburgers.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nav-bar.css">
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
-    <script src="<%=request.getContextPath()%>/resources/js/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
-<style>
-div#preview>img{
-	width:100px; 
-	height:100px
-}
-</style>
 </head>
 
 <body>
-	<c:import url="/front-end/myNavBar.jsp"></c:import>
+	<c:import url="/front-end/NavPage2.jsp"></c:import>
 	
 	<div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
@@ -64,7 +36,7 @@ div#preview>img{
                             <form class="user" METHOD="post" ACTION="<%=request.getContextPath()%>/member/member.do" enctype="multipart/form-data">
                                 <div class="form-group">
                                     <input type="text" class="form-control form-control-user" id="account" name="account"
-                                        placeholder="Account" value="<%=memberVO==null ? "" : memberVO.getAccount() %>" readonly required>
+                                        placeholder="Account" value="<%=memberVO==null ? "" : memberVO.getAccount() %>" required>
                                 </div>
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0">
@@ -100,7 +72,7 @@ div#preview>img{
                                 
                                 <div class="form-group">
                                     <input type="email" class="form-control form-control-user" id="email" name="email"
-                                        placeholder="Email Address" value="<%=memberVO==null ? "" : memberVO.getEmail() %>" readonly required>
+                                        placeholder="Email Address" value="<%=memberVO==null ? "" : memberVO.getEmail() %>" required>
                                 </div>
                                 <div class="form-group">
                                     <div class="col-sm-6 mb-3 mb-sm-0" id="preview">
