@@ -90,8 +90,17 @@
 		<url-pattern>/front-end/itinery/*</url-pattern>
 
 		<!-- 蕭捷 -->
-		<url-pattern>/front-sell-end/exper_type/addExperType.jsp</url-pattern>
-		<url-pattern>/front-mem-end/exper_order/listExperOrder.jsp</url-pattern>
+		<url-pattern>/back-end/exper_type/addExperType.jsp</url-pattern>
+		<url-pattern>/front-end/exper_order/listExperOrder.jsp</url-pattern>
+		<url-pattern>/front-end/exper_order/listExperOrder2.jsp</url-pattern>
+		<url-pattern>/front-end/exper_appli/listOneExperAppli.jsp</url-pattern>
+		<url-pattern>/back-end/exper_appli/sellListOneExperAppli.jsp</url-pattern>
+		<url-pattern>/back-end/experience/addExperience.jsp</url-pattern>
+		<url-pattern>/back-end/experience/listOneExperience.jsp</url-pattern>
+		<url-pattern>/back-end/exper_back_index.jsp</url-pattern>
+		<url-pattern>/front-end/exper_favor/listExperFavor.jsp</url-pattern>
+		<url-pattern>/front-end/Test/index.jsp</url-pattern>
+		<url-pattern>/front-end/NavPage.jsp</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
@@ -146,7 +155,7 @@
 		<servlet-name>ExperienceServlet</servlet-name>
 		<url-pattern>/Experience/Experience.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ExperTypeServlet</servlet-name>
 		<servlet-class>com.exper_type.controller.ExperTypeServlet</servlet-class>
@@ -155,7 +164,7 @@
 		<servlet-name>ExperTypeServlet</servlet-name>
 		<url-pattern>/ExperType/ExperType.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ExperOrderServlet</servlet-name>
 		<servlet-class>com.exper_order.controller.ExperOrderServlet</servlet-class>
@@ -164,7 +173,7 @@
 		<servlet-name>ExperOrderServlet</servlet-name>
 		<url-pattern>/ExperOrder/ExperOrder.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>FavoriteExperServlet</servlet-name>
 		<servlet-class>com.favorite_exper.controller.FavoriteExperServlet</servlet-class>
@@ -173,7 +182,7 @@
 		<servlet-name>FavoriteExperServlet</servlet-name>
 		<url-pattern>/FavoriteExper/FavoriteExper.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ExperPhotoServlet</servlet-name>
 		<servlet-class>com.exper_photo.controller.ExperPhotoServlet</servlet-class>
@@ -182,7 +191,7 @@
 		<servlet-name>ExperPhotoServlet</servlet-name>
 		<url-pattern>/ExperPhoto/ExperPhoto.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ExperReportServlet</servlet-name>
 		<servlet-class>com.exper_report.controller.ExperReportServlet</servlet-class>
@@ -191,7 +200,7 @@
 		<servlet-name>ExperReportServlet</servlet-name>
 		<url-pattern>/ExperReport/ExperReport.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>ExperApplicationServlet</servlet-name>
 		<servlet-class>com.exper_application.controller.ExperApplicationServlet</servlet-class>
@@ -200,7 +209,7 @@
 		<servlet-name>ExperApplicationServlet</servlet-name>
 		<url-pattern>/ExperApplication/ExperApplication.do</url-pattern>
 	</servlet-mapping>
-		
+
 	<!-- 宗軒 -->
 	<servlet>
 		<servlet-name>OrderServlet</servlet-name>
@@ -264,7 +273,7 @@
 		<servlet-name>ShoppingServlet</servlet-name>
 		<url-pattern>/shoppingCart/shoppingCart.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 英明 -->
 	<servlet>
 		<servlet-name>EmployeeServlet</servlet-name>
@@ -274,7 +283,7 @@
 		<servlet-name>EmployeeServlet</servlet-name>
 		<url-pattern>/employee/employee.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>LoginOutServlet</servlet-name>
 		<servlet-class>com.emp.controller.LoginOutServlet</servlet-class>
@@ -283,7 +292,7 @@
 		<servlet-name>LoginOutServlet</servlet-name>
 		<url-pattern>/employee/loginHandler.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>FaqServlet</servlet-name>
 		<servlet-class>com.faq.controller.FaqServlet</servlet-class>
@@ -292,7 +301,7 @@
 		<servlet-name>FaqServlet</servlet-name>
 		<url-pattern>/faq/faq.do</url-pattern>
 	</servlet-mapping>
-	
+
 	<servlet>
 		<servlet-name>NewsServlet</servlet-name>
 		<servlet-class>com.news.controller.NewsServlet</servlet-class>
@@ -301,4 +310,5 @@
 		<servlet-name>NewsServlet</servlet-name>
 		<url-pattern>/news/news.do</url-pattern>
 	</servlet-mapping>
+
 </web-app>
