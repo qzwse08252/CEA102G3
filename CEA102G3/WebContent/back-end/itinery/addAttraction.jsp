@@ -86,9 +86,12 @@
 						</tr>
 						<tr>
 							<td>地址:</td>
-							<td><input type="TEXT" name="location" size="45"
-								value="<%=(attraVO == null) ? "" : attraVO.getLocation()%>"
-								class="form-control" /></td>
+							<td>
+								<div role="tw-city-selector" data-has-zipcode></div>
+								<input type="TEXT" name="location" size="45"
+									value="<%=(attraVO == null) ? "" : attraVO.getLocation()%>"
+									class="form-control" />
+							</td>
 						</tr>
 						<tr>
 							<td>圖片:</td>
