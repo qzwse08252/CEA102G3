@@ -33,7 +33,7 @@ public class PromotionDAO implements PromotionDAO_interface {
 	private static final String DELETE = 
 		"DELETE FROM Promotion where promot_No = ?";
 	private static final String UPDATE = 
-		"UPDATE promotion set promot_Content=?, promot_Start=?, promot_End=?, release_Date=?, promot_Product_No=?, promot_Product_Price=?, promot_Product_Title=?, promot_Product_Pic=?, where promot_No = ?";
+		"UPDATE promotion set promot_Content=?, promot_Start=?, promot_End=?, release_Date=?, promot_Product_No=?, promot_Product_Price=?, promot_Product_Title=?, promot_Product_Pic=? where promot_No = ?";
 	private static final String FIND_BY_PROMOTPRODUCTNO = "SELECT * FROM Promotion WHERE promot_Product_No = ? order by promot_Product_Title";
 
 	@Override
@@ -90,6 +90,7 @@ public class PromotionDAO implements PromotionDAO_interface {
 			con = ds.getConnection();
 			pstmt = con.prepareStatement(UPDATE);
 
+			System.out.println("promotNO at DAO:"+promotionVO.getPromot_No() );
 			pstmt.setString(1, promotionVO.getPromot_Content());
 			pstmt.setDate(2, promotionVO.getPromot_Start());
 			pstmt.setDate(3, promotionVO.getPromot_End());
@@ -99,7 +100,7 @@ public class PromotionDAO implements PromotionDAO_interface {
 			pstmt.setString(7, promotionVO.getPromot_Product_Title());
 			pstmt.setBytes(8, promotionVO.getPromot_Product_Pic());
 			pstmt.setInt(9, promotionVO.getPromot_No());
-			
+
 			pstmt.executeUpdate();
 	
 			// Handle any driver errors

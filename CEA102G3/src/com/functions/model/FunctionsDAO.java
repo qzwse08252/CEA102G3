@@ -25,7 +25,7 @@ public class FunctionsDAO implements FunctionsDAO_interface {
 	}
 
 	private static final String INSERT_STMT = "INSERT INTO functions (funct_name) VALUES (?)";
-	private static final String GET_ALL_STMT = "SELECT funct_No, funct_Name FROM functions order by funct_No";
+	private static final String GET_ALL_STMT = "SELECT funct_No, funct_Name FROM functions order by funct_No desc";
 	private static final String GET_ONE_STMT = "SELECT funct_No, funct_Name FROM functions where funct_No = ?";
 	private static final String DELETE = "DELETE FROM functions where funct_No = ?";
 	private static final String UPDATE = "UPDATE functions set funct_Name=? where funct_No = ?";

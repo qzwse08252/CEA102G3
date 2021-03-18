@@ -12,4 +12,3 @@ public interface EmployeeDAO_interface {
 
 	public List<EmployeeVO> getAll();
 }
-

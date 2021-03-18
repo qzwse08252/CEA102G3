@@ -25,7 +25,7 @@ String passwd = "123456";
 	private static final String GET_ALL_STMT = "SELECT promot_No, promot_Content, promot_Start, promot_End, release_Date, promot_Product_No, promot_Product_Price, promot_Product_Title, promot_Product_Pic FROM Promotion order by promot_No desc";
 	private static final String GET_ONE_STMT = "SELECT promot_No, promot_Content, promot_Start, promot_End, release_Date, promot_Product_No, promot_Product_Price, promot_Product_Title, promot_Product_Pic FROM Promotion where promot_No = ?";
 	private static final String DELETE = "DELETE FROM Promotion where promot_No = ?";
-	private static final String UPDATE = "UPDATE Promotion set promot_Content=?, promot_Start=?, promot_End=?, release_Date=?, promot_Product_No=?, promot_Product_Price=?, promot_Product_Title=?, promot_Product_Pic=?, where promot_No = ?";
+	private static final String UPDATE = "UPDATE Promotion set promot_Content=?, promot_Start=?, promot_End=?, release_Date=?, promot_Product_No=?, promot_Product_Price=?, promot_Product_Title=?, promot_Product_Pic=? where promot_No = ?";
 	private static final String FIND_BY_PROMOTPRODUCTNO = "SELECT * FROM Promotion WHERE promot_Product_No = ? order by promot_Product_Title";
 	private static DataSource DriverManager = null;
 	static {

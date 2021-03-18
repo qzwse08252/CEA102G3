@@ -24,7 +24,7 @@ public class FaqServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		
 		
-		if ("getOne_For_Display".equals(action)) { // ¨Ó¦Ûselect_faq_page.jspªº½Ğ¨D
+		if ("getOne_For_Display".equals(action)) { // ä¾†è‡ªselect_faq_page.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -32,64 +32,64 @@ public class FaqServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				String str = req.getParameter("question_No");
 				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("½Ğ¿é¤J­û¤u½s¸¹");
+					errorMsgs.add("è«‹è¼¸å…¥å¸¸è¦‹å•é¡Œç·¨è™Ÿ");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
 				Integer question_No = null;
 				try {
 					question_No = new Integer(str);
 				} catch (Exception e) {
-					errorMsgs.add("±`¨£°İÃD½s¸¹®æ¦¡¤£¥¿½T");
+					errorMsgs.add("å¸¸è¦‹å•é¡Œç·¨è™Ÿæ ¼å¼ä¸æ­£ç¢º");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ*****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™*****************************************/
 				FaqService faqSvc = new FaqService();
 				FaqVO faqVO = faqSvc.getOneQuestion(question_No);
 				if (faqVO == null) {
-					errorMsgs.add("¬dµL¸ê®Æ");
+					errorMsgs.add("æŸ¥ç„¡è³‡æ–™");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("faqVO", faqVO); // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
-				String url = "/front-end/faq/listOneFaq.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ¦¨¥\Âà¥æ listOneFaq.jsp
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("faqVO", faqVO); // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
+				String url = "/back-end/faq/listOneFaq.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æˆåŠŸè½‰äº¤ listOneFaq.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+						.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 				failureView.forward(req, res);
 			}
 		}
 		
 		
-		if ("getOne_For_Update".equals(action)) { // ¨Ó¦ÛlistAllFaq.jspªº½Ğ¨D
+		if ("getOne_For_Update".equals(action)) { // ä¾†è‡ªlistAllFaq.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -97,30 +97,30 @@ public class FaqServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ****************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸****************************************/
 				Integer question_No = new Integer(req.getParameter("question_No"));
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™****************************************/
 				FaqService faqSvc = new FaqService();
 				FaqVO faqVO = faqSvc.getOneQuestion(question_No);
 								
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)************/
-				req.setAttribute("faqVO", faqVO);         // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
-				String url = "/front-end/faq/update_faq_input.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// ¦¨¥\Âà¥æ update_faq_input.jsp
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)************/
+				req.setAttribute("faqVO", faqVO);         // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
+				String url = "/back-end/faq/update_faq_input.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// æˆåŠŸè½‰äº¤ update_faq_input.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o­n­×§ïªº¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è¦ä¿®æ”¹çš„è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/listAllFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/listAllFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}
 		
 		
-		if ("update".equals(action)) { // ¨Ó¦Ûupdate_faq_input.jspªº½Ğ¨D
+		if ("update".equals(action)) { // ä¾†è‡ªupdate_faq_input.jspçš„è«‹æ±‚
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -128,33 +128,31 @@ public class FaqServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 		
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				Integer question_No = new Integer(req.getParameter("question_No").trim());
 				
 				String question = req.getParameter("question");
-//				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (question == null || question.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g±`¨£°İÃD¤º®e!");
-				}
-//				} else if(!question.trim().matches(questionReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b±`¨£°İÃD¤º®e¤¤¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹å¡«å¯«å¸¸è¦‹å•é¡Œå…§å®¹!");
+				} else if(!question.trim().matches(questionReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œå…§å®¹ä¸­ï¼Œè¼¸å…¥3~1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				String answer = req.getParameter("answer");
-//				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (answer == null || answer.trim().length() == 0) {
-					errorMsgs.add("½Ğ¦b±`¨£°İÃDªº¦^µª¤¤¶ñ¼g¤º®e!");
-				}
-//				} else if(!answer.trim().matches(answerReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b±`¨£°İÃDªº¦^µª¤¤¶ñ¼g¤º®e¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œçš„å›ç­”ä¸­å¡«å¯«å…§å®¹!");
+				} else if(!answer.trim().matches(answerReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œçš„å›ç­”ä¸­å¡«å¯«å…§å®¹ï¼Œè¼¸å…¥3~1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				java.sql.Date update_Time = null;
 				try {
 					update_Time = java.sql.Date.valueOf(req.getParameter("update_Time").trim());
 				} catch (IllegalArgumentException e) {
 					update_Time=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("½Ğ¿é¤J¤é´Á!");
+					errorMsgs.add("è«‹è¼¸å…¥æ—¥æœŸ!");
 				}
 
 				FaqVO faqVO = new FaqVO();
@@ -167,33 +165,33 @@ public class FaqServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("faqVO", faqVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("faqVO", faqVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/update_faq_input.jsp");
+							.getRequestDispatcher("/back-end/faq/update_faq_input.jsp");
 					failureView.forward(req, res);
-					return; //µ{¦¡¤¤Â_
+					return; //ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************2.¶}©l­×§ï¸ê®Æ*****************************************/
+				/***************************2.é–‹å§‹ä¿®æ”¹è³‡æ–™*****************************************/
 				FaqService faqSvc = new FaqService();
 				faqVO = faqSvc.updateFaq(question_No, question, answer, update_Time);
 				
-				/***************************3.­×§ï§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("faqVO", faqVO); // ¸ê®Æ®wupdate¦¨¥\«á,¥¿½TªºªºempVOª«¥ó,¦s¤Jreq
-				String url = "/front-end/faq/listOneFaq.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ­×§ï¦¨¥\«á,Âà¥ælistOneFaq.jsp
+				/***************************3.ä¿®æ”¹å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("faqVO", faqVO); // è³‡æ–™åº«updateæˆåŠŸå¾Œ,æ­£ç¢ºçš„çš„empVOç‰©ä»¶,å­˜å…¥req
+				String url = "/back-end/faq/listOneFaq.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ä¿®æ”¹æˆåŠŸå¾Œ,è½‰äº¤listOneFaq.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("­×§ï¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("ä¿®æ”¹è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/update_faq_input.jsp");
+						.getRequestDispatcher("/back-end/faq/update_faq_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-        if ("insert".equals(action)) { // ¨Ó¦ÛaddFaq.jspªº½Ğ¨D  
+        if ("insert".equals(action)) { // ä¾†è‡ªaddFaq.jspçš„è«‹æ±‚  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -201,33 +199,31 @@ public class FaqServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***********************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z*************************/
+				/***********************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†*************************/
 //				String question_No = req.getParameter("question_No");
 				
 				String question = req.getParameter("question");
-//				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (question == null || question.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g±`¨£°İÃD¤º®e!");
-				}
-//				} else if(!question.trim().matches(questionReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b±`¨£°İÃD¤º®e¤¤¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹å¡«å¯«å¸¸è¦‹å•é¡Œå…§å®¹!");
+				} else if(!question.trim().matches(questionReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œå…§å®¹ä¸­ï¼Œè¼¸å…¥3~1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				String answer = req.getParameter("answer");
-//				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (answer == null || answer.trim().length() == 0) {
-					errorMsgs.add("½Ğ¦b±`¨£°İÃDªº¦^µª¤¤¶ñ¼g¤º®e!");
-				}
-//				} else if(!answer.trim().matches(answerReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b±`¨£°İÃDªº¦^µª¤¤¶ñ¼g¤º®e¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œçš„å›ç­”ä¸­å¡«å¯«å…§å®¹!");
+				} else if(!answer.trim().matches(answerReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨å¸¸è¦‹å•é¡Œçš„å›ç­”ä¸­å¡«å¯«å…§å®¹ï¼Œè¼¸å…¥1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				java.sql.Date update_Time = null;
 				try {
 					update_Time = java.sql.Date.valueOf(req.getParameter("update_Time").trim());
 				} catch (IllegalArgumentException e) {
 					update_Time=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("½Ğ¿é¤J¤é´Á!");
+					errorMsgs.add("è«‹è¼¸å…¥æ—¥æœŸ!");
 				}
 				
 
@@ -240,33 +236,33 @@ public class FaqServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("faqVO", faqVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("faqVO", faqVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/addFaq.jsp");
+							.getRequestDispatcher("/back-end/faq/addFaq.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 				
-				/***************************2.¶}©l·s¼W¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹æ–°å¢è³‡æ–™***************************************/
 				FaqService faqSvc = new FaqService();
 				faqVO = faqSvc.addFaq(question, answer, update_Time);
 				
-				/***************************3.·s¼W§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/
-				String url = "/front-end/faq/listAllFaq.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ·s¼W¦¨¥\«áÂà¥ælistAllFaq.jsp
+				/***************************3.æ–°å¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/
+				String url = "/back-end/faq/listAllFaq.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æ–°å¢æˆåŠŸå¾Œè½‰äº¤listAllFaq.jsp
 				successView.forward(req, res);				
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/addFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/addFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}
 		
 		
-		if ("delete".equals(action)) { // ¨Ó¦ÛlistAllFaq.jsp
+		if ("delete".equals(action)) { // ä¾†è‡ªlistAllFaq.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -274,23 +270,23 @@ public class FaqServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 	
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ***************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸***************************************/
 				Integer question_No = new Integer(req.getParameter("question_No"));
 				
-				/***************************2.¶}©l§R°£¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹åˆªé™¤è³‡æ–™***************************************/
 				FaqService faqSvc = new FaqService();
 				faqSvc.deleteQuestion(question_No);
 				
-				/***************************3.§R°£§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/								
-				String url = "/front-end/faq/listAllFaq.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// §R°£¦¨¥\«á,Âà¥æ¦^°e¥X§R°£ªº¨Ó·½ºô­¶
+				/***************************3.åˆªé™¤å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/								
+				String url = "/back-end/faq/listAllFaq.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// åˆªé™¤æˆåŠŸå¾Œ,è½‰äº¤å›é€å‡ºåˆªé™¤çš„ä¾†æºç¶²é 
 				successView.forward(req, res);
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("§R°£¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("åˆªé™¤è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/listAllFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/listAllFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}

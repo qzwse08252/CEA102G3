@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.sql.DataSource;
-
+ 
 /**
  * Servlet implementation class PicFinder
  */
@@ -97,7 +97,7 @@ public class PicFinder extends HttpServlet {
 //					pstmt.close();
 //				}
 			}else{
-				InputStream is = getServletContext().getResourceAsStream("/resources/images/unupload.jpg");
+				InputStream is = getServletContext().getResourceAsStream("/resources/img/unupload.jpg");
 				byte buff[] = new byte[is.available()];
 				is.read(buff);
 				out.write(buff);
@@ -107,7 +107,7 @@ public class PicFinder extends HttpServlet {
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
-			InputStream is = getServletContext().getResourceAsStream("/resources/images/unupload.jpg");
+			InputStream is = getServletContext().getResourceAsStream("/resources/img/unupload.jpg");
 			byte buff[] = new byte[is.available()];
 			is.read(buff);
 			out.write(buff);

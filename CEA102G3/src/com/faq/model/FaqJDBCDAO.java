@@ -221,7 +221,7 @@ import com.faq.model.FaqVO;
 				rs = pstmt.executeQuery();
 
 				while (rs.next()) {
-					// empVo ¤]ºÙ¬° Domain objects
+					// empVo ä¹Ÿç¨±ç‚º Domain objects
 					faqVO = new FaqVO();
 					faqVO.setQuestion_No(rs.getInt("question_No"));
 					faqVO.setQuestion(rs.getString("question"));
@@ -341,7 +341,7 @@ public static void main(String[] args) {
 
 	FaqJDBCDAO dao = new FaqJDBCDAO();
 
-	// ·s¼W
+	// æ–°å¢ž
 	FaqVO faqVO1 = new FaqVO();
 	faqVO1.setQuestion("7888");
 	faqVO1.setAnswer("451");
@@ -349,7 +349,7 @@ public static void main(String[] args) {
 	faqVO1.setQuestion_No(19);
 	dao.insert(faqVO1);
 
-//	// ­×§ï
+//	// ä¿®æ”¹
 //	FaqVO faqVO2 = new FaqVO();
 //	faqVO2.setQuestion_No(18);
 //	faqVO2.setQuestion("312");
@@ -357,10 +357,10 @@ public static void main(String[] args) {
 //	faqVO2.setUpdate_Time(java.sql.Date.valueOf("2012-06-21"));
 //	dao.update(faqVO2);
 //
-////	§R°£
+////	åˆªé™¤
 //	dao.delete(14);
 
-	// ¬d¸ß
+	// æŸ¥è©¢
 //	FaqVO faqVO3 = dao.findByPrimaryKey(2);
 //	System.out.print(faqVO3.getQuestion_No() + ",");
 //	System.out.print(faqVO3.getQuestion() + ",");
@@ -369,7 +369,7 @@ public static void main(String[] args) {
 //
 //	System.out.println("---------------------");
 //
-////	// ¬d¸ß
+////	// æŸ¥è©¢
 //	List<FaqVO> list = dao.getAll();
 //	for (FaqVO aEmp : list) {
 //		System.out.print(aEmp.getQuestion_No() + ",");

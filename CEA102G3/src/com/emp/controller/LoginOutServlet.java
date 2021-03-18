@@ -35,14 +35,14 @@ public class LoginOutServlet extends HttpServlet {
 			try {
 				String account = req.getParameter("account").trim();
 				if (account == null || account.isEmpty()) {
-					errorMsgs.add("½Ð¿é¤J±b¸¹");
+					errorMsgs.add("è«‹è¼¸å…¥å¸³è™Ÿ");
 				}
 				String password = req.getParameter("password");
 				if (password == null || password.isEmpty()) {
-					errorMsgs.add("½Ð¿é¤J±K½X");
+					errorMsgs.add("è«‹è¼¸å…¥å¯†ç¢¼");
 				}
 				if (!errorMsgs.isEmpty()) {
-					String url = "/front-end/Login.jsp";
+					String url = "/back-end/LoginEmp.jsp";
 					RequestDispatcher failureView = req.getRequestDispatcher(url);
 					failureView.forward(req, res);
 				}
@@ -58,11 +58,11 @@ public class LoginOutServlet extends HttpServlet {
 				String forwardUrl = "";
 				if ((employeeVO == null) || ((employeeVO != null) && (!password.equals(employeeVO.getPassword())))) {
 					System.out.println("employeeVO is null");
-					forwardUrl = "/front-end/Login.jsp";
-					errorMsgs.add("loginOutSer²Ä63¦æ");
+					forwardUrl = "/back-end/LoginEmp.jsp";
+					errorMsgs.add("loginOutSerç¬¬63è¡Œ");
 				} else {
 					System.out.println("employeeVO is not null");
-					forwardUrl = "/front-end/Login.jsp";
+					forwardUrl = "/back-end/LoginEmp.jsp";
 					HttpSession session = req.getSession();
 //					session.setAttribute("emploNo", employeeVO.getEmploNo());
 					session.setAttribute("employeeVO", employeeVO);
@@ -74,17 +74,17 @@ public class LoginOutServlet extends HttpServlet {
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/Login.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/LoginEmp.jsp");
 				failureView.forward(req, res);
 			}
-//			¥H¤U©|¥¼­×§ï
+//			ä»¥ä¸‹å°šæœªä¿®æ”¹
 		} else if ("logout".equals(action)) {
 			HttpSession session = req.getSession(false);
 			System.out.println("session_id:" + session.getId());
 			session.invalidate();
-			System.out.println("loginOutSer²Ä85¦æ");
+			System.out.println("loginOutSerç¬¬85è¡Œ");
 
-			String forwardUrl = "/front-end/index.jsp";
+			String forwardUrl = "/back-end/indexEmp.jsp";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("forgotPassword".equals(action)) {
@@ -94,11 +94,11 @@ public class LoginOutServlet extends HttpServlet {
 			
 			String account = req.getParameter("account").trim();
 			if (account == null || account.isEmpty()) {
-				errorMsgs.add("loginOutSer²Ä97¦æ!");
+				errorMsgs.add("loginOutSerç¬¬97è¡Œ!");
 			}
 			
 			if (!errorMsgs.isEmpty()) {
-				String url = "/front-end/RestPassword2.jsp";
+				String url = "/back-end/RestPassword2.jsp";
 				RequestDispatcher failureView = req.getRequestDispatcher(url);
 				failureView.forward(req, res);
 			}
@@ -107,26 +107,26 @@ public class LoginOutServlet extends HttpServlet {
 			
 			ServletContext context = getServletContext();
 			String configPath = context.getRealPath("/config.properties");
-			String activatePagePath = context.getRealPath("/front-end/RestPasswordMailPage.html");
+			String activatePagePath = context.getRealPath("/back-end/RestPasswordMailPage.html");
 			HashMap<String, String> confMap = new HashMap<String, String>();
 			confMap.put("configPath", configPath);
 			confMap.put("activatePagePath", activatePagePath);
 			confMap.put("contextPath", context.getContextPath());
 //			confMap.put("imgUrl", context.getContextPath()+"/resources/img/logo.PNG");
-			confMap.put("subject", "loginOutSer²Ä116¦æ");
+			confMap.put("subject", "loginOutSerç¬¬116è¡Œ");
 			confMap.put("toAccount", account);
 //			confMap.put("account", account);
-			// å¯„ç¶²??›å?†ç¢¼??„ä¿¡
-//¥ýÃö¤W		new util.MailUtil2().sendMail(confMap);
+	
+//å…ˆé—œä¸Š		new util.MailUtil2().sendMail(confMap);
 			
-			String forwardUrl = "/front-end/RestPassword2.jsp";
-//			String forwardUrl = "/front-end/member/AfterRestPwd.html";
+			String forwardUrl = "/back-end/RestPassword2.jsp";
+//			String forwardUrl = "/back-end/member/AfterRestPwd.html";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("returnLogin".equals(action)) {
 			System.out.println("---in--action:" + action);
 			req.removeAttribute("isRestPwd");
-			String forwardUrl = "/front-end/index.jsp";
+			String forwardUrl = "/back-end/indexEmp.jsp";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("forgotPasswordCheck".equals(action)) {

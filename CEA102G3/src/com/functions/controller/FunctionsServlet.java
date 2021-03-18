@@ -17,14 +17,14 @@ public class FunctionsServlet extends HttpServlet {
 		doPost(req, res);
 	}
 
+
 	public void doPost(HttpServletRequest req, HttpServletResponse res)
 			throws ServletException, IOException {
 
 		req.setCharacterEncoding("UTF-8");
 		String action = req.getParameter("action");
 
-		
-		if ("getOne_For_Display".equals(action)) { // ¨Ó¦Ûselect_faq_page.jspªº½Ğ¨D
+		if ("getOne_For_Display".equals(action)) { // ä¾†è‡ªselect_faq_page.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 
@@ -32,57 +32,57 @@ public class FunctionsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				String str = req.getParameter("funct_No");
 				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("½Ğ¿é¤J¥\¯à½s¸¹");
+					errorMsgs.add("è«‹è¼¸å…¥åŠŸèƒ½ç·¨è™Ÿ");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/functions/select_functions_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
 				Integer funct_No = null;
 				try {
 					funct_No = new Integer(str);
 				} catch (Exception e) {
-					errorMsgs.add("¥\¯à½s¸¹®æ¦¡¤£¥¿½T");
+					errorMsgs.add("åŠŸèƒ½ç·¨è™Ÿæ ¼å¼ä¸æ­£ç¢º");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/functions/select_functions_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
 
-				/***************************2.¶}©l¬d¸ß¸ê®Æ*****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™*****************************************/
 				FunctionsService funSvc = new FunctionsService();
 				FunctionsVO functionsVO = funSvc.getOneFunctions(funct_No);
 				if (functionsVO == null) {
-					errorMsgs.add("¬dµL¸ê®Æ");
+					errorMsgs.add("æŸ¥ç„¡è³‡æ–™");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/functions/select_functions_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("functionsVO", functionsVO); // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("functionsVO", functionsVO); // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
 				String url = "/front-end/functions/listOneFunctions.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ¦¨¥\Âà¥æ listOneFaq.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æˆåŠŸè½‰äº¤ listOneFaq.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/functions/select_functions_page.jsp");
 				failureView.forward(req, res);
@@ -90,7 +90,7 @@ public class FunctionsServlet extends HttpServlet {
 		}
 		
 		
-		if ("getOne_For_Update".equals(action)) { // ¨Ó¦ÛlistAllFaq.jspªº½Ğ¨D
+		if ("getOne_For_Update".equals(action)) { // ä¾†è‡ªlistAllFaq.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -98,22 +98,22 @@ public class FunctionsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ****************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸****************************************/
 				Integer funct_No = new Integer(req.getParameter("funct_No"));
 						
-				/***************************2.¶}©l¬d¸ß¸ê®Æ****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™****************************************/
 				FunctionsService funSvc = new FunctionsService();
 				FunctionsVO functionsVO = funSvc.getOneFunctions(funct_No);
 								
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)************/
-				req.setAttribute("functionsVO", functionsVO);         // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)************/
+				req.setAttribute("functionsVO", functionsVO);         // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
 				String url = "/front-end/functions/update_functions_input.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// ¦¨¥\Âà¥æ update_faq_input.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url);// æˆåŠŸè½‰äº¤ update_faq_input.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o­n­×§ïªº¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è¦ä¿®æ”¹çš„è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/functions/listAllFunctions.jsp");
 				failureView.forward(req, res);
@@ -121,7 +121,7 @@ public class FunctionsServlet extends HttpServlet {
 		}
 		
 		
-		if ("update".equals(action)) { // ¨Ó¦Ûupdate_function_input.jspªº½Ğ¨D
+		if ("update".equals(action)) { // ä¾†è‡ªupdate_function_input.jspçš„è«‹æ±‚
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -131,15 +131,17 @@ public class FunctionsServlet extends HttpServlet {
 				
 				
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				Integer funct_No = new Integer(req.getParameter("funct_No").trim());
 				
 				String funct_Name = req.getParameter("funct_Name");
-//				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String funct_NameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,40}$";
 				if (funct_Name == null || funct_Name.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g¥\¯à¦WºÙ!");
-				}
-//			
+					errorMsgs.add("è«‹å¡«å¯«åŠŸèƒ½åç¨±!");
+				} else if(!funct_Name.trim().matches(funct_NameReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨åŠŸèƒ½åç¨±ä¸­ï¼Œè¼¸å…¥3~40ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
+		
 
 				FunctionsVO functionsVO = new FunctionsVO();
 				functionsVO.setFunct_No(funct_No);
@@ -148,33 +150,33 @@ public class FunctionsServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("functionsVO", functionsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("functionsVO", functionsVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/functions/update_functions_input.jsp");
 					failureView.forward(req, res);
-					return; //µ{¦¡¤¤Â_
+					return; //ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************2.¶}©l­×§ï¸ê®Æ*****************************************/
+				/***************************2.é–‹å§‹ä¿®æ”¹è³‡æ–™*****************************************/
 				FunctionsService funSvc = new FunctionsService();
 				functionsVO = funSvc.updateFunctions(funct_No, funct_Name);
 			
-				/***************************3.­×§ï§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("functionsVO", functionsVO); // ¸ê®Æ®wupdate¦¨¥\«á,¥¿½TªºªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.ä¿®æ”¹å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("functionsVO", functionsVO); // è³‡æ–™åº«updateæˆåŠŸå¾Œ,æ­£ç¢ºçš„çš„empVOç‰©ä»¶,å­˜å…¥req
 				String url = "/front-end/functions/listOneFunctions.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ­×§ï¦¨¥\«á,Âà¥ælistOneFaq.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ä¿®æ”¹æˆåŠŸå¾Œ,è½‰äº¤listOneFaq.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("­×§ï¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("ä¿®æ”¹è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/functions/update_functions_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-        if ("insert".equals(action)) { // ¨Ó¦ÛaddFaq.jspªº½Ğ¨D  
+        if ("insert".equals(action)) { // ä¾†è‡ªaddFaq.jspçš„è«‹æ±‚  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -182,15 +184,16 @@ public class FunctionsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***********************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z*************************/
+				/***********************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†*************************/
 
 				
 				String funct_Name = req.getParameter("funct_Name");
-//				String functionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String funct_NameReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,40}$";
 				if (funct_Name == null || funct_Name.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g¥\¯à¦WºÙ!");
-				}
-			
+					errorMsgs.add("è«‹å¡«å¯«åŠŸèƒ½åç¨±!");
+				} else if(!funct_Name.trim().matches(funct_NameReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨åŠŸèƒ½åç¨±ä¸­ï¼Œè¼¸å…¥3~40ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 		
 				FunctionsVO functionsVO = new FunctionsVO();
 				functionsVO.setFunct_Name(funct_Name);
@@ -198,24 +201,24 @@ public class FunctionsServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("functionsVO", functionsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("functionsVO", functionsVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/functions/addFunctions.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 				
-				/***************************2.¶}©l·s¼W¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹æ–°å¢è³‡æ–™***************************************/
 				FunctionsService funSvc = new FunctionsService();
 				functionsVO = funSvc.addFunctions(funct_Name);
 				
 					
-				/***************************3.·s¼W§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/
+				/***************************3.æ–°å¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/
 				String url = "/front-end/functions/listAllFunctions.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ·s¼W¦¨¥\«áÂà¥ælistAllFaq.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æ–°å¢æˆåŠŸå¾Œè½‰äº¤listAllFaq.jsp
 				successView.forward(req, res);				
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
@@ -225,7 +228,7 @@ public class FunctionsServlet extends HttpServlet {
 		}
 		
 		
-		if ("delete".equals(action)) { // ¨Ó¦ÛlistAllFaq.jsp
+		if ("delete".equals(action)) { // ä¾†è‡ªlistAllFaq.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -233,21 +236,21 @@ public class FunctionsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 	
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ***************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸***************************************/
 				Integer funct_No = new Integer(req.getParameter("funct_No"));
 				
-				/***************************2.¶}©l§R°£¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹åˆªé™¤è³‡æ–™***************************************/
 				FunctionsService funSvc = new FunctionsService();
 				funSvc.deleteFunctions(funct_No);
 				
-				/***************************3.§R°£§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/								
+				/***************************3.åˆªé™¤å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/								
 				String url = "/front-end/functions/listAllFunctions.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// §R°£¦¨¥\«á,Âà¥æ¦^°e¥X§R°£ªº¨Ó·½ºô­¶
+				RequestDispatcher successView = req.getRequestDispatcher(url);// åˆªé™¤æˆåŠŸå¾Œ,è½‰äº¤å›é€å‡ºåˆªé™¤çš„ä¾†æºç¶²é 
 				successView.forward(req, res);
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("§R°£¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("åˆªé™¤è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/functions/listAllFunctions.jsp");
 				failureView.forward(req, res);
