@@ -11,14 +11,14 @@
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <title>審查體驗檢舉</title>
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-<link rel="stylesheet"
-	href="<%=request.getContextPath()%>/resources/assets/css/untitled.css">
+<!-- <link rel="stylesheet" -->
+<%-- 	href="<%=request.getContextPath()%>/resources/assets/bootstrap/css/bootstrap.min.css"> --%>
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://fonts.googleapis.com/css?family=Lato:300,400,700"> -->
+<!-- <link rel="stylesheet" -->
+<!-- 	href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css"> -->
+<!-- <link rel="stylesheet" -->
+<%-- 	href="<%=request.getContextPath()%>/resources/assets/css/untitled.css"> --%>
 
 
 </head>
@@ -50,13 +50,13 @@
 
 					<div class="form-group">
 						<label for="reason">檢舉理由:</label> <input type="text"
-							class="form-control" id="reason" name="reason"
+							class="form-control item" id="reason" name="reason"
 							value="${erVO.reason}" />
 
 					</div>
 					<div class="form-group">
 						<label for="reply_content">回覆內容:</label> <input type="text"
-							class="form-control" id="reply_content" name="reply_content"
+							class="form-control item" id="reply_content" name="reply_content"
 							value="${erVO.reply_content}" />
 					</div>
 					<div class="form-group">
@@ -64,7 +64,6 @@
 						<td><input type="radio" name="is_checked" value="1">檢舉已成立
 							<input type="radio" name="is_checked" value="2">檢舉未成立</td>
 					</div>
-			</div>
 
 
 
@@ -85,14 +84,14 @@
 	</main>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/jquery.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script>
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/theme.js"></script>
+<!-- 	<script -->
+<%-- 		src="<%=request.getContextPath()%>/resources/assets/js/jquery.min.js"></script> --%>
+<!-- 	<script -->
+<%-- 		src="<%=request.getContextPath()%>/resources/assets/bootstrap/js/bootstrap.min.js"></script> --%>
+<!-- 	<script -->
+<!-- 		src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script> -->
+<!-- 	<script -->
+<%-- 		src="<%=request.getContextPath()%>/resources/assets/js/theme.js"></script> --%>
 </body>
 
 

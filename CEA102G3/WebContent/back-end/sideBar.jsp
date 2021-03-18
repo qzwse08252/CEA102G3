@@ -50,12 +50,6 @@
 		<div id="exper" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<!-- <h4 class="collapse-header">達人體驗管理:</h4> -->
-				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_type/addExperType.jsp">新增體驗種類</a> 
-				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/experience/listOneExperience.jsp">體驗管理</a> 
-				<!-- <div class="collapse-divider"></div>
-				<h4 class="collapse-header">體驗報名管理:</h4> -->
-				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_appli/sellListOneExperAppli.jsp">體驗報名訂單</a> 
 				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_report/listAllExperReport.jsp">體驗檢舉審查</a>
 			</div>
 		</div>

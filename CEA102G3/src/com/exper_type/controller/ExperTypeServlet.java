@@ -202,7 +202,7 @@ public class ExperTypeServlet extends HttpServlet {
 					extypeSvc.insert(exper_type_name);
 					
 					/***************************3.新增完成,準備轉交(Send the Success view)***********/
-					String url = "/back-end/index.jsp";
+					String url = "/back-end/exper_back_index.jsp";
 					RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllEmp.jsp
 					successView.forward(req, res);				
 					

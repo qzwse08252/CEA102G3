@@ -64,7 +64,7 @@ public class ExperPhotoServlet extends HttpServlet {
 				res.getOutputStream().write(exppho);
 
 			} else {
-				InputStream in = getServletContext().getResourceAsStream("/image/nophoto/none2.jpg");
+				InputStream in = getServletContext().getResourceAsStream("/resources/img/none2.jpg");
 				byte[] b = new byte[in.available()];
 				in.read(b);
 				res.getOutputStream().write(b);

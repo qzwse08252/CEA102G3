@@ -100,7 +100,7 @@
 		<url-pattern>/back-end/exper_appli/sellListOneExperAppli.jsp</url-pattern>
 		<url-pattern>/back-end/experience/addExperience.jsp</url-pattern>
 		<url-pattern>/back-end/experience/listOneExperience.jsp</url-pattern>
-		<url-pattern>/back-end/front-sell-end.jsp</url-pattern>
+		<url-pattern>/back-end/exper_back_index.jsp</url-pattern>
 		<url-pattern>/front-end/exper_favor/listExperFavor.jsp</url-pattern>
 		<url-pattern>/front-end/Test/index.jsp</url-pattern>
 		<url-pattern>/front-end/NavPage.jsp</url-pattern>
