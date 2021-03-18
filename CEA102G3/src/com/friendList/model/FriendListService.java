@@ -34,7 +34,7 @@ public class FriendListService {
 	public List<MemberVO> getFriendListByMemName(Integer memberNo, String name) {
 		return dao.findByMemberName(memberNo, name);
 	}
-	
+
 	public List<FriendListVO> getOneFriendListByMemNo(Integer memberNo) {
 		return dao.findByMemberNo(memberNo);
 	}
@@ -42,26 +42,26 @@ public class FriendListService {
 	public List<FriendListVO> getAll() {
 		return dao.getAll();
 	}
-	
+
 	public void addFriendListWithDelFriInvit(Integer memberNo, Integer friendNo, Integer friendInvitNo) {
 		FriendListVO friendListVO = new FriendListVO();
 		friendListVO.setMemberNo(memberNo);
 		friendListVO.setFriendNo(friendNo);
-		
+
 		dao.insertFriListWithDelFriInvit(friendListVO, friendInvitNo);
 	}
-	
-	public void addFriendListWithDelFriInvitAndNotify(Integer memberNo, Integer friendNo, Integer friendInvitNo
-			, Integer notifyPerson, String notifyContent, Timestamp notifyTime) {
+
+	public void addFriendListWithDelFriInvitAndNotify(Integer memberNo, Integer friendNo, Integer friendInvitNo,
+			Integer notifyPerson, String notifyContent, Timestamp notifyTime) {
 		FriendListVO friendListVO = new FriendListVO();
 		friendListVO.setMemberNo(memberNo);
 		friendListVO.setFriendNo(friendNo);
-		
+
 		NotifyVO notifyVO = new NotifyVO();
 		notifyVO.setNotifyPerson(notifyPerson);
 		notifyVO.setNotifyContent(notifyContent);
 		notifyVO.setNotifyTime(notifyTime);
-		
+
 		dao.insertFriListWithDelFriInvitAndNotify(friendListVO, friendInvitNo, notifyVO);
 	}
 

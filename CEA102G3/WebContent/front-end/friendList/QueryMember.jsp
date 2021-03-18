@@ -13,7 +13,28 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<script src="http://code.jquery.com/jquery-1.12.4.min.js"></script>
+     <!-- Custom fonts for this template-->
+    <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/jquery-ui.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/hamburgers.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/nav-bar.css">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 
 <style>
 	.friendList {
@@ -27,7 +48,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<c:import url="/front-end/NavPage2.jsp"></c:import>
+	<c:import url="/front-end/myNavBar.jsp"></c:import>
 	<div class="friendList">
 		<table id="friendTable">
 			<thead>搜尋會員

@@ -1051,13 +1051,19 @@ p[speaker=${memberVO.name}]{
         			
         			if(messageData.action=="delete"){
         				//修改變數
-        				$.each(schedule.itineItems,function(idx,itineItem){
-        					if(itineItem.Attra_No==messageData.attraNo){
-        						schedule.itineItems.splice(idx,1);
-        						console.log("delete success");
-        						return;
+//         				$.each(schedule.itineItems,function(idx,itineItem){
+//         					if(itineItem.Attra_No==messageData.attraNo){
+//         						schedule.itineItems.splice(idx,1);
+//         						console.log("delete success");
+//         						return;
+//         					}
+//         				});
+        				for(let i = 0; i<schedule.itineItems.length; i++){
+        					if(schedule.itineItems[i].Attra_No==messageData.attraNo){
+        						schedule.itineItems.splice(i,1);
+        						
         					}
-        				});
+        				}
         				//修改dom
         				$(".itine-item").each(function(){
         					if($(this).attr("attrano")==messageData.attraNo){
@@ -1176,10 +1182,10 @@ p[speaker=${memberVO.name}]{
         		
         	}
         	
-        	$("#send-message").off("click").click(sendMessage);
+        	$("#send-message").off("click").click(sendBoardMessage);
         	$("#send-message").prev().keyup(function(event){
         		if(event.keyCode==13){
-        			sendMessage();
+        			sendBoardMessage();
         		}
         	})
         	
@@ -1187,7 +1193,7 @@ p[speaker=${memberVO.name}]{
         }
 			
         
-        function sendMessage(){
+        function sendBoardMessage(){
 			let messageData ={
 				"action": "message",
 				"itineID":${param.itineNo},
