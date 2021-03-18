@@ -46,9 +46,9 @@ padding-top:20px;
 	</main>
 
 </body>
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-<script
-	src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+<%-- <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script> --%>
+<!-- <script -->
+<%-- 	src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script> --%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/theme.js"></script>
