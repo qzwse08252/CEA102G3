@@ -182,7 +182,7 @@ public class EmployeeDAO implements EmployeeDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo ¤]ºÙ¬° Domain objects
+				// empVo ä¹Ÿç¨±ç‚º Domain objects
 				employeeVO = new EmployeeVO();
 				
 				employeeVO.setEmplo_No(rs.getInt("emplo_No"));

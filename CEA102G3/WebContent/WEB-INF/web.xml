@@ -304,4 +304,20 @@
 		<servlet-name>NewsServlet</servlet-name>
 		<url-pattern>/news/news.do</url-pattern>
 	</servlet-mapping>
+	 <servlet>
+    <servlet-name>PromotionServlet</servlet-name>
+    <servlet-class>com.promotion.controller.PromotionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PromotionServlet</servlet-name>
+    <url-pattern>/promotion/promotion.do</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>FunctionsServlet</servlet-name>
+    <servlet-class>com.functions.controller.FunctionsServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>FunctionsServlet</servlet-name>
+    <url-pattern>/functions/functions.do</url-pattern>
+  </servlet-mapping>
 </web-app>

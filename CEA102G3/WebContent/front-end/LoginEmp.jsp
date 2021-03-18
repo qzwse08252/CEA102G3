@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/img/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -44,7 +44,7 @@
 			</ul>
 		</c:if>
 
-		<div class="container-login100" style="background-image: url('<%=request.getContextPath()%>/resources/images/tokyostation.jpg');">
+		<div class="container-login100" style="background-image: url('<%=request.getContextPath()%>/resources/img/tokyostation.jpg');">
 			<div class="wrap-login100 p-t-30 p-b-50">
 				<span class="login100-form-title p-b-41">GUIDEME 員工登入</span>
 				

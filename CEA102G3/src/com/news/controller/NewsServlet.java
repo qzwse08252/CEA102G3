@@ -7,9 +7,10 @@ import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 
-
+import com.mysql.cj.Session;
 import com.news.model.NewsService;
 import com.news.model.NewsVO;
+
 
 
 //@MultipartConfig(fileSizeThreshold = 1024 * 1024, maxFileSize = 5 * 1024 * 1024, maxRequestSize = 5 * 5 * 1024 * 1024)
@@ -28,7 +29,7 @@ public class NewsServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		
 		
-		if ("getOne_For_Display".equals(action)) { // ¨Ó¦Ûselect_news_page.jspªº½Ğ¨D
+		if ("getOne_For_Display".equals(action)) { // ä¾†è‡ªselect_news_page.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -36,56 +37,56 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				String str = req.getParameter("news_No");
 				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("½Ğ¿é¤J³Ì·s®ø®§ID");
+					errorMsgs.add("è«‹è¼¸å…¥æœ€æ–°æ¶ˆæ¯ç·¨è™Ÿ");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
 				Integer news_No = null;
 				try {
 					news_No = new Integer(str);
 				} catch (Exception e) {
-					errorMsgs.add("³Ì·s®ø®§ID®æ¦¡¤£¥¿½T");
+					errorMsgs.add("æœ€æ–°æ¶ˆæ¯ç·¨è™Ÿæ ¼å¼ä¸æ­£ç¢º");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ*****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™*****************************************/
 				NewsService newsSvc = new NewsService();
 				NewsVO newsVO = newsSvc.getOneNews(news_No);
 				if (newsVO == null) {
-					errorMsgs.add("¬dµL¸ê®Æ");
+					errorMsgs.add("æŸ¥ç„¡è³‡æ–™");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ç¨‹å¼ä¸­æ–·
 				}
 				
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("newsVO", newsVO); // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("newsVO", newsVO); // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
 				String url = "/front-end/news/listOneNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ¦¨¥\Âà¥æ listOneNews.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æˆåŠŸè½‰äº¤ listOneNews.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/news/select_news_page.jsp");
 				failureView.forward(req, res);
@@ -93,7 +94,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("getOne_For_Update".equals(action)) { // ¨Ó¦ÛlistAllNews.jspªº½Ğ¨D
+		if ("getOne_For_Update".equals(action)) { // ä¾†è‡ªlistAllNews.jspçš„è«‹æ±‚
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -101,22 +102,22 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ****************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸****************************************/
 				Integer news_No = new Integer(req.getParameter("news_No"));
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ****************************************/
+				/***************************2.é–‹å§‹æŸ¥è©¢è³‡æ–™****************************************/
 				NewsService newsSvc = new NewsService();
 				NewsVO newsVO = newsSvc.getOneNews(news_No);
 								
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)************/
-				req.setAttribute("newsVO", newsVO);         // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.æŸ¥è©¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)************/
+				req.setAttribute("newsVO", newsVO);         // è³‡æ–™åº«å–å‡ºçš„empVOç‰©ä»¶,å­˜å…¥req
 				String url = "/front-end/news/update_news_input.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// ¦¨¥\Âà¥æ update_news_input.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url);// æˆåŠŸè½‰äº¤ update_news_input.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o­n­×§ïªº¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ç„¡æ³•å–å¾—è¦ä¿®æ”¹çš„è³‡æ–™:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/news/listAllNews.jsp");
 				failureView.forward(req, res);
@@ -124,7 +125,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("update".equals(action)) { // ¨Ó¦Ûupdate_news_input.jspªº½Ğ¨D
+		if ("update".equals(action)) { // ä¾†è‡ªupdate_news_input.jspçš„è«‹æ±‚
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -132,44 +133,34 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 		
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†**********************/
 				Integer news_No = new Integer(req.getParameter("news_No").trim());
 				
 				String news_Title = req.getParameter("news_Title");
-//				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
+				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
 				if (news_Title == null || news_Title.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g³Ì·s®ø®§¼ĞÃD!");
-				}
-//				} else if(!news_Title.trim().matches(news_TitleReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b³Ì·s®ø®§¼ĞÃD¤¤¡A¿é¤J50¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹å¡«å¯«æœ€æ–°æ¶ˆæ¯æ¨™é¡Œ!");
+				} else if(!news_Title.trim().matches(news_TitleReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨æœ€æ–°æ¶ˆæ¯æ¨™é¡Œä¸­ï¼Œè¼¸å…¥3~50ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				
 				String news_Content = req.getParameter("news_Content");
-//				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (news_Content == null || news_Content.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g³Ì·s®ø®§¤º®e!");
-				}
-//				} else if(!news_Content.trim().matches(news_ContentReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b³Ì·s®ø®§¼ĞÃD¤¤¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
-								
+					errorMsgs.add("è«‹å¡«å¯«æœ€æ–°æ¶ˆæ¯å…§å®¹!");
+				} else if(!news_Content.trim().matches(news_ContentReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨æœ€æ–°æ¶ˆæ¯å…§å®¹ä¸­ï¼Œè¼¸å…¥3~1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
+							
 			
 				java.sql.Date release_Date = null;
 				try {
 					release_Date = java.sql.Date.valueOf(req.getParameter("release_Date").trim());
 				} catch (IllegalArgumentException e) {
 					release_Date=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("½Ğ¿é¤J¤é´Á!");
+//					errorMsgs.add("è«‹è¼¸å…¥æ—¥æœŸ!");
 				}
-
-				
-//				Part News_Pic = req.getPart("news_Pic"); //¨Ó¦Û©ó¤W­±ªºformªí³æ
-//				InputStream in = News_Pic.getInputStream();
-//				byte[] news_Pic = new byte[in.available()];
-//				in.read(news_Pic);
-//				in.close();
-//				System.out.println("buffer length: " + news_Pic.length);
 
 				
 				byte[] news_Pic=null;
@@ -179,11 +170,39 @@ public class NewsServlet extends HttpServlet {
 					news_Pic = new byte[in.available()];
 					in.read(news_Pic);
 					in.close();
+					if(News_Pic.getSize()==0) {
+						System.out.println("no part!");
+						NewsService newsSvc = new NewsService();
+						NewsVO newsVO = newsSvc.getOneNews(news_No);
+						news_Pic = newsVO.getNews_Pic();
+					} 
 					System.out.println("buffer length: " + news_Pic.length);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					errorMsgs.add("error");
 				}
+				System.out.println("news_Pic:"+news_Pic);
+				
+//				Part News_Pic = req.getPart("news_Pic"); //ä¾†è‡ªæ–¼ä¸Šé¢çš„formè¡¨å–®
+//				InputStream in = News_Pic.getInputStream();
+//				byte[] news_Pic = new byte[in.available()];
+//				in.read(news_Pic);
+//				in.close();
+//				System.out.println("buffer length: " + news_Pic.length);
+				
+				
+//				byte[] news_Pic=null;
+//				try {
+//					Part News_Pic = req.getPart("news_Pic");
+//					InputStream in = News_Pic.getInputStream();
+//					news_Pic = new byte[in.available()];
+//					in.read(news_Pic);
+//					in.close();
+//					System.out.println("buffer length: " + news_Pic.length);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					errorMsgs.add("error");
+//				}
 				
 			
 				NewsVO newsVO = new NewsVO();
@@ -192,38 +211,37 @@ public class NewsServlet extends HttpServlet {
 				newsVO.setRelease_Date(release_Date);
 				newsVO.setNews_Title(news_Title);
 				newsVO.setNews_Pic(news_Pic);
-
+				
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("newsVO", newsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("newsVO", newsVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/news/update_news_input.jsp");
 					failureView.forward(req, res);
-					return; //µ{¦¡¤¤Â_
+					return; //ç¨‹å¼ä¸­æ–·
 				}
-
-				/***************************2.¶}©l­×§ï¸ê®Æ*****************************************/
 				
+				/***************************2.é–‹å§‹ä¿®æ”¹è³‡æ–™*****************************************/
 				NewsService newsSvc = new NewsService();
 				newsVO = newsSvc.updateNews(news_No, news_Content, release_Date, news_Title, news_Pic);
-
-				/***************************3.­×§ï§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("newsVO", newsVO); // ¸ê®Æ®wupdate¦¨¥\«á,¥¿½TªºªºempVOª«¥ó,¦s¤Jreq				
+	
+				/***************************3.ä¿®æ”¹å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)*************/
+				req.setAttribute("newsVO", newsVO); // è³‡æ–™åº«updateæˆåŠŸå¾Œ,æ­£ç¢ºçš„çš„empVOç‰©ä»¶,å­˜å…¥req				
 				String url = "/front-end/news/listOneNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ­×§ï¦¨¥\«á,Âà¥ælistOneNews.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ä¿®æ”¹æˆåŠŸå¾Œ,è½‰äº¤listOneNews.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("­×§ï¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("ä¿®æ”¹è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/news/update_news_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-        if ("insert".equals(action)) { // ¨Ó¦ÛaddNews.jspªº½Ğ¨D  
+        if ("insert".equals(action)) { // ä¾†è‡ªaddNews.jspçš„è«‹æ±‚  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -231,35 +249,33 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***********************1.±µ¦¬½Ğ¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z*************************/
+				/***********************1.æ¥æ”¶è«‹æ±‚åƒæ•¸ - è¼¸å…¥æ ¼å¼çš„éŒ¯èª¤è™•ç†*************************/
 //				Integer news_No = new Integer(req.getParameter("news_No").trim());
 				
 				
 				String news_Title = req.getParameter("news_Title");
-//				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
+				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
 				if (news_Title == null || news_Title.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g³Ì·s®ø®§¼ĞÃD!");
-				}
-//				} else if(!news_Title.trim().matches(news_TitleReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b³Ì·s®ø®§¼ĞÃD¤¤¡A¿é¤J50¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹å¡«å¯«æœ€æ–°æ¶ˆæ¯æ¨™é¡Œ!");
+				} else if(!news_Title.trim().matches(news_TitleReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨æœ€æ–°æ¶ˆæ¯æ¨™é¡Œä¸­ï¼Œè¼¸å…¥3~50ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 				
 				
 				String news_Content = req.getParameter("news_Content");
-//				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (news_Content == null || news_Content.trim().length() == 0) {
-					errorMsgs.add("½Ğ¶ñ¼g³Ì·s®ø®§¤º®e!");
-				}
-//				} else if(!news_Content.trim().matches(news_ContentReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ğ¦b³Ì·s®ø®§¼ĞÃD¤¤¡A¿é¤J1000¥H¤ºªº¦r¼Æ¡C");
-//	            }
+					errorMsgs.add("è«‹å¡«å¯«æœ€æ–°æ¶ˆæ¯å…§å®¹!");
+				} else if(!news_Content.trim().matches(news_ContentReg)) { //ä»¥ä¸‹ç·´ç¿’æ­£å‰‡(è¦)è¡¨ç¤ºå¼(regular-expression)
+					errorMsgs.add("è«‹åœ¨æœ€æ–°æ¶ˆæ¯å…§å®¹ä¸­ï¼Œè¼¸å…¥3~1000ä»¥å…§çš„å­—æ•¸ã€‚");
+	            }
 			
 				java.sql.Date release_Date = null;
 				try {
 					release_Date = java.sql.Date.valueOf(req.getParameter("release_Date").trim());
 				} catch (IllegalArgumentException e) {
 					release_Date=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("½Ğ¿é¤J¤é´Á!");
+					errorMsgs.add("è«‹è¼¸å…¥æ—¥æœŸ!");
 				}
 
 	
@@ -277,14 +293,7 @@ public class NewsServlet extends HttpServlet {
 					errorMsgs.add("error");
 				}
 				
-			
-//				Part News_Pic = req.getPart("news_Pic"); //¨Ó¦Û©ó¤W­±ªºformªí³æ
-//				InputStream in = News_Pic.getInputStream();
-//				byte[] news_Pic = new byte[in.available()];
-//				in.read(news_Pic);
-//				in.close();
-//				System.out.println("buffer length: " + news_Pic.length);
-				
+		
 
 				NewsVO newsVO = new NewsVO();
 //				newsVO.setNews_No(news_No);
@@ -295,23 +304,23 @@ public class NewsServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("newsVO", newsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("newsVO", newsVO); // å«æœ‰è¼¸å…¥æ ¼å¼éŒ¯èª¤çš„empVOç‰©ä»¶,ä¹Ÿå­˜å…¥req
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/front-end/news/addNews.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 				
-				/***************************2.¶}©l·s¼W¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹æ–°å¢è³‡æ–™***************************************/
 				NewsService newsSvc = new NewsService();
 				newsVO = newsSvc.addNews(news_Content, release_Date, news_Title, news_Pic);
 				
-				/***************************3.·s¼W§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/
+				/***************************3.æ–°å¢å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/
 				String url = "/front-end/news/listAllNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ·s¼W¦¨¥\«áÂà¥ælistAllNews.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // æ–°å¢æˆåŠŸå¾Œè½‰äº¤listAllNews.jsp
 				successView.forward(req, res);				
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
@@ -321,7 +330,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("delete".equals(action)) { // ¨Ó¦ÛlistAllNews.jsp
+		if ("delete".equals(action)) { // ä¾†è‡ªlistAllNews.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -329,21 +338,21 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 	
 			try {
-				/***************************1.±µ¦¬½Ğ¨D°Ñ¼Æ***************************************/
+				/***************************1.æ¥æ”¶è«‹æ±‚åƒæ•¸***************************************/
 				Integer news_No = new Integer(req.getParameter("news_No"));
 				
-				/***************************2.¶}©l§R°£¸ê®Æ***************************************/
+				/***************************2.é–‹å§‹åˆªé™¤è³‡æ–™***************************************/
 				NewsService newsSvc = new NewsService();
 				newsSvc.deleteNews(news_No);
 				
-				/***************************3.§R°£§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/								
+				/***************************3.åˆªé™¤å®Œæˆ,æº–å‚™è½‰äº¤(Send the Success view)***********/								
 				String url = "/front-end/news/listAllNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// §R°£¦¨¥\«á,Âà¥æ¦^°e¥X§R°£ªº¨Ó·½ºô­¶
+				RequestDispatcher successView = req.getRequestDispatcher(url);// åˆªé™¤æˆåŠŸå¾Œ,è½‰äº¤å›é€å‡ºåˆªé™¤çš„ä¾†æºç¶²é 
 				successView.forward(req, res);
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************å…¶ä»–å¯èƒ½çš„éŒ¯èª¤è™•ç†**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("§R°£¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("åˆªé™¤è³‡æ–™å¤±æ•—:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/front-end/news/listAllNews.jsp");
 				failureView.forward(req, res);

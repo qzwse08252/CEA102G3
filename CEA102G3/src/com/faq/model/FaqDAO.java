@@ -31,7 +31,7 @@ public class FaqDAO implements FaqDAO_interface {
 	private static final String INSERT_STMT = 
 		"INSERT INTO faq (question,answer,update_Time) VALUES (?, ?, ?)";
 	private static final String GET_ALL_STMT = 
-		"SELECT question_No, question,answer,update_Time FROM faq order by question_No";
+		"SELECT question_No, question,answer,update_Time FROM faq order by question_No desc";
 	private static final String GET_ONE_STMT = 
 		"SELECT question_No, question,answer,update_Time FROM faq where question_No = ?";
 	private static final String DELETE = 
@@ -174,7 +174,7 @@ public class FaqDAO implements FaqDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVo 也稱為 Domain objects
+				
 				faqVO = new FaqVO();
 				faqVO.setQuestion_No(rs.getInt("question_No"));
 				faqVO.setQuestion(rs.getString("question"));
@@ -229,7 +229,7 @@ public class FaqDAO implements FaqDAO_interface {
 			rs = pstmt.executeQuery();
 
 			while (rs.next()) {
-				// empVO 也稱為 Domain objects
+			
 				faqVO = new FaqVO();
 				faqVO.setQuestion_No(rs.getInt("question_No"));
 				faqVO.setQuestion(rs.getString("question"));

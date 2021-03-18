@@ -28,7 +28,7 @@ public class NewsJDBCDAO implements NewsDAO_interface {
 	private static final String DELETE = 
 		"DELETE FROM news where news_No = ?";
 	private static final String UPDATE = 
-		"UPDATE news set news_Content=?, release_Date=?, news_Title=? , news_Pic=? where news_No = ?";
+		"UPDATE news set news_Content=?, release_Date=?, news_Title=? ,news_Pic=? where news_No = ?";
 
 	private static DataSource DriverManager = null;
 	static {

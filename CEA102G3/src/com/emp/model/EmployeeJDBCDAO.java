@@ -423,7 +423,7 @@ public class EmployeeJDBCDAO implements EmployeeDAO_interface {
 //
 //	EmployeeJDBCDAO dao = new EmployeeJDBCDAO();
 
-	// ·s¼W
+	// æ–°å¢ž
 //	EmployeeVO employeeVO1 = new EmployeeVO();
 //	employeeVO1.setAccount("12");
 //	employeeVO1.setPassword("111");
@@ -437,7 +437,7 @@ public class EmployeeJDBCDAO implements EmployeeDAO_interface {
 //	dao.insert(employeeVO1);
 //}
 //}
-////	// ­×§ï
+////	// ä¿®æ”¹
 //	NewsVO newsVO2 = new NewsVO();
 //	newsVO2.setNews_Content("14");
 //	newsVO2.setRelease_Date(java.sql.Date.valueOf("2012-02-14"));
@@ -446,10 +446,10 @@ public class EmployeeJDBCDAO implements EmployeeDAO_interface {
 //	newsVO2.setNews_No(11);
 //	dao.update(newsVO2);
 ////
-//////	§R°£
+//////	åˆªé™¤
 //	dao.delete(11);
 //
-//	// ¬d¸ß
+//	// æŸ¥è©¢
 //	NewsVO newsVO3 = dao.findByPrimaryKey(2);
 //	System.out.print(newsVO3.getNews_No() + ",");
 //	System.out.print(newsVO3.getNews_Content() + ",");
@@ -459,7 +459,7 @@ public class EmployeeJDBCDAO implements EmployeeDAO_interface {
 //
 //	System.out.println("---------------------");
 //
-//////	// ¬d¸ß
+//////	// æŸ¥è©¢
 //	List<NewsVO> list = dao.getAll();
 //	for (NewsVO aNews : list) {
 //		System.out.print(aNews.getNews_No() + ",");
