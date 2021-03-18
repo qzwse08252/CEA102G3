@@ -42,7 +42,7 @@ public class LoginOutServlet extends HttpServlet {
 					errorMsgs.add("請輸入密碼");
 				}
 				if (!errorMsgs.isEmpty()) {
-					String url = "/front-end/LoginEmp.jsp";
+					String url = "/back-end/LoginEmp.jsp";
 					RequestDispatcher failureView = req.getRequestDispatcher(url);
 					failureView.forward(req, res);
 				}
@@ -58,11 +58,11 @@ public class LoginOutServlet extends HttpServlet {
 				String forwardUrl = "";
 				if ((employeeVO == null) || ((employeeVO != null) && (!password.equals(employeeVO.getPassword())))) {
 					System.out.println("employeeVO is null");
-					forwardUrl = "/front-end/LoginEmp.jsp";
+					forwardUrl = "/back-end/LoginEmp.jsp";
 					errorMsgs.add("loginOutSer第63行");
 				} else {
 					System.out.println("employeeVO is not null");
-					forwardUrl = "/front-end/LoginEmp.jsp";
+					forwardUrl = "/back-end/LoginEmp.jsp";
 					HttpSession session = req.getSession();
 //					session.setAttribute("emploNo", employeeVO.getEmploNo());
 					session.setAttribute("employeeVO", employeeVO);
@@ -74,7 +74,7 @@ public class LoginOutServlet extends HttpServlet {
 
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
-				RequestDispatcher failureView = req.getRequestDispatcher("/front-end/LoginEmp.jsp");
+				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/LoginEmp.jsp");
 				failureView.forward(req, res);
 			}
 //			以下尚未修改
@@ -84,7 +84,7 @@ public class LoginOutServlet extends HttpServlet {
 			session.invalidate();
 			System.out.println("loginOutSer第85行");
 
-			String forwardUrl = "/front-end/indexEmp.jsp";
+			String forwardUrl = "/back-end/indexEmp.jsp";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("forgotPassword".equals(action)) {
@@ -98,7 +98,7 @@ public class LoginOutServlet extends HttpServlet {
 			}
 			
 			if (!errorMsgs.isEmpty()) {
-				String url = "/front-end/RestPassword2.jsp";
+				String url = "/back-end/RestPassword2.jsp";
 				RequestDispatcher failureView = req.getRequestDispatcher(url);
 				failureView.forward(req, res);
 			}
@@ -107,7 +107,7 @@ public class LoginOutServlet extends HttpServlet {
 			
 			ServletContext context = getServletContext();
 			String configPath = context.getRealPath("/config.properties");
-			String activatePagePath = context.getRealPath("/front-end/RestPasswordMailPage.html");
+			String activatePagePath = context.getRealPath("/back-end/RestPasswordMailPage.html");
 			HashMap<String, String> confMap = new HashMap<String, String>();
 			confMap.put("configPath", configPath);
 			confMap.put("activatePagePath", activatePagePath);
@@ -119,14 +119,14 @@ public class LoginOutServlet extends HttpServlet {
 	
 //先關上		new util.MailUtil2().sendMail(confMap);
 			
-			String forwardUrl = "/front-end/RestPassword2.jsp";
-//			String forwardUrl = "/front-end/member/AfterRestPwd.html";
+			String forwardUrl = "/back-end/RestPassword2.jsp";
+//			String forwardUrl = "/back-end/member/AfterRestPwd.html";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("returnLogin".equals(action)) {
 			System.out.println("---in--action:" + action);
 			req.removeAttribute("isRestPwd");
-			String forwardUrl = "/front-end/indexEmp.jsp";
+			String forwardUrl = "/back-end/indexEmp.jsp";
 			RequestDispatcher forwardPage = req.getRequestDispatcher(forwardUrl);
 			forwardPage.forward(req, res);
 		} else if ("forgotPasswordCheck".equals(action)) {

@@ -50,7 +50,7 @@ NewsVO newsVO = (NewsVO) request.getAttribute("newsVO");
 
                             <div class="">
                                 <h3 class="h1 text-gray-900 mb-4">Guideme最新消息資料新增--addNews</h3>
-                            	<h4><a href="<%=request.getContextPath()%>/front-end/news/select_news_page.jsp">回首頁</a></h4>
+                            	<h4><a href="<%=request.getContextPath()%>/back-end/news/select_news_page.jsp">回首頁</a></h4>
                             </div>
                             
                        

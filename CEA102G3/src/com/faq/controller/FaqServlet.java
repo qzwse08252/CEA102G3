@@ -40,7 +40,7 @@ public class FaqServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -54,7 +54,7 @@ public class FaqServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -68,14 +68,14 @@ public class FaqServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+							.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("faqVO", faqVO); // 資料庫取出的empVO物件,存入req
-				String url = "/front-end/faq/listOneFaq.jsp";
+				String url = "/back-end/faq/listOneFaq.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneFaq.jsp
 				successView.forward(req, res);
 
@@ -83,7 +83,7 @@ public class FaqServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/select_faq_page.jsp");
+						.getRequestDispatcher("/back-end/faq/select_faq_page.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -106,7 +106,7 @@ public class FaqServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("faqVO", faqVO);         // 資料庫取出的empVO物件,存入req
-				String url = "/front-end/faq/update_faq_input.jsp";
+				String url = "/back-end/faq/update_faq_input.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_faq_input.jsp
 				successView.forward(req, res);
 
@@ -114,7 +114,7 @@ public class FaqServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/listAllFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/listAllFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -167,7 +167,7 @@ public class FaqServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("faqVO", faqVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/update_faq_input.jsp");
+							.getRequestDispatcher("/back-end/faq/update_faq_input.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -178,7 +178,7 @@ public class FaqServlet extends HttpServlet {
 				
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("faqVO", faqVO); // 資料庫update成功後,正確的的empVO物件,存入req
-				String url = "/front-end/faq/listOneFaq.jsp";
+				String url = "/back-end/faq/listOneFaq.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneFaq.jsp
 				successView.forward(req, res);
 
@@ -186,7 +186,7 @@ public class FaqServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/update_faq_input.jsp");
+						.getRequestDispatcher("/back-end/faq/update_faq_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -238,7 +238,7 @@ public class FaqServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("faqVO", faqVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/faq/addFaq.jsp");
+							.getRequestDispatcher("/back-end/faq/addFaq.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -248,7 +248,7 @@ public class FaqServlet extends HttpServlet {
 				faqVO = faqSvc.addFaq(question, answer, update_Time);
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/front-end/faq/listAllFaq.jsp";
+				String url = "/back-end/faq/listAllFaq.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllFaq.jsp
 				successView.forward(req, res);				
 				
@@ -256,7 +256,7 @@ public class FaqServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/addFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/addFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -278,7 +278,7 @@ public class FaqServlet extends HttpServlet {
 				faqSvc.deleteQuestion(question_No);
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
-				String url = "/front-end/faq/listAllFaq.jsp";
+				String url = "/back-end/faq/listAllFaq.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				
@@ -286,7 +286,7 @@ public class FaqServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("刪除資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/faq/listAllFaq.jsp");
+						.getRequestDispatcher("/back-end/faq/listAllFaq.jsp");
 				failureView.forward(req, res);
 			}
 		}

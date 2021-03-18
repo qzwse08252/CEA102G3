@@ -49,7 +49,7 @@
 <table id="table-1">
 	<tr><td>
 		 <h3>常見問題資料修改 - update_faq_input.jsp</h3>
-		 <h4><a href="<%=request.getContextPath()%>/front-end/faq/select_faq_page.jsp">回首頁</a></h4>
+		 <h4><a href="<%=request.getContextPath()%>/back-end/faq/select_faq_page.jsp">回首頁</a></h4>
 	</td></tr>
 </table>
 

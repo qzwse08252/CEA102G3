@@ -50,7 +50,7 @@
 <table id="table-1">
 	<tr><td>
 		 <h3>員工資料 - ListOneEmp.jsp</h3>
-		 <h4><a href="<%=request.getContextPath()%>/front-end/employee/select_page.jsp">回首頁</a></h4>
+		 <h4><a href="<%=request.getContextPath()%>/back-end/employee/select_page.jsp">回首頁</a></h4>
 	</td></tr>
 </table>
 

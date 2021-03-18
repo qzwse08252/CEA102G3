@@ -56,7 +56,7 @@
 <table id="table-1">
 	<tr><td>
 		 <h3>所有主打促銷消息資料 - listAllPromotion.jsp</h3>
- <h4><a href="<%=request.getContextPath()%>/front-end/promotion/select_promotion_page.jsp">回首頁</a></h4>
+ <h4><a href="<%=request.getContextPath()%>/back-end/promotion/select_promotion_page.jsp">回首頁</a></h4>
 	</td></tr>
 </table>
 

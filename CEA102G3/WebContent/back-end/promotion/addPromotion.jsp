@@ -50,7 +50,7 @@ PromotionVO promotionVO = (PromotionVO) request.getAttribute("promotionVO");
 
                             <div class="">
                                 <h3 class="h1 text-gray-900 mb-4">Guideme主打促銷資料新增--addPromotion</h3>
-                            	<h4><a href="<%=request.getContextPath()%>/front-end/promotion/select_promotion_page.jsp">回首頁</a></h4>
+                            	<h4><a href="<%=request.getContextPath()%>/-end/promotion/select_promotion_page.jsp">回首頁</a></h4>
                             </div>
                             
                        

@@ -50,7 +50,7 @@ FaqVO faqVO = (FaqVO) request.getAttribute("faqVO");
 
                             <div class="">
                                 <h3 class="h1 text-gray-900 mb-4">Guideme常見問題資料新增--addFaq</h3>
-                            	<h4><a href="<%=request.getContextPath()%>/front-end/faq/select_faq_page.jsp">回首頁</a></h4>
+                            	<h4><a href="<%=request.getContextPath()%>/back-end/faq/select_faq_page.jsp">回首頁</a></h4>
                             </div>
                             
                           <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/faq/faq.do" name="form1">

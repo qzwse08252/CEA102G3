@@ -45,7 +45,7 @@ public class EmployeeServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/employee/select_page.jsp");
+							.getRequestDispatcher("/back-end/employee/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -59,7 +59,7 @@ public class EmployeeServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/employee/select_page.jsp");
+							.getRequestDispatcher("/back-end/employee/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
@@ -74,14 +74,14 @@ public class EmployeeServlet extends HttpServlet {
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/employee/select_page.jsp");
+							.getRequestDispatcher("/back-end/employee/select_page.jsp");
 					failureView.forward(req, res);
 					return;//程式中斷
 				}
 				
 				/***************************3.查詢完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("employeeVO", employeeVO); // 資料庫取出的empVO物件,存入req
-				String url = "/front-end/employee/listOneEmp.jsp";
+				String url = "/back-end/employee/listOneEmp.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 成功轉交 listOneNews.jsp
 				successView.forward(req, res);
 
@@ -89,7 +89,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/employee/select_page.jsp");
+						.getRequestDispatcher("/back-end/employee/select_page.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -112,7 +112,7 @@ public class EmployeeServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("employeeVO", employeeVO);         // 資料庫取出的empVO物件,存入req
-				String url = "/front-end/employee/update_emp_input.jsp";
+				String url = "/back-end/employee/update_emp_input.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_news_input.jsp
 				successView.forward(req, res);
 
@@ -120,7 +120,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("無法取得要修改的資料:" + e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/employee/listAllEmp.jsp");
+						.getRequestDispatcher("/back-end/employee/listAllEmp.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -259,7 +259,7 @@ public class EmployeeServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("employeeVO", employeeVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/employee/update_emp_input.jsp");
+							.getRequestDispatcher("/back-end/employee/update_emp_input.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -270,7 +270,7 @@ public class EmployeeServlet extends HttpServlet {
 
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("employeeVO", employeeVO); // 資料庫update成功後,正確的的empVO物件,存入req				
-				String url = "/front-end/employee/listOneEmp.jsp";
+				String url = "/back-end/employee/listOneEmp.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneNews.jsp
 				successView.forward(req, res);
 
@@ -278,7 +278,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/employee/update_emp_input.jsp");
+						.getRequestDispatcher("/back-end/employee/update_emp_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -376,7 +376,7 @@ public class EmployeeServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("employeeVO", employeeVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/front-end/employee/addEmp.jsp");
+							.getRequestDispatcher("/back-end/employee/addEmp.jsp");
 					failureView.forward(req, res);
 					return;
 				}
@@ -386,7 +386,7 @@ public class EmployeeServlet extends HttpServlet {
 				employeeVO = empSvc.addEmployee(account, password, name, sex, phone, email, start_From, emp_State, emp_Pic);
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/front-end/employee/listAllEmp.jsp";
+				String url = "/back-end/employee/listAllEmp.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllNews.jsp
 				successView.forward(req, res);				
 				
@@ -394,7 +394,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/employee/addEmp.jsp");
+						.getRequestDispatcher("/back-end/employee/addEmp.jsp");
 				failureView.forward(req, res);
 			}
 		}
@@ -416,7 +416,7 @@ public class EmployeeServlet extends HttpServlet {
 				empSvc.deleteEmployee(emplo_No);
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
-				String url = "/front-end/employee/listAllEmp.jsp";
+				String url = "/back-end/employee/listAllEmp.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				
@@ -424,7 +424,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("刪除資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/front-end/employee/listAllEmp.jsp");
+						.getRequestDispatcher("/back-end/employee/listAllEmp.jsp");
 				failureView.forward(req, res);
 			}
 		}
