@@ -90,17 +90,13 @@
 		<url-pattern>/front-end/itinery/*</url-pattern>
 
 		<!-- 蕭捷 -->
-		<url-pattern>/back-end/exper_type/addExperType.jsp</url-pattern>
 		<url-pattern>/front-end/exper_order/listExperOrder.jsp</url-pattern>
-		<url-pattern>/front-end/exper_order/listExperOrder2.jsp</url-pattern>
 		<url-pattern>/front-end/exper_appli/listOneExperAppli.jsp</url-pattern>
 		<url-pattern>/back-end/exper_appli/sellListOneExperAppli.jsp</url-pattern>
 		<url-pattern>/back-end/experience/addExperience.jsp</url-pattern>
 		<url-pattern>/back-end/experience/listOneExperience.jsp</url-pattern>
 		<url-pattern>/back-end/exper_back_index.jsp</url-pattern>
-		<url-pattern>/front-end/exper_favor/listExperFavor.jsp</url-pattern>
-		<url-pattern>/front-end/Test/index.jsp</url-pattern>
-		<url-pattern>/front-end/NavPage.jsp</url-pattern>
+		<url-pattern>/front-end/exper_index/exper_search_index.jsp</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
