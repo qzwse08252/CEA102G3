@@ -46,7 +46,7 @@
  				</div>
 	<div style="display:inline-block;width:40%;">
   <%if (pageNumber>1) {%>
-    <FORM METHOD="post" ACTION="<%=request.getRequestURI()%>">  
+    <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/itinery/attraction.do">  
     	<div class="form-row w-75"> 
     		<div class="col-auto">
        			<select size="1" name="whichPage" class="custom-select">
@@ -58,7 +58,9 @@
        		<div class="col-auto">
        			<input type="submit" value="確定" class="btn btn-primary"> 
        		</div>
-       		
+       		<input type="hidden" name="action" value="searchForAttra">
+       		<input type="hidden" name="attraName" value="${param.attraName==null?param.paramAttraName:param.attraName }">
+			<input type="hidden" name="sort" value="${param.sort==null?param.paramSort:param.sort }">
        </div> 
     </FORM>
   <%}%>

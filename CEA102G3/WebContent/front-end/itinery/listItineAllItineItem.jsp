@@ -22,6 +22,9 @@
 <title>該行程所有行程明細 - listItineAllItineItem.jsp</title>
 
 <style>
+body{
+	background-image:url("<%=request.getContextPath()%>/resources/img/snowMountain-1200x500.jpg");
+}
 table#table-1 {
 	background-color: #CCCCFF;
 	border: 2px solid black;
