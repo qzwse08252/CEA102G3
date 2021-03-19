@@ -144,7 +144,7 @@ td{
 								<th>地點</th>
 								<th>在架狀態</th>
 								<th>圖片</th>
-								<th>修改與上架</th>
+								<th>修改</th>
 								<th>下架</th>
 							</tr>
 						</tfoot>
