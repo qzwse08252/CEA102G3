@@ -291,12 +291,12 @@ public class ExperienceServlet extends HttpServlet {
 				}
 				
 				String exper_descr = req.getParameter("exper_descr");
-				String exper_descrReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,300}$";
-				if (exper_descr == null || exper_descr.trim().length() == 0) {
-					errorMsgs.add("體驗敘述請勿空白");
-				} else if (!exper_descr.trim().matches(exper_descrReg)) { // 以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("體驗敘述: 只能是中、英文字母、數字和_ , 且長度必需在2到300之間");
-				}
+//				String exper_descrReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,300}$";
+//				if (exper_descr == null || exper_descr.trim().length() == 0) {
+//					errorMsgs.add("體驗敘述請勿空白");
+//				} else if (!exper_descr.trim().matches(exper_descrReg)) { // 以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("體驗敘述: 只能是中、英文字母、數字和_ , 且長度必需在2到300之間");
+//				}
 
 								
 //				Integer exper_status = null;

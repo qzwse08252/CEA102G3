@@ -65,7 +65,7 @@ padding-top:20px;
 					<jsp:useBean id="extypeSvc" scope="page"
 						class="com.exper_type.model.ExperTypeService" />
 					<div class="form-group">
-						<label for="subject">體驗種類:</label><select class="form-control"
+						<label for="exper_type_no">體驗種類:</label><select class="form-control"
 							id="exper_type_no" name="exper_type_no">
 							<c:forEach var="extypeVO" items="${extypeSvc.all}">
 								<option value="${extypeVO.exper_type_no}">
@@ -74,17 +74,17 @@ padding-top:20px;
 						</select>
 					</div>
 					<div class="form-group">
-						<label for="exper_type_name">體驗名稱：</label><input
+						<label for="name">體驗名稱：</label><input
 							class="form-control item" type="text" id="name" name="name"
 							value="${experVO.name}">
 					</div>
 					<div class="form-group">
-						<label for="exper_type_name">體驗定價：</label><input
+						<label for="price">體驗定價：</label><input
 							class="form-control item" type="text" id="price" name="price"
 							value="${experVO.price}">
 					</div>
 					<div class="form-group">
-						<label for="exper_type_name">體驗敘述：</label>
+						<label for="exper_descr">體驗敘述：</label>
 						<textarea class="form-control item" type="text" id="exper_descr"
 							name="exper_descr" value="${experVO.exper_descr}"></textarea>
 					</div>
@@ -107,9 +107,9 @@ padding-top:20px;
 	</main>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<%-- <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
 <script
-	src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+	src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script> --%>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/theme.js"></script>

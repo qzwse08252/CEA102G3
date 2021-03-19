@@ -71,7 +71,7 @@ public class ExperReportServlet extends HttpServlet {
 				ExperReportService expreSvc = new ExperReportService();
 				expreSvc.addER(reporter_no, reported_exper_no, reason);
 				// 完成新增轉交
-				String url = "/front-end/exper_report/listAllExperReport.jsp";
+				String url = "/front-end/index.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
