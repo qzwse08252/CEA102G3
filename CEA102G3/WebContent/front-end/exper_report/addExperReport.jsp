@@ -7,6 +7,7 @@
 <%
 	ExperReportVO erVO = (ExperReportVO) request.getAttribute("erVO");
 %>
+<jsp:useBean id="memberVO" scope="session" class="com.member.model.MemberVO" />
 
 
 <!DOCTYPE html>
@@ -62,13 +63,13 @@
 						<div class="form-group">
 							<label for="reporter_no">檢舉人ID:</label>
 								<input type="text" class="form-control item" id="reporter_no"
-									name="reporter_no" value="${erVO.reporter_no} 1" />
+									name="reporter_no" value="${memberVO.memberNo}" />
 						</div>
 
 						<div class="form-group">
 							<label for="price">體驗編號:</label>
 								<input type="text" class="form-control item" id="reported_exper_no"
-									name="reported_exper_no" value="${erVO.reported_exper_no} 1" />
+									name="reported_exper_no" value="${erVO.reported_exper_no}1" />
 						</div>
 						<div class="form-group">
 							<label class for="reason">檢舉理由:</label>
