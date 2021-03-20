@@ -85,8 +85,8 @@ padding-top:20px;
 					</div>
 					<div class="form-group">
 						<label for="exper_descr">體驗敘述：</label>
-						<textarea class="form-control item" type="text" id="exper_descr"
-							name="exper_descr" value="${experVO.exper_descr}"></textarea>
+						<input class="form-control item" type="text" id="exper_descr"
+							name="exper_descr" value="${experVO.exper_descr}">
 					</div>
 
 					<div class="form-group">
