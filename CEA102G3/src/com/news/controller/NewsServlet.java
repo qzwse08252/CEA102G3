@@ -140,19 +140,19 @@ public class NewsServlet extends HttpServlet {
 				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
 				if (news_Title == null || news_Title.trim().length() == 0) {
 					errorMsgs.add("請填寫最新消息標題!");
-				} else if(!news_Title.trim().matches(news_TitleReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("請在最新消息標題中，輸入3~50以內的字數。");
-	            }
-				
+//				} else if(!news_Title.trim().matches(news_TitleReg)) { //以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("請在最新消息標題中，輸入3~50以內的字數。");
+//	            }
+				}
 				
 				String news_Content = req.getParameter("news_Content");
 				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (news_Content == null || news_Content.trim().length() == 0) {
 					errorMsgs.add("請填寫最新消息內容!");
-				} else if(!news_Content.trim().matches(news_ContentReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("請在最新消息內容中，輸入3~1000以內的字數。");
-	            }
-							
+//				} else if(!news_Content.trim().matches(news_ContentReg)) { //以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("請在最新消息內容中，輸入3~1000以內的字數。");
+//	            }
+				}		
 			
 				java.sql.Date release_Date = null;
 				try {
