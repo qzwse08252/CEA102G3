@@ -235,12 +235,12 @@ public class ExperOrderServlet extends HttpServlet {
 				java.sql.Timestamp exper_order_start = java.sql.Timestamp
 						.valueOf(req.getParameter("exper_order_start") + ":00.0");
 				if(apply_end.after(exper_order_start)) {
-					errorMsgs.add("活動開始時間不得早於報名結束時間");
+					errorMsgs.add("體驗開始時間不得早於報名結束時間");
 				}
 				java.sql.Timestamp exper_order_end = java.sql.Timestamp
 						.valueOf(req.getParameter("exper_order_end") + ":00.0");
 				if(exper_order_end.before(exper_order_start)) {
-					errorMsgs.add("活動結束時間不得早於活動開始時間");
+					errorMsgs.add("體驗結束時間不得早於體驗開始時間");
 				}
 				Integer exper_max_limit=null;
 				Integer exper_min_limit =null;
