@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -11,7 +12,25 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+
+
     <title>GuideMe - 最新消息</title>
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Basic.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Clean.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Dark.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Simple-Slider.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/styles.css">
+
+
+
+
+
+
 
     <!-- Custom fonts for this template-->
     <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" type="text/css">
@@ -35,17 +54,17 @@
     <script src="<%=request.getContextPath()%>/resources/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+    <script src="resources/js/sb-admin-2.min.js"></script>
 
     <!-- 最新消息 -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="assets/css/Article-Clean.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="assets/css/Simple-Slider.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Simple-Slider.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/styles.css">
 
 
     <!-- 最新消息 -->
@@ -206,13 +225,9 @@
             <div class="row">
                 <div class="col-lg-10 col-xl-12 offset-lg-1 offset-xl-0" style="font-size: 13px;">
                     <div class="text-center intro" style="width: 1120px;margin-top: 100px;">    <!-- margin-top: 100px 往下移動 -->
-                        
-                        
-                        <h1 class="text-left border rounded" style="border-top-width: 1px;border-top-style: none;width: 1110px;height: 90px;">日本東京 | 六本木之森夜景之旅</h1>
-                        
-                        
-                        <p class="text-left"><span class="by"></span> <span class="text-left date" style="text-align: left;font-size: 15px;"><strong>發布時間 : 2021年3月18日&nbsp; &nbsp; &nbsp;&nbsp;</strong></span></p>
-                    </div><img class="rounded" src="<%=request.getContextPath()%>/resources/img/nature-wallpaper4.jpg" width="1000" style="border-width: 6px;height: 560px;margin: 0px;padding: 4px;padding-top: 2px;padding-right: 0px;width: 1100px;margin-left: 2px;">
+                        <h1 class="text-left border rounded" style="border-top-width: 1px;border-top-style: none;width: 1110px;height: 90px;">嘉義梅山鄉採花茶之旅</h1>
+                        <p class="text-left"><span class="by"></span> <span class="text-left date" style="text-align: left;font-size: 15px;"><strong>發布時間 : 2021年5月20日&nbsp; &nbsp; &nbsp;&nbsp;</strong></span></p>
+                    </div><img class="rounded" src="<%=request.getContextPath()%>/resources/img/nature-wallpaper.jpg" width="1000" style="border-width: 6px;height: 560px;margin: 0px;padding: 4px;padding-top: 2px;padding-right: 0px;width: 1100px;margin-left: 2px;">
                     <div class="text" style="width: 1100px;padding-right: 13px;padding-left: 18px;text-align: justify;font-size: 15px;">
                         <h2>Aliquam In Arcu </h2>
                         <p>Sed lobortis mi. Suspendisse vel placerat ligula. <span style="text-decoration: underline;">Vivamus</span> ac sem lac. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in
@@ -226,17 +241,40 @@
             </div>
         </div>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
-    <script src="assets/js/Simple-Slider.js"></script>
-        <!-- 最新消息 -->
+   <div class="footer-dark" style="padding: 7px;margin: 83px;width: 1100px;">
+        <footer style="width: 1075px;height: 238px;margin: 5px;padding: 6px;">
+            <div class="container">
+                <div class="row" style="height: 183px;">
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>Services</h3>
+                        <ul>
+                            <li><a href="#">Web design</a></li>
+                            <li><a href="#">Development</a></li>
+                            <li><a href="#">Hosting</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6 col-md-3 item">
+                        <h3>About</h3>
+                        <ul>
+                            <li><a href="#">Company</a></li>
+                            <li><a href="#">Team</a></li>
+                            <li><a href="#">Careers</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6 item text">
+                        <h3>Company Name</h3>
+                        <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+                    </div>
+                    <div class="col item social" style="height: 25px;"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+                </div>
+                <p class="copyright">Company Name © 2017</p>
+            </div>
+        </footer>
+    </div>
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <script src="<%=request.getContextPath()%>/https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/js/swiper.jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/Simple-Slider.js"></script>
 </body>
-
- <!-- 最新消息(相關分享連接) -->
-
-
-
- <!-- 最新消息(相關分享連接) -->
 
 </html>
