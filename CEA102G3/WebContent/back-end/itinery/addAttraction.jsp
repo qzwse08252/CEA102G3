@@ -87,9 +87,16 @@
 						<tr>
 							<td>地址:</td>
 							<td>
-								<div role="tw-city-selector" data-has-zipcode></div>
-								<input type="TEXT" name="location" size="45"
-									value="<%=(attraVO == null) ? "" : attraVO.getLocation()%>"
+								<div role="tw-city-selector" data-bootstrap-style >
+								<div class="form-group">
+									<select class="form-control county" name="county"></select>
+								</div>
+								<div class="form-group">
+									<select class="form-control district" name="district"></select>
+								</div>
+								</div>
+								<input type="TEXT" name="shortLocation" size="45"
+									value="${(attraVO == null) ? '' : param.shortLocation}"
 									class="form-control" />
 							</td>
 						</tr>
@@ -111,7 +118,18 @@
 			</div>
 		</div>
 	</div>
+	
+<script>
+  new TwCitySelector({
+	  el: 'div[role=tw-city-selector]',
+	  elCounty: 'select[name=county]',
+	  elDistrict: 'select[name=district]',
+	  countyValue: '${param.county}',
+	  districtValue: '${param.district}'
+  });
+</script>
 </body>
+
 
 
 

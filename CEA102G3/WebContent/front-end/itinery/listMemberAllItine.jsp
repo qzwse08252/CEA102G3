@@ -83,6 +83,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 <style>
+body{
+	background-color: #0a0533ad;
+	 }
 
 .page-content {
 	margin-top: 150px;
@@ -95,7 +98,7 @@
 
 .new-file{
 	transition:all 0.5s;
-	
+	background-color:white;
 }
 
 .new-file:hover {
@@ -109,7 +112,7 @@
 }
 
 .filelist {
-	height: 325px;
+	height: 352px;
 	overflow-y: auto;
 }
 

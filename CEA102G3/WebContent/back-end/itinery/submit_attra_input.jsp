@@ -4,6 +4,31 @@
 
 <%
 	AttractionVO attraVO = (AttractionVO) request.getAttribute("attraVO");
+
+	String location = attraVO.getLocation();
+	String shortLocation = null;
+	String county = null;
+	String district = null;
+
+	if (location.length() == 5) {
+		county = location.substring(0, 3);
+		district = location.substring(3);
+		shortLocation = "";
+	}
+	if (location.length() == 6) {
+		county = location.substring(0, 3);
+		district = location.substring(3);
+		shortLocation = "";
+	}
+	if (location.length() >= 7) {
+		county = location.substring(0, 3);
+		district = location.substring(3, 6);
+		shortLocation = location.substring(6);
+	}
+
+	pageContext.setAttribute("county", county);
+	pageContext.setAttribute("district", district);
+	pageContext.setAttribute("shortLocation", shortLocation);
 %>
 <html>
 <head>
@@ -40,7 +65,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-		
+
 			<div class="col-12">
 				<h3>景點資料上架:</h3>
 
@@ -55,7 +80,9 @@
 				</c:if>
 			</div>
 			<div class="col-12">
-				<FORM METHOD="post" ACTION="<%=request.getContextPath()%>/itinery/attraction.do" name="form1">
+				<FORM METHOD="post"
+					ACTION="<%=request.getContextPath()%>/itinery/attraction.do"
+					name="form1">
 					<table class="table table-striped">
 						<tr>
 							<td>景點編號:<font color=red><b>*</b></font></td>
@@ -64,7 +91,7 @@
 						<tr>
 							<td>分類:</td>
 							<td><select name="sort" class="form-control">
-									<option value=""disabled>--請選擇分類--</option>
+									<option value="" disabled>--請選擇分類--</option>
 									<option value="景點"
 										<%=(attraVO.getSort().equals("景點")) ? "selected" : ""%>>景點</option>
 									<option value="餐廳"
@@ -76,17 +103,27 @@
 						<tr>
 							<td>景點名稱:</td>
 							<td><input type="TEXT" name="attraName1" size="45"
-								value="<%=attraVO.getAttraName()%>" class="form-control"/></td>
+								value="<%=attraVO.getAttraName()%>" class="form-control" /></td>
 						</tr>
 						<tr>
 							<td>敘述:</td>
 							<td><input name="descr" type="text" size="50"
-								value="<%=attraVO.getDescr()%>"class="form-control"></td>
+								value="<%=attraVO.getDescr()%>" class="form-control"></td>
 						</tr>
 						<tr>
 							<td>地點:</td>
-							<td><input type="TEXT" name="location" size="50"
-								value="<%=attraVO.getLocation()%>" class="form-control"/></td>
+							<td>
+							<div role="tw-city-selector" data-bootstrap-style >
+								<div class="form-group">
+									<select class="form-control county" name="county"></select>
+								</div>
+								<div class="form-group">
+									<select class="form-control district" name="district"></select>
+								</div>
+							</div>
+							<input type="TEXT" name="shortLocation" size="50"
+								value="${shortLocation }" class="form-control" />
+							</td>
 						</tr>
 
 						<tr>
@@ -100,9 +137,8 @@
 								}
 							%>
 							<td><input type="TEXT" name="attraPic1" size="50"
-								value="<%=picurl%>" class="form-control"/>
-								<div class="form-text">請輸入公開的圖片網址</div>
-							</td>
+								value="<%=picurl%>" class="form-control" />
+								<div class="form-text">請輸入公開的圖片網址</div></td>
 						</tr>
 
 					</table>
@@ -112,15 +148,23 @@
 						name="isOnShelf" value="1"> <input type="hidden"
 						name="requestURL" value="<%=request.getServletPath()%>"> <input
 						type="hidden" name="finishURL"
-						value="/back-end/itinery/listUncheckedAttraction_full.jsp"> <input
-						type="submit" value="確定上架" class=" btn btn-primary">
+						value="/back-end/itinery/listUncheckedAttraction_full.jsp">
+					<input type="submit" value="確定上架" class=" btn btn-primary">
 				</FORM>
 			</div>
 		</div>
 	</div>
 </body>
 
-
+<script>
+	new TwCitySelector({
+		el : 'div[role=tw-city-selector]',
+		elCounty : 'select[name=county]',
+		elDistrict : 'select[name=district]',
+		countyValue : '${county}',
+		districtValue : '${district}'
+	});
+</script>
 
 
 </html>

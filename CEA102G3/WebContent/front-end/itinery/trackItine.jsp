@@ -77,6 +77,10 @@
 <style>
 </style>
 <style>
+body{
+	background-color:#e9b24e5c;
+}
+
 .doing-itine-item-list {
 	height: 250px;
 	overflow-y: auto;

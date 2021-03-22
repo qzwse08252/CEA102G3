@@ -71,6 +71,7 @@
 <!-- Custom scripts for all pages-->
 <script
 	src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-city-selector@2.1.1/dist/tw-city-selector.min.js"></script>	
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
 <style>
@@ -936,10 +937,16 @@ p[speaker=${memberVO.name}]{
         		$("#attraction-name").val(attraName);
         		let sort = $("#sortinbar").val();
         		$("#sort").val(sort);
+        		$('select[name=county] option:first-child').prop("selected",true);
+        		$('select[name=district] option:first-child').prop("selected",true);
         	});
         	$("#addAttractionBtn").click(function(){
         		if($("#attraction-name").val().trim().length===0){
         			swal("噢噢","行程名稱不得為空白","warning");
+        			return;
+        		}
+        		if($('select[name=district]').val().length==0){
+        			swal("拜託","至少留個縣市","warning");
         			return;
         		}
         		
@@ -951,7 +958,9 @@ p[speaker=${memberVO.name}]{
         				"attraName": $("#attraction-name").val().trim(),
         				"sort": $("#sort").val(),
         				"descr": $("#attraction-descr").val(),
-        				"location": $("#attraction-address").val(),
+        				"county": $('select[name=county]').val(),
+        				"district": $('select[name=district]').val(),
+        				"shortLocation": $("#attraction-address").val(),
         				"isOnShelf": $('input[name=submitAttra]:checked').val()
         			},
         			success: function(data){
@@ -959,7 +968,7 @@ p[speaker=${memberVO.name}]{
 								`<div class="attraction border " attraNo="${'$'}{data}">
 											${'$'}{$("#attraction-name").val().trim()}</div>
 								<div attradescr="attraDescr">
-									<div>地點:<br>${'$'}{$("#attraction-address").val()}</div>
+									<div>地點:<br>${'$'}{$('select[name=county]').val()+$('select[name=district]').val()+$("#attraction-address").val()}</div>
 									<div>描述:<br>${'$'}{$("#attraction-descr").val()}</div>
 									<div>照片:<br></div>
 								</div>`);						
@@ -1214,9 +1223,19 @@ p[speaker=${memberVO.name}]{
       
         	
         
-
-	
+		
+$(document).ready(function(){
+  new TwCitySelector({
+	  el: 'div[role=tw-city-selector]',
+	  elCounty: 'select[name=county]',
+	  elDistrict: 'select[name=district]',
+	  countyValue: '${param.county}',
+	  districtValue: '${param.district}'
+  });
+});
+       
 	</script>
+
 </head>
 
 <body>
@@ -1274,6 +1293,14 @@ p[speaker=${memberVO.name}]{
 									</div>
 									<div class="form-group">
 										<label for="attraction-address" class="col-form-label">地址:</label>
+										<div role="tw-city-selector" data-bootstrap-style >
+											<div class="form-group" style="display:inline-block;width:25%;">
+												<select class="form-control county" name="county"></select>
+											</div>
+											<div class="form-group" style="display:inline-block;width:25%;">
+												<select class="form-control district" name="district"></select>
+											</div>
+										</div>
 										<input type="text" class="form-control"
 											id="attraction-address">
 									</div>
@@ -1334,7 +1361,6 @@ p[speaker=${memberVO.name}]{
 					<div class="col-3 justify-content-center d-flex">
 						<div class="row right-side-row">
 							<div class="col-12 border-3 border-bottom border-secondary ">
-								<button type="button" class="btn btn-primary m-3 btns">匯出</button>
 								<button type="button" class="btn btn-primary m-3 btns"
 									id="savebtn">存檔</button>
 							</div>

@@ -68,15 +68,15 @@
 
 
 <style>
-tbody>tr{
-	max-height:300px;
-	overflow-y:auto;
-}
-td{
-	max-height:300px;
-	overflow:hidden;
+tbody>tr {
+	max-height: 300px;
+	overflow-y: auto;
 }
 
+td {
+	max-height: 300px;
+	overflow: hidden;
+}
 </style>
 
 </head>
@@ -97,26 +97,26 @@ td{
 				<div class=" col-6 input-group mb-3 form-row">
 					<form action="<%=request.getContextPath()%>/itinery/attraction.do"
 						method="get">
-					<div class="form-row">
-						<div class="form-group col-7">
-							<input type="text" class="form-control " placeholder="輸入景點名稱"
-							name="attraName" size="50">
+						<div class="form-row">
+							<div class="form-group col-7">
+								<input type="text" class="form-control " placeholder="輸入景點名稱"
+									name="attraName" size="50">
+							</div>
+							<div class="form-group col-3">
+								<select class="custom-select" name="sort">
+									<option value="景點">景點</option>
+									<option value="餐廳">餐廳</option>
+									<option value="住宿">住宿</option>
+								</select>
+							</div>
+							<div class="form-group col-md-2">
+								<input type="submit" class="btn btn-primary" value="搜尋">
+							</div>
+							<input type="hidden" name="action" value="searchForAttra">
 						</div>
-						<div class="form-group col-3">
-							<select class="custom-select" name="sort">
-								<option value="景點">景點</option>
-								<option value="餐廳">餐廳</option>
-								<option value="住宿">住宿</option>
-							</select>
-						</div>
-						<div class="form-group col-md-2">
-							<input type="submit" class="btn btn-primary" value="搜尋">
-						</div>
-						<input type="hidden" name="action" value="searchForAttra">
-					</div>
-				</form>
+					</form>
 				</div>
-				
+
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -144,7 +144,7 @@ td{
 								<th>地點</th>
 								<th>在架狀態</th>
 								<th>圖片</th>
-								<th>修改與上架</th>
+								<th>修改</th>
 								<th>下架</th>
 							</tr>
 						</tfoot>
@@ -165,11 +165,9 @@ td{
 									<td>${attraVO.attraName}</td>
 									<td>${attraVO.descr}</td>
 									<td>${attraVO.location}</td>
-									<td>
-									<c:if test="${attraVO.isOnShelf==0}">待審核</c:if>
-									<c:if test="${attraVO.isOnShelf==1}">架上</c:if>
-									<c:if test="${attraVO.isOnShelf==2}">架下</c:if>
-									</td>
+									<td><c:if test="${attraVO.isOnShelf==0}">待審核</c:if> <c:if
+											test="${attraVO.isOnShelf==1}">架上</c:if> <c:if
+											test="${attraVO.isOnShelf==2}">架下</c:if></td>
 									<td><c:if
 											test="${attraVO.attraPic1!=null&&attraVO.attraPic1!=''}">
 											<img src="${attraVO.attraPic1}"
@@ -184,7 +182,8 @@ td{
 												value="${attraVO.attraNo}"> <input type="hidden"
 												name="action" value="getOne_For_Update"> <input
 												type="hidden" name="whichPage" value="${param.whichPage }">
-												<input type="hidden" name="finishURL" value="/back-end/itinery/listAllAttraction_full.jsp">
+											<input type="hidden" name="finishURL"
+												value="/back-end/itinery/listAllAttraction_full.jsp">
 										</FORM>
 									</td>
 									<td>
@@ -207,6 +206,7 @@ td{
 						</tbody>
 					</table>
 					<%@ include file="page2.file"%>
+					
 				</div>
 			</div>
 		</div>
