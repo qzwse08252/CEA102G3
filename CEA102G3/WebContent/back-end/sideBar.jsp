@@ -50,13 +50,7 @@
 		<div id="exper" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<h4 class="collapse-header">體驗管理:</h4>
-				<a class="collapse-item" href="#">審核待上架體驗</a> 
-				<a class="collapse-item" href="#">下架體驗</a> 
-				<div class="collapse-divider"></div>
-				<h4 class="collapse-header">體驗報名管理:</h4>
-				<a class="collapse-item" href="#">瀏覽報名明細</a> 
-				<a class="collapse-item" href="#">回應體驗檢舉</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/exper_report/listAllExperReport.jsp">體驗檢舉審查</a>
 			</div>
 		</div>
 		

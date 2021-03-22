@@ -7,7 +7,7 @@
 <jsp:useBean id="notifySvc" scope="request" class="com.notify.model.NotifyService"/>
 
 <!DOCTYPE html> 
-<html lang= "en"  >
+<html lang= "en" >
 
 <head>
 <meta charset="utf-8">

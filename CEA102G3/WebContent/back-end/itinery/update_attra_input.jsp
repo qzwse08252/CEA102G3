@@ -4,6 +4,31 @@
 
 <%
 	AttractionVO attraVO = (AttractionVO) request.getAttribute("attraVO");
+	String location = attraVO.getLocation();
+	String shortLocation = null;
+	String county = null;
+	String district = null;
+	
+	if(location.length()==5){
+		county = location.substring(0,3);
+		district = location.substring(3);
+		shortLocation = "";
+	}
+	if(location.length()==6){
+		county = location.substring(0,3);
+		district = location.substring(3);
+		shortLocation = "";
+	}
+	if(location.length()>=7){
+		county = location.substring(0,3);
+		district = location.substring(3,6);
+		shortLocation = location.substring(6);
+	}
+	
+	pageContext.setAttribute("county",county);
+	pageContext.setAttribute("district",district);
+	pageContext.setAttribute("shortLocation",shortLocation);
+	
 %>
 <html>
 <head>
@@ -90,8 +115,18 @@
 						</tr>
 						<tr>
 							<td>地點:</td>
-							<td><input type="TEXT" name="location" size="50"
-								value="<%=attraVO.getLocation()%>" class="form-control"/></td>
+							<td>
+							<div role="tw-city-selector" data-bootstrap-style >
+								<div class="form-group">
+									<select class="form-control county" name="county"></select>
+								</div>
+								<div class="form-group">
+									<select class="form-control district" name="district"></select>
+								</div>
+							</div>
+							<input type="TEXT" name="shortLocation" size="50"
+								value="${shortLocation }" class="form-control"/>
+							</td>
 						</tr>
 						<tr>
 							<td>在架狀態:</td>
@@ -126,7 +161,15 @@
 	</div>
 </body>
 
-
+<script>
+  new TwCitySelector({
+	  el: 'div[role=tw-city-selector]',
+	  elCounty: 'select[name=county]',
+	  elDistrict: 'select[name=district]',
+	  countyValue: '${county}',
+	  districtValue: '${district}'
+  });
+</script>
 
 
 </html>

@@ -20,6 +20,14 @@
 <!-- Custom styles for this template-->
 <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min_backend.css" rel="stylesheet">
 
+ <!-- Bootstrap core JavaScript-->
+<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+
+ <!-- Custom scripts for all pages-->
+<script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tw-city-selector@2.1.1/dist/tw-city-selector.min.js"></script>
+
 <style>
     .bg-gradient-primary{
         background-color: #009ab9;
@@ -27,6 +35,14 @@
     }
     .collapse-bg{
         /* background-color: #5cd0ff; */
+    }
+    select[name="sort"]{
+    	width:25%;
+    }
+    
+    div[role='tw-city-selector'] .form-group{
+    	display:inline-block;
+    	width:25%;
     }
 </style>
     
@@ -121,12 +137,7 @@
 
     <!-- Logout Modal-->
 	<c:import url="/back-end/logoutModal.jsp"/>
-    <!-- Bootstrap core JavaScript-->
-    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+   
 
 </body>
 

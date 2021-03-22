@@ -70,7 +70,13 @@ public class AttractionServlet extends HttpServlet {
 					errorMsgs.add("景點名稱請勿空白");
 				}
 				String descr = request.getParameter("descr");
-				String location = request.getParameter("location");
+				String shortLocation = request.getParameter("shortLocation");
+				String county = request.getParameter("county");
+				String district = request.getParameter("district");
+				String location = county+district+shortLocation;
+				if(district.length()==0) {
+					errorMsgs.add("請至少選擇縣市");
+				}
 				String attraPic1 = request.getParameter("attraPic1");
 
 				AttractionVO attractionVO = new AttractionVO();
@@ -219,7 +225,13 @@ public class AttractionServlet extends HttpServlet {
 				System.out.println(attraName);
 				String descr = request.getParameter("descr");
 				System.out.println(descr);
-				String location = request.getParameter("location");
+				String shortLocation = request.getParameter("shortLocation");
+				String county = request.getParameter("county");
+				String district = request.getParameter("district");
+				String location = county+district+shortLocation;
+				if(district.length()==0) {
+					errorMsgs.add("請至少選擇縣市");
+				}
 				System.out.println(location);
 				System.out.println(request.getParameter("isOnShelf"));
 				int isOnShelf = Integer.parseInt(request.getParameter("isOnShelf"));
@@ -305,7 +317,11 @@ public class AttractionServlet extends HttpServlet {
 			String attraName = request.getParameter("attraName");
 			String sort = request.getParameter("sort");
 			String descr = request.getParameter("descr");
-			String location = request.getParameter("location");
+			String county = request.getParameter("county");
+			String district = request.getParameter("district");
+			String shortLocation = request.getParameter("shortLocation");
+			if(shortLocation==null) {shortLocation = "";}
+			String location = county+district+shortLocation;
 			AttractionService attraSvc = new AttractionService();
 			String isOnShelfStr = request.getParameter("isOnShelf");
 			int isOnShelf = Integer.parseInt(isOnShelfStr);
