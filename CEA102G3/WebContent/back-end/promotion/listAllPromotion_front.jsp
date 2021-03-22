@@ -72,8 +72,8 @@
 
 <table>
 	<tr>
-<!-- 		<th>主打促銷消息ID</th> -->
-<!-- 		<th>商品ID</th> -->
+		<th>主打促銷消息ID</th>
+		<th>商品ID</th>
 		<th>主打促銷開始日期</th>
 		<th>主打促銷截止日期</th>
 		<th>廣告上架日期</th>
@@ -91,8 +91,8 @@
 	<c:forEach var="promotionVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
 		
 		<tr>
-<%-- 			<td>${promotionVO.promot_No}</td> --%>
-<%-- 			<td>${promotionVO.promot_Product_No}</td> --%>
+			<td>${promotionVO.promot_No}</td>
+			<td>${promotionVO.promot_Product_No}</td>
 			<td><fmt:formatDate value="${promotionVO.promot_Start}" pattern="yyyy-MM-dd"/></td>
 			<td><fmt:formatDate value="${promotionVO.promot_End}" pattern="yyyy-MM-dd"/></td>
 			<td><fmt:formatDate value="${promotionVO.release_Date}" pattern="yyyy-MM-dd"/></td>
@@ -100,8 +100,11 @@
 			<td>${promotionVO.promot_Product_Title}</td>
 			<td>${promotionVO.promot_Product_Price}</td>
 			<td><img width="400" alt="" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=promotion&column=Promot_Product_Pic&idname=Promot_No&id=${promotionVO.promot_No}"/></td>
+			
 
-						<td>
+
+	
+			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/promotion/promotion.do" style="margin-bottom: 0px;">
 			     <input type="submit" value="修改">
 			     <input type="hidden" name="promot_No"  value="${promotionVO.promot_No}">
@@ -113,7 +116,6 @@
 			     <input type="hidden" name="promot_No"  value="${promotionVO.promot_No}">
 			     <input type="hidden" name="action" value="delete"></FORM>
 			</td>
-
 		</tr>
 	</c:forEach>
 </table>

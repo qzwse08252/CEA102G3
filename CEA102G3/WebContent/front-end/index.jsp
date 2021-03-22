@@ -72,7 +72,16 @@
         .promote-area div {
             margin: 10px;
         }
+		
+		.news-area {
+            width: 95%;
+            margin: 0 auto;
+        }
 
+        .news-area div {
+            margin: 10px;
+        }
+		
         .slick-prev:before,
         .slick-next:before {
             color: blue;
@@ -156,69 +165,103 @@
 
 
     <div class="promote-area">
+            <jsp:useBean id="promotionSvc" scope="page" class="com.promotion.model.PromotionService"/>     
+        <c:forEach var="promotionVO" items="${promotionSvc.getAll()}" begin="0" end="6">
         <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
+            <img src="<%=request.getContextPath()%>/PicFinder?pic=1&table=promotion&column=Promot_Product_Pic&idname=Promot_No&id=${promotionVO.promot_No}" alt="" class="card-img-top">
             <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <p class="card-text">${promotionVO.getPromot_Product_Title()}</p>
+                <a href="<%=request.getContextPath()%>/promotion/promotion.do?action=getOne_For_Display&promot_No=${promotionVO.promot_No}" class="btn btn-primary">查看詳情</a>
             </div>
         </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-        <div class="card" style="width: 18rem;">
-            <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top">
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
-                    card's content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-    </div>
+         </c:forEach>
+              </div>
+<!--         <div class="card" style="width: 18rem;"> -->
+<!--             <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the -->
+<!--                     card's content.</p> -->
+<!--                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <div class="card" style="width: 18rem;"> -->
+<!--             <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the -->
+<!--                     card's content.</p> -->
+<!--                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <div class="card" style="width: 18rem;"> -->
+<!--             <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the -->
+<!--                     card's content.</p> -->
+<!--                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <div class="card" style="width: 18rem;"> -->
+<!--             <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the -->
+<!--                     card's content.</p> -->
+<!--                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!--             </div> -->
+<!--         </div> -->
+<!--         <div class="card" style="width: 18rem;"> -->
+<!--             <img src="https://picsum.photos/id/684/300/200" alt="" class="card-img-top"> -->
+<!--             <div class="card-body"> -->
+<!--                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the -->
+<!--                     card's content.</p> -->
+<!--                 <a href="#" class="btn btn-primary">Go somewhere</a> -->
+<!--             </div> -->
+<!--         </div> -->
+
+
+<!-- <!-- News original --> -->
+<!--     <div class="text-p"> -->
+<!--         <h3><b>最新消息</b></h3> -->
+<!--     </div> -->
+<!--     <div class="text-area"> -->
+<!--         <ul> -->
+<!-- <!-- News original --> -->
+
 
 
     <div class="text-p">
         <h3><b>最新消息</b></h3>
     </div>
-    <div class="text-area">
-        <ul>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li>
-            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li>
-            <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos soluta distinctio optio amet quos
-                velit iusto eius labo</li>
+    <div class="news-area">
+        
+<!-- News -->
+           <jsp:useBean id="newsSvc" scope="page" class="com.news.model.NewsService"/>     
+        <c:forEach var="newsVO" items="${newsSvc.getAll()}" begin="0" end="6">
+        <div class="card" style="width: 18rem;">
+            <img src="<%=request.getContextPath()%>/PicFinder?pic=1&table=news&column=News_Pic&idname=News_No&id=${newsVO.news_No}" alt="" class="card-img-top">
+            <div class="card-body">
+                <p class="card-text">${newsVO.getNews_Title()}</p>
+                <a href="<%=request.getContextPath()%>/news/news.do?action=getOne_For_Display&news_No=${newsVO.news_No}" class="btn btn-primary">查看詳情</a>
+            </div>
+        </div>
+         </c:forEach>
+        
+<!-- News --> 
+        
+        
+        
+        
+        
+<%--         	<jsp:useBean id="newsSvc" scope="page" class="com.news.model.NewsService"/> --%>
+<%--         	<c:forEach var="newsVO" items="${newsSvc.getAll() }" begin="0" end="5"> --%>
+<%--             <li>${newsVO.getNews_Title() }</li> --%>
+<%--             </c:forEach> --%>
+            
+<!--             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li> -->
+<!--             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li> -->
+<!--             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li> -->
+<!--             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, laboriosam.</li> -->
+<!--             <li>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos soluta distinctio optio amet quos -->
+<!--                 velit iusto eius labo</li> -->
         </ul>
     </div>
     <a href="" class="showmore">顯示更多</a>
@@ -249,6 +292,17 @@
                 centerMode: true,
                 centerPadding: '100px',
             });
+            $(".news-area").slick({
+                dots: true,
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                autoplay: true,
+                centerMode: true,
+                centerPadding: '100px',
+            });
+            
+            
         });
 
  </script>
