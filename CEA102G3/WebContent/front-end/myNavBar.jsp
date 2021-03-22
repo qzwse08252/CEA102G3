@@ -73,7 +73,7 @@
                 </a>
             </li>
             <li class="top-button">
-                <a href="#">
+                <a href="<%=request.getContextPath()%>/front-end/exper_index/exper_search_index.jsp">
                     <i class="fas fa-map-pin"></i>
                     <span class="text">體驗</span>
                 </a>
@@ -166,9 +166,12 @@
 						<c:otherwise>
 							<a class="dropdown-item" href="#"> 
 								<i class="fas fa-gifts fa-md fa-fw mr-2 text-gray-400"></i> 商品
+							</a> 						
+							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/exper_report/addExperReport.jsp"> 
+								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 檢舉體驗
 							</a> 
-							<a class="dropdown-item" href="#"> 
-								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 體驗
+							<a class="dropdown-item" href="<%=request.getContextPath()%>/back-end/exper_back_index.jsp"> 
+								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 達人專區
 							</a> 
 							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/friendList/allFriendInfo.jsp"> 
 								<i class="fas fa-user fa-md fa-fw mr-2 text-gray-400"></i> 好友
