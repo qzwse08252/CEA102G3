@@ -1,37 +1,24 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.news.model.*"%>
-<%-- 此頁暫練習採用 Script 的寫法取值 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page import="java.util.*"%>
+<%@ page import="com.faq.model.*"%>
+<%-- 此頁練習採用 EL 的寫法取值 --%>
 
-<%-- 取出 Concroller EmpServlet.java已存入request的EmpVO物件--%>
-<%NewsVO newsVO = (NewsVO) request.getAttribute("newsVO");%>
+<%
+    FaqService faqSvc = new FaqService();
+    List<FaqVO> list = faqSvc.getAll();
+    pageContext.setAttribute("list",list);
+%>
+
 <!DOCTYPE html>
-
-
 <html>
-<head>
-    <meta charset="utf-8">
+
+ 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
-
-
-    <title>GuideMe - 最新消息</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Basic.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Clean.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Dark.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Simple-Slider.css">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/styles.css">
-
-
-
-
 
 
 
@@ -57,21 +44,65 @@
     <script src="<%=request.getContextPath()%>/resources/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for all pages-->
-    <script src="resources/js/sb-admin-2.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
 
-    <!-- 最新消息 -->
 
+
+
+<head>
+    <meta charset="utf-8" />
+    <title>GuideMe - 常見問題 AND 回覆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+
+<!-- 最新消息模板  -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/fonts/ionicons.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Footer-Dark.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Simple-Slider.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/styles.css">
+<!-- 最新消息模板  -->
 
 
-    <!-- 最新消息 -->
+<style>
 
+
+    .panel-heading [data-toggle="collapse"]:after {
+        font-family: 'Glyphicons Halflings';
+        content: "\e072"; /* "play" icon */
+        float: right;
+        color: #F58723;
+        font-size: 18px;
+        line-height: 22px;
+        
+        /* rotate "play" icon from > (right arrow) to down arrow */
+        -webkit-transform: rotate(-90deg);
+        -moz-transform: rotate(-90deg);
+        -ms-transform: rotate(-90deg);
+        -o-transform: rotate(-90deg);
+        transform: rotate(-90deg);
+    }
+
+    .panel-heading [data-toggle="collapse"].collapsed:after {
+        /* rotate "play" icon from > (right arrow) to ^ (up arrow) */
+        -webkit-transform: rotate(90deg);
+        -moz-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        -o-transform: rotate(90deg);
+        transform: rotate(90deg);
+        color: #454444;
+    }
+</style>
+
+<!-- 主題  -->
 <style>
   .page-header {
   
@@ -82,17 +113,37 @@
     text-align: center;
   }
   
+  	.page-area{
+  		display: inline-block;
+  		width: 17%;
+  		position:relative;
+  		left:80%;
+  	}
+  	.page-area2{
+  		display: inline-block;
+  		width: 17%;
+  		position:relative;
+  		left:80%;
+  	}
+
+
+
 
 </style>
 
-
+<!-- 主題  -->
 
 
 
 
 
 </head>
-   <!-- Topbar -->
+
+
+<body>
+
+<!-- 導覽列 -->
+    <!-- Topbar -->
     <div class="navbar navbar-expand navbar-light bg-white topbar fixed-top static-top shadow d-flex"
         style="height:70px">
         <!-- Nav Item - logo -->
@@ -234,34 +285,69 @@
             </li>
         </ul>
     </div>
+
     <!-- End of Topbar -->
+<!-- 導覽列 -->
 
 
-<table>
 
+
+
+<!-- Bootstrap FAQ - START -->
 <div class="page-header">
-    <h1>${newsVO.news_Title}</h1>
+    <h1>常見問題與回覆</h1>
 </div>
-<div class="article-clean">
-       <div class="container">
-            <div class="row">
-                <div class="col-lg-10 col-xl-12 offset-lg-1 offset-xl-0" style="font-size: 13px;">
-                    <div class="text-center intro" style="width: 1120px;margin-top: 10px;">    <!-- margin-top: 100px 往下移動 -->
-                        
-                        
-                        
-                        <p class="text-left"><span class="by"></span> <span class="text-left date" style="text-align: left;font-size: 15px;"><strong>發布時間 : ${newsVO.release_Date}&nbsp; &nbsp; &nbsp;&nbsp;</strong></span></p>
-                    
-                    </div><img class="rounded" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=news&column=News_Pic&idname=News_No&id=${newsVO.news_No}" width="1000" style="border-width: 6px;height: 560px;margin: 0px;padding: 4px;padding-top: 2px;padding-right: 0px;width: 1100px;margin-left: 2px;">                     
-                    <div class="text" style="width: 1100px;padding-right: 13px;padding-left: 18px;text-align: justify;font-size: 15px;">
-                       <h2>本文相關介紹</h2>
-                        <p>${newsVO.news_Content}</p>
-                    </div>
-                </div>
+
+
+
+<div class="container">
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <strong> GuideMe 常見問題公告:</strong>由於Covid-19疫情嚴峻，導致目前國際航班行程大受影響，若對行程有疑問之旅客，煩請電洽公司服務人員<strong> (0800-957-957) </strong>，謝謝!
+    </div>
+
+    <br />
+    
+<table>
+<%@ include file="page1.file"  %>
+	<c:forEach var="faqVO" items="${list}" begin="<%=pageIndex%>" end="<%=pageIndex+rowsPerPage-1%>">
+
+		
+		    <div class="panel-group" id="accordion">
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                
+<%--                     <a class="accordion-toggle"  data-parent="#accordion" href="#collapseOne">Q: ${faqVO.question}</a> --%>
+
+
+					<div style1>
+					<a class="accordion-toggle"  data-parent="#accordion" href="#collapseOne">Q: ${faqVO.question}</a>
+					<p style="float:right"><fmt:formatDate value="${faqVO.update_Time}"  dateStyle="long"/></p>
+					</div>
+
+
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">${faqVO.answer}</div>
             </div>
         </div>
-    </div>
-   <div class="footer-dark" style="padding: 0px;margin: 15px;width: 1230px;">
+
+        </div>
+
+		
+	</c:forEach>
+</table>
+   </div>
+<%@ include file="page2.file" %>
+
+
+
+
+<!-- Bootstrap FAQ - END -->
+  <div class="footer-dark" style="padding: 0px;margin: 15px;width: 1230px;">
         <footer style="width: 1075px;height: 238px;margin: 70px;padding: 6px;">
             <div class="container">
                 <div class="row" style="height: 183px;">

@@ -92,12 +92,12 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                     </div>
 
                     <!-- Content Row -->
                     <div class="row">
-
+						<h1 class="h3 mb-0 text-gray-800">歡迎進入GuideMe後台首頁</h1>
+						<h3 class="h3 mb-0 text-gray-800">請點選左側功能選單</h3>
                     </div>
 
                 </div>

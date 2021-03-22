@@ -55,6 +55,7 @@
 						<input class="input100" type="text" name="account" placeholder="User Account">
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
+					
 					<div class="wrap-input100 validate-input" data-validate="請輸入員工密碼!">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
