@@ -164,6 +164,9 @@
 							</a>
 						</c:when>
 						<c:otherwise>
+							<a class="dropdown-item" href="#"> 
+								<i class="fas fa-gifts fa-md fa-fw mr-2 text-gray-400"></i> 商品
+							</a> 						
 							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/exper_report/addExperReport.jsp"> 
 								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 檢舉體驗
 							</a> 
