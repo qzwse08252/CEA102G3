@@ -14,7 +14,7 @@ EmployeeVO employeeVO = (EmployeeVO) request.getAttribute("employeVO");
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-
+ 
  <!-- Custom fonts for this template--> 
 <%-- <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" --%>
 <!-- 	type="text/css"> -->
