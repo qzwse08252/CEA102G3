@@ -113,6 +113,13 @@
 							MemberService dao = new MemberService();
 							pageContext.setAttribute("list", dao.getAll());
 						%>
+						<button type="button" id="changeMemStatus" class="btn btn-outline-primary">批次修改會員狀態</button>
+						<form name="memStatusForm" METHOD="post" ACTION="<%=request.getContextPath()%>/member/member.do" enctype="multipart/form-data">
+							<button type="button" id="saveMemStatus" class="btn btn-outline-danger" disabled="disabled">批次存擋</button>
+							<input type="hidden" name="action" value="batchUpdateMem">
+							<input type="hidden" id="memStatusInfoJson" name=memStatusInfoJson value="">
+						</form>
+						
 						
 						<table class="table table-striped allMemberInfo">
 							<tr>
@@ -129,24 +136,25 @@
 							</tr>
 					
 							<c:forEach var="memberVO" items="${list}">
-								<tr>
-									<td>${memberVO.memberNo}</td>
-									<td>${memberVO.account}</td>
-									<td>${memberVO.password}</td>
-									<td>${memberVO.name}</td>
-									<td>${memberVO.idNumber}</td>
-									<td>${memberVO.birthDate}</td>
-									<td>${memberVO.phone}</td>
-									<td>${memberVO.email}</td>
-									<td>
-										<c:choose>
-											<c:when test="${memberVO.memberState == '0'}">未驗證</c:when>
-											<c:when test="${memberVO.memberState == '1'}">一般狀態</c:when>
-											<c:when test="${memberVO.memberState == '2'}">停權</c:when>
-										</c:choose>
-									</td>
-									<td><img src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo}"></td>
-								</tr>
+									<tr>
+										<td>${memberVO.memberNo}</td>
+										<td>${memberVO.account}</td>
+										<td>${memberVO.password}</td>
+										<td>${memberVO.name}</td>
+										<td>${memberVO.idNumber}</td>
+										<td>${memberVO.birthDate}</td>
+										<td>${memberVO.phone}</td>
+										<td>${memberVO.email}</td>
+										<td>
+											<select class="custom-select" name="memberState" disabled="disabled">
+												<option>會員狀態</option>
+												<option value="1" <c:if test="${memberVO.memberState == '0'}">selected</c:if>>未驗證</option>
+												<option value="2" <c:if test="${memberVO.memberState == '1'}">selected</c:if>>一般狀態</option>
+												<option value="3" <c:if test="${memberVO.memberState == '2'}">selected</c:if>>停權</option>
+											</select>
+										</td>
+										<td><img src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo}"></td>
+									</tr>
 							</c:forEach>
 						</table>
                     </div>
@@ -182,6 +190,38 @@
 
     <!-- Custom scripts for all pages-->
     <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+    
+    <script>
+    	$('#changeMemStatus').click(function(){
+    		$('select.custom-select').removeAttr('disabled');
+    		$('#saveMemStatus').removeAttr('disabled');;
+    		$('#changeMemStatus').attr('disabled', 'disabled');
+    	});
+    	
+    	$('#saveMemStatus').click(function(){
+    		$('#changeMemStatus').removeAttr('disabled');
+    		$('select.custom-select').attr('disabled', 'disabled');
+    		$('#saveMemStatus').attr('disabled', 'disabled');
+    		
+			let memStatusInfo = {items: []};
+			let members = $('table > tbody > tr');
+// 			console.log('members:'+members);
+			members.each(function(i, item){
+				if(i !== 0){
+// 					console.log(i);
+// 					console.log(item);
+	 				memStatusInfo.items.push(
+	 						{memberNo: $(item).find('td:eq(0)')[0].outerText, status: $(item).find("select[name='memberState']").val()}
+	 				);
+				}
+				
+			});
+			
+// 			console.log(memStatusInfo);
+			$('#memStatusInfoJson').val(JSON.stringify(memStatusInfo));
+			document.memStatusForm.submit();
+    	});
+    </script>
 
 </body>
 
