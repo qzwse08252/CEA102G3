@@ -203,7 +203,7 @@
             </a>
         </div>
         <div class="top-button">
-            <a href="#">
+            <a href="<%=request.getContextPath()%>/front-end/exper_index/exper_search_index.jsp">
                 <i class="fas fa-map-pin"></i>
                 <span class="text">體驗</span>
             </a>
