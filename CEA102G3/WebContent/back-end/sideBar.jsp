@@ -31,13 +31,9 @@
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
 				<h4 class="collapse-header">商品管理:</h4>
-				<a class="collapse-item" href="#">上架商品</a> 
-				<a class="collapse-item" href="#">修改商品</a> 
-				<a class="collapse-item" href="#">下架商品</a>
-				<div class="collapse-divider"></div>
-				<h4 class="collapse-header">訂單管理:</h4>
-				<a class="collapse-item" href="#">瀏覽訂單</a> 
-				<a class="collapse-item" href="#">審核退款</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/product/listAllProduct_full.jsp">所有商品</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/product/addProduct_full.jsp"">上架商品</a> 
+
 			</div>
 		</div>
 		

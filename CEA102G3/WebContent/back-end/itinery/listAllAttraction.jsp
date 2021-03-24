@@ -190,8 +190,8 @@ td {
 										<FORM METHOD="get"
 											ACTION="<%=request.getContextPath()%>/itinery/attraction.do"
 											style="margin-bottom: 0px;">
-											<input type="submit" value="下架" class="btn btn-primary"
-												onclick="return(confirm('確認要下架嗎？'))"> <input
+											<input type="submit" value="下架" class="btn btn-primary offBtn"> 
+												<input
 												type="hidden" name="attraNo" value="${attraVO.attraNo}">
 											<input type="hidden" name="action" value="notAvailable">
 											<input type="hidden" name="finishURL"
@@ -213,7 +213,11 @@ td {
 
 	</div>
 	<!-- /.container-fluid -->
-
+<script>
+	$(".offBtn").click(function(){
+			swal("ok","已下架","success");
+	})
+</script>
 </body>
 
 </html>
