@@ -125,6 +125,7 @@ public class LoginOutServlet extends HttpServlet {
 			confMap.put("configPath", configPath);
 			confMap.put("activatePagePath", activatePagePath);
 			confMap.put("contextPath", context.getContextPath());
+			confMap.put("urlHeader", req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort());
 //			confMap.put("imgUrl", context.getContextPath()+"/resources/img/logo.PNG");
 			confMap.put("subject", "重設密碼信件");
 			confMap.put("toMail", email);

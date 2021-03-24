@@ -50,19 +50,20 @@ public class MailUtil {
 		String toMail = confMap.get("toMail");
 		String account = confMap.get("account");
 		String whichMail = confMap.get("whichMail");
-		String forgetPwdUrl = "http://localhost:8081" + confMap.get("forgetPwdUrl");
+		String urlHeader = confMap.get("urlHeader");
+		String forgetPwdUrl = urlHeader + confMap.get("forgetPwdUrl");
 
 		txt = getActTemplate(activatePagePath).toString();
 		String url = "";
 		if ("activateMail".equals(whichMail)) {
-			url = "http://localhost:8081" + contextPath + "/member/member.do?action=registerCheck&token="
+			url = urlHeader + contextPath + "/member/member.do?action=registerCheck&token="
 					+ memberToken(toMail, false);
 		} else if ("forgotPasswordMail".equals(whichMail)) {
-			url = "http://localhost:8081" + contextPath + "/member/loginHandler.do?action=forgotPasswordCheck&token="
+			url = urlHeader + contextPath + "/member/loginHandler.do?action=forgotPasswordCheck&token="
 					+ memberToken(toMail, true);
 		}
 
-		String imgUrl = "http://localhost:8081" + contextPath + "/resources/img/logo.PNG";
+		String imgUrl = urlHeader + contextPath + "/resources/img/logo.PNG";
 		txt = txt.replaceAll("urlStr", url);
 		txt = txt.replaceAll("accountStr", account);
 		txt = txt.replaceAll("imgUrl", imgUrl);

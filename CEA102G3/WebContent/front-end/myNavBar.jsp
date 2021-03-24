@@ -82,12 +82,6 @@
                 </a>
             </li>
             <li class="top-button">
-                <a href="#">
-                    <i class="fas fa-align-center"></i>
-                    <span class="text">文章</span>
-                </a>
-            </li>
-            <li class="top-button">
                 <a href="<%=request.getContextPath()%>/front-end/itinery/listMemberAllItine.jsp">
                     <i class="fas fa-edit"></i>
                     <span class="text">行程</span>
@@ -208,57 +202,55 @@
 							</a>
 						</c:otherwise>
 					</c:choose>
-
-
-				</div></li>
-		</ul>
-	</div>
-	<!--     media query -->
-	<div class="nav-bar second-nav-bar fixed-top">
-		<div class="top-button">
-			<a href="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp?productName="> <i class="fas fa-store"></i> <span class="text">商城</span>
+                    
+                    
+                </div>
+            </li>
+        </ul>
+    </div>
+<!--     media query -->
+    <div class="nav-bar second-nav-bar fixed-top">
+        <div class="top-button">
+			<a href="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp?productName="> 
+          <i class="fas fa-store"></i> 
+          <span class="text">商城</span>
 			</a>
 		</div>
-		<div class="top-button">
-			<a href="#"> <i class="fas fa-map-pin"></i> <span class="text">體驗</span>
-			</a>
-		</div>
-		<div class="top-button">
-			<a href="#"> <i class="fas fa-align-center"></i> <span
-				class="text">文章</span>
-			</a>
-		</div>
-		<div class="top-button">
-			<a
-				href="<%=request.getContextPath()%>/front-end/itinery/listMemberAllItine.jsp">
-				<i class="fas fa-edit"></i> <span class="text">行程</span>
-			</a>
-		</div>
-	</div>
-	<!--     Logout Modal -->
-	<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">確定離開?</h5>
-					<button class="close" type="button" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">×</span>
-					</button>
-				</div>
-				<div class="modal-body">選擇確定如果你真的要登出您的帳戶</div>
-				<div class="modal-footer">
-					<button class="btn btn-secondary" type="button"
-						data-dismiss="modal">取消</button>
-					<a class="btn btn-primary"
-						href="<%=request.getContextPath()%>/member/loginHandler.do?action=logout">確定</a>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<!-- listOneNotify Modal -->
+        <div class="top-button">
+            <a href="<%=request.getContextPath()%>/front-end/exper_index/exper_search_index.jsp">
+                <i class="fas fa-map-pin"></i>
+                <span class="text">體驗</span>
+            </a>
+        </div>
+        <div class="top-button">
+            <a href="<%=request.getContextPath()%>/front-end/itinery/listMemberAllItine.jsp">
+                <i class="fas fa-edit"></i>
+                <span class="text">行程</span>
+            </a>
+        </div>
+    </div>
+<!--     Logout Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">確定離開?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">選擇確定如果你真的要登出您的帳戶
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">取消</button>
+                    <a class="btn btn-primary" href="<%=request.getContextPath()%>/member/loginHandler.do?action=logout">確定</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- listOneNotify Modal -->
 	<c:if test="${openListOneNotifyModal!=null}">
 		<div class="modal fade" id="listOneModal" tabindex="-1" role="dialog"
 			aria-labelledby="listOneModal" aria-hidden="true">
