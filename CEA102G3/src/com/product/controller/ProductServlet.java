@@ -2,6 +2,7 @@ package com.product.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -450,6 +451,21 @@ public class ProductServlet extends HttpServlet {
 						.getRequestDispatcher("/back-end/Product/listAllProduct.jsp");
 				failureView.forward(req, res);
 			}
+		}
+		
+		if("updateRate".equals(action)) {
+			
+			int productNo = new Integer(req.getParameter("productNo"));
+			int rate = new Integer(req.getParameter("rate"));
+			
+			ProductService productSvc = new ProductService();
+			productSvc.updateProductRate(productNo, rate);
+			
+			res.setContentType("text/plain; charset=utf-8");
+			PrintWriter out = res.getWriter();
+			out.write("感謝您的評分");
+			out.flush();
+			out.close();
 		}
 		
 	}

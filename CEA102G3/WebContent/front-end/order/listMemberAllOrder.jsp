@@ -119,9 +119,10 @@ td {
 						id="dataTableAllAttraction" width="100%" cellspacing="0">
 						<thead>
 							<tr>
-								<th>商品名稱</th>
-								<th>定價</th>
-								<th>數量</th>
+								<th width=100>商品名稱</th>
+								<th width=100>定價</th>
+								<th width=100>數量</th>
+								<th width=100></th>
 							</tr>
 						</thead>
 						
@@ -134,11 +135,18 @@ td {
 									<td>${orderItemVO.productVO.productName}</td>
 									<td>${orderItemVO.productVO.listPrice}</td>
 									<td>${orderItemVO.productCount }</td>
+									<td>
+										<div>
+										<input type="number" class="form-control" min="1" max="5" style="width:50%;display:inline-block">
+										<button type="button" class="btn btn-primary rate" 
+											productNo="${orderItemVO.productVO.productNo }">評價</button>
+										</div>
+									</td>
 								</tr>
 							</c:forEach>
 								<tr>
-									<td colspan="2">總計:${orderVO.sum }</td>
-									<td>${orderVO.orderDate }</td>
+									<td colspan="3">總計:${orderVO.sum }</td>
+									<td>日期:${orderVO.orderDate }</td>
 								</tr>
 						</tbody>
 					</table>
@@ -173,6 +181,29 @@ td {
 				},
 			});
 		});
+		
+		$(".rate").click(function(){
+			var thisBtn = $(this);
+			$.ajax({
+				url: "<%= request.getContextPath()%>/product/product.do",
+				type: "post",
+				data: {
+					action: "updateRate",
+					productNo: $(this).attr("productno"),
+					rate: $(this).prev().val(),
+				},
+				success: function(data){
+					swal("水喔",data,"success");
+					thisBtn.prop("disabled",true);
+					thisBtn.prev().val("");
+				},
+				error: function(){
+					alert("failed");
+				},
+				
+			});
+			
+		})
 		
 		
 	});

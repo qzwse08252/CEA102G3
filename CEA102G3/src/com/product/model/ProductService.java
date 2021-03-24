@@ -43,6 +43,15 @@ public class ProductService {
 
 		return productVO;
 	}
+	public ProductVO updateProductRate(int productNo, int rate) {
+		ProductVO productVO = dao.findByPrimaryKey(productNo);
+		productVO.setTotalRate(productVO.getTotalRate()+rate);
+		productVO.setTotalRateCount(productVO.getTotalRateCount()+1);
+		
+		dao.update(productVO);
+		return productVO;
+	}
+	
 	public ProductVO updateProductNoIMG( String productName, Integer listPrice,
 			String  descr) {
 

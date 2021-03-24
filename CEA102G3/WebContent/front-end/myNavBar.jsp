@@ -216,7 +216,7 @@
 	<!--     media query -->
 	<div class="nav-bar second-nav-bar fixed-top">
 		<div class="top-button">
-			<a href="#"> <i class="fas fa-store"></i> <span class="text">商城</span>
+			<a href="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp?productName="> <i class="fas fa-store"></i> <span class="text">商城</span>
 			</a>
 		</div>
 		<div class="top-button">
