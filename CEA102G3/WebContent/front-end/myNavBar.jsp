@@ -68,32 +68,46 @@
 					</span>
 				</button>
 
-			</li>
-			<li class="top-button"><a href="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp?productName="> <i class="fas fa-store"></i>
-					<span class="text">商城</span>
-			</a></li>
-			<li class="top-button"><a href="#"> <i
-					class="fas fa-map-pin"></i> <span class="text">體驗</span>
-			</a></li>
-			<li class="top-button"><a href="#"> <i
-					class="fas fa-align-center"></i> <span class="text">文章</span>
-			</a></li>
-			<li class="top-button"><a
-				href="<%=request.getContextPath()%>/front-end/itinery/listMemberAllItine.jsp">
-					<i class="fas fa-edit"></i> <span class="text">行程</span>
-			</a></li>
-			<!--             Nav Item - QA -->
-			<li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-				role="button" data-toggle="dropdown" aria-haspopup="true"
-				aria-expanded="false"> <i class="fas fa-question fa-lg"></i>
-			</a></li>
-			<!--             Nav Item - Cart -->
-			<li class="nav-item dropdown no-arrow mx-1"><a
-				class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
-				role="button" data-toggle="modal" aria-haspopup="true"
-				aria-expanded="false" data-target="#shoppingCartModal"> <i class="fas fa-shopping-cart fa-lg"></i>
-			</a></li>
+            </li>
+			      <li class="top-button">
+              <a href="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp?productName="> 
+                <i class="fas fa-store"></i>
+					      <span class="text">商城</span>
+			        </a>  
+            </li>
+            <li class="top-button">
+                <a href="<%=request.getContextPath()%>/front-end/exper_index/exper_search_index.jsp">
+                    <i class="fas fa-map-pin"></i>
+                    <span class="text">體驗</span>
+                </a>
+            </li>
+            <li class="top-button">
+                <a href="#">
+                    <i class="fas fa-align-center"></i>
+                    <span class="text">文章</span>
+                </a>
+            </li>
+            <li class="top-button">
+                <a href="<%=request.getContextPath()%>/front-end/itinery/listMemberAllItine.jsp">
+                    <i class="fas fa-edit"></i>
+                    <span class="text">行程</span>
+                </a>
+            </li>
+<!--             Nav Item - QA -->
+            <li class="nav-item dropdown no-arrow mx-1">
+                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <i class="fas fa-question fa-lg"></i>
+                </a>
+            </li>
+<!--             Nav Item - Cart -->
+			      <li class="nav-item dropdown no-arrow mx-1">
+              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+				        role="button" data-toggle="modal" aria-haspopup="true"
+				        aria-expanded="false" data-target="#shoppingCartModal"> 
+                <i class="fas fa-shopping-cart fa-lg"></i>
+			        </a>
+            </li>
 
 			<!--             Nav Item - Alerts -->
 			<li class="nav-item dropdown no-arrow mx-1"><a
@@ -165,14 +179,18 @@
 							</a>
 						</c:when>
 						<c:otherwise>
+
 							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/order/listMemberAllOrder.jsp""> <i
 								class="fas fa-gifts fa-md fa-fw mr-2 text-gray-400"></i> 商品
-							</a>
-							<a class="dropdown-item" href="#"> <i
-								class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 體驗
-							</a>
-							<a class="dropdown-item"
-								href="<%=request.getContextPath()%>/front-end/friendList/allFriendInfo.jsp">
+							</a>						
+							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/exper_report/addExperReport.jsp"> 
+								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 檢舉體驗
+							</a> 
+							<a class="dropdown-item" href="<%=request.getContextPath()%>/back-end/exper_back_index.jsp"> 
+								<i class="fas fa-running fa-md fa-fw mr-2 text-gray-400"></i> 達人專區
+							</a> 
+							<a class="dropdown-item" href="<%=request.getContextPath()%>/front-end/friendList/allFriendInfo.jsp"> 
+
 								<i class="fas fa-user fa-md fa-fw mr-2 text-gray-400"></i> 好友
 							</a>
 							<a class="dropdown-item" href="#"> <i
