@@ -138,12 +138,12 @@
 
         <!-- End of Page Wrapper -->
         <!-- Searchbar -->
-        <form class="search w-50 h-50 mx-auto">
+        <form class="search w-50 h-50 mx-auto" action="<%=request.getContextPath()%>/front-end/product/listSearchAllProduct.jsp" method="get" >
             <div class="input-group">
                 <input type="text" class="form-control bg-white border-0 small" placeholder="搜尋你最愛的..."
-                    aria-label="Search" aria-describedby="basic-addon2">
+                    aria-label="Search" aria-describedby="basic-addon2" name="productName">
                 <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
+                    <button class="btn btn-primary" type="submit">
                         <i class="fas fa-search fa-sm"></i>
                     </button>
                 </div>

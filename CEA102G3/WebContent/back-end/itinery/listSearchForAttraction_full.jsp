@@ -20,6 +20,14 @@
 <!-- Custom styles for this template-->
 <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min_backend.css" rel="stylesheet">
 
+<!-- Bootstrap core JavaScript-->
+    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 <style>
     .bg-gradient-primary{
         background-color: #009ab9;
@@ -121,13 +129,7 @@
 
     <!-- Logout Modal-->
 	<c:import url="/back-end/logoutModal.jsp"/>
-    <!-- Bootstrap core JavaScript-->
-    <script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
-    <script src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
-
+    
 </body>
 
 </html>
