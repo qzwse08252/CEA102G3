@@ -138,7 +138,13 @@
 									<td>${memberVO.birthDate}</td>
 									<td>${memberVO.phone}</td>
 									<td>${memberVO.email}</td>
-									<td>${memberVO.memberState}</td>
+									<td>
+										<c:choose>
+											<c:when test="${memberVO.memberState == '0'}">未驗證</c:when>
+											<c:when test="${memberVO.memberState == '1'}">一般狀態</c:when>
+											<c:when test="${memberVO.memberState == '2'}">停權</c:when>
+										</c:choose>
+									</td>
 									<td><img src="<%=request.getContextPath()%>/GetPicture?id=${memberVO.memberNo}"></td>
 								</tr>
 							</c:forEach>

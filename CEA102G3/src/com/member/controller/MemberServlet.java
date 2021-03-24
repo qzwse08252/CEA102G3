@@ -155,6 +155,7 @@ public class MemberServlet extends HttpServlet {
 				confMap.put("configPath", configPath);
 				confMap.put("activatePagePath", activatePagePath);
 				confMap.put("contextPath", context.getContextPath());
+				confMap.put("urlHeader", req.getScheme()+"://"+req.getServerName()+":"+req.getServerPort());
 				confMap.put("subject", "會員註冊確認信");
 				confMap.put("toMail", email);
 				confMap.put("account", account);
@@ -370,7 +371,7 @@ public class MemberServlet extends HttpServlet {
 					memberVO.getMemberPic(), memberVO.getLiscePic1(), memberVO.getLiscePic2(), memberVO.getLiscePic3(),
 					memberVO.getLisceName1(), memberVO.getLisceName2(), memberVO.getLisceName3());
 
-			String url = "/front-end/member/Welcome.html";
+			String url = "/front-end/member/Welcome.jsp";
 			RequestDispatcher successView = req.getRequestDispatcher(url);
 			successView.forward(req, res);
 
