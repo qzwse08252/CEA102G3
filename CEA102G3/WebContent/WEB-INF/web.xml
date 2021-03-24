@@ -88,6 +88,7 @@
 		<url-pattern>/front-end/member/EditProfile.jsp</url-pattern>
 		<!-- 中佑 -->
 		<url-pattern>/front-end/itinery/*</url-pattern>
+		<url-pattern>/front-end/product/Checkout.jsp</url-pattern>
 
 		<!-- 蕭捷 -->
 		<url-pattern>/back-end/exper_type/addExperType.jsp</url-pattern>
@@ -101,7 +102,6 @@
 		<url-pattern>/front-end/exper_favor/listExperFavor.jsp</url-pattern>
 		<url-pattern>/front-end/Test/index.jsp</url-pattern>
 		<url-pattern>/front-end/NavPage.jsp</url-pattern>
-		<url-pattern>/front-end/product/Checkout.jsp</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
