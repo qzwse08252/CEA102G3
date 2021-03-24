@@ -101,6 +101,7 @@
 		<url-pattern>/front-end/exper_favor/listExperFavor.jsp</url-pattern>
 		<url-pattern>/front-end/Test/index.jsp</url-pattern>
 		<url-pattern>/front-end/NavPage.jsp</url-pattern>
+		<url-pattern>/front-end/product/Checkout.jsp</url-pattern>
 		<dispatcher>REQUEST</dispatcher>
 		<dispatcher>FORWARD</dispatcher>
 		<dispatcher>INCLUDE</dispatcher>
@@ -213,7 +214,7 @@
 	<!-- 宗軒 -->
 	<servlet>
 		<servlet-name>OrderServlet</servlet-name>
-		<servlet-class>com.order.controller.OrderServlet</servlet-class>
+		<servlet-class>com.order.controller.OrderServlet1</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>OrderServlet</servlet-name>
