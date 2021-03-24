@@ -412,6 +412,34 @@ public class MemberServlet extends HttpServlet {
 			out.write(array.toString());
 			out.flush();
 			out.close();
+			
+		} else if ("batchUpdateMem".equals(action)) {
+//			System.out.println("action" + action);
+			try {
+				/*********************** 1.接收請求參數 - 輸入格式的錯誤處理 *************************/
+				String memStatusInfoJson = req.getParameter("memStatusInfoJson");
+				JSONObject jsonObj = new JSONObject(memStatusInfoJson);
+				JSONArray dataArray = jsonObj.getJSONArray("items");
+				for (int i = 0; i < dataArray.length(); i++) {
+					JSONObject dataJsonObject = dataArray.getJSONObject(i);
+					Integer memberNo = new Integer(dataJsonObject.getString("memberNo"));
+					Integer memberStatus = new Integer(dataJsonObject.getString("status")) -1;
+					MemberService memSvc = new MemberService();
+					MemberVO memberVO = memSvc.getOneMember(memberNo);
+					memSvc.updateMmeber(memberNo, memberVO.getAccount(), memberVO.getPassword(), memberVO.getName(), memberVO.getIdNumber(), memberVO.getBirthDate(), memberVO.getPhone(), memberVO.getEmail(), memberStatus, memberVO.getMemberPic(), null, null, null, null, null, null);
+//					System.out.println("update 完成！");
+				}
+				
+				/*************************** 3.修改完成,準備轉交(Send the Success view) *************/
+				String forwardUrl = "/back-end/member/getAllMember.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(forwardUrl);
+				successView.forward(req, res);
+
+				/*************************** 其他可能的錯誤處理 **********************************/
+			} catch (Exception e) {
+				RequestDispatcher failureView = req.getRequestDispatcher("/back-end/member/getAllMember.jsp");
+				failureView.forward(req, res);
+			}
 		}
 	}
 
