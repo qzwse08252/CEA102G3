@@ -259,7 +259,7 @@ public class EmployeeServlet extends HttpServlet {
 				if (!errorMsgs.isEmpty()) {
 					req.setAttribute("employeeVO", employeeVO); // 含有輸入格式錯誤的empVO物件,也存入req
 					RequestDispatcher failureView = req
-							.getRequestDispatcher("/back-end/employee/update_emp_input.jsp");
+							.getRequestDispatcher("/back-end/employee/update_emp_input2.jsp");
 					failureView.forward(req, res);
 					return; //程式中斷
 				}
@@ -280,7 +280,7 @@ public class EmployeeServlet extends HttpServlet {
 			} catch (Exception e) {
 				errorMsgs.add("修改資料失敗:"+e.getMessage());
 				RequestDispatcher failureView = req
-						.getRequestDispatcher("/back-end/employee/update_emp_input.jsp");
+						.getRequestDispatcher("/back-end/employee/listAllEmp2.jsp");
 				failureView.forward(req, res);
 			}
 		}

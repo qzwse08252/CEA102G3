@@ -18,7 +18,7 @@
 
 <style>
   table#table-1 {
-	background-color: #CCCCFF;
+	background-color: black;
     border: 2px solid black;
     text-align: center;
   }
@@ -35,17 +35,17 @@
 
 <style>
   table {
-	width: 1250px;
+	width: 1100px;
 	background-color: white;
 	margin-top: 5px;
 	margin-bottom: 5px;
   }
   table, th, td {
-    border: 1px solid #CCCCFF;
+    border: 3px solid #CCCCFF;
   }
   th, td {
     padding: 5px;
-    text-align: left;
+    text-align: center;
   }
 </style>
 

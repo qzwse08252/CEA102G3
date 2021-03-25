@@ -9,11 +9,11 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>主打促銷資料修改 - update_promotion_input.jsp</title>
+<title>主打促銷資料修改</title>
 
 <style>
   table#table-1 {
-	background-color: #CCCCFF;
+	background-color: white;
     border: 2px solid black;
     text-align: center;
   }
@@ -30,7 +30,7 @@
 
 <style>
   table {
-	width: 450px;
+	width: 1100px;
 	background-color: white;
 	margin-top: 1px;
 	margin-bottom: 1px;
@@ -54,12 +54,12 @@
 
 <table id="table-1">
 	<tr><td>
-		 <h3>主打促銷資料修改 - update_promotion_input.jsp</h3>
-		 <h4><a href="<%=request.getContextPath()%>/back-end/promotion/select_promotion_page.jsp">回首頁</a></h4>
+		 <h3>主打促銷資料修改</h3>
+<%-- 		 <h4><a href="<%=request.getContextPath()%>/back-end/promotion/select_promotion_page.jsp">回首頁</a></h4> --%>
 	</td></tr>
 </table>
 
-<h3>資料修改:</h3>
+
 
 <%-- 錯誤表列 --%>
 <c:if test="${not empty errorMsgs}">

@@ -111,7 +111,7 @@ public class PromotionServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("promotionVO", promotionVO);         // 資料庫取出的PromotionVO物件,存入req
-				String url = "/back-end/promotion/update_promotion_input.jsp";
+				String url = "/back-end/promotion/update_promotion_input2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_promotion_input.jsp
 				successView.forward(req, res);
 
@@ -252,7 +252,7 @@ public class PromotionServlet extends HttpServlet {
 
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("promotionVO", promotionVO); // 資料庫update成功後,正確的的empVO物件,存入req				
-				String url = "/back-end/promotion/listOnePromotion.jsp";
+				String url = "/back-end/promotion/listAllPromotion2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneNews.jsp
 				successView.forward(req, res);
 
@@ -376,7 +376,7 @@ public class PromotionServlet extends HttpServlet {
 				PromotionService proSvc = new PromotionService();
 				promotionVO = proSvc.addPromotion(promot_Content, promot_Start, promot_End, release_Date, promot_Product_No, promot_Product_Price, promot_Product_Title, promot_Product_Pic);
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/back-end/promotion/listAllPromotion.jsp";
+				String url = "/back-end/promotion/listAllPromotion2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllPromotion.jsp
 				successView.forward(req, res);				
 				
@@ -407,7 +407,7 @@ public class PromotionServlet extends HttpServlet {
 				proSvc.deletePromotion(promot_No);
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
-				String url = "/back-end/promotion/listAllPromotion.jsp";
+				String url = "/back-end/promotion/listAllPromotion2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				

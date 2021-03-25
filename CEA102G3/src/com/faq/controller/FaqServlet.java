@@ -106,7 +106,7 @@ public class FaqServlet extends HttpServlet {
 								
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("faqVO", faqVO);         // 資料庫取出的empVO物件,存入req
-				String url = "/back-end/faq/update_faq_input.jsp";
+				String url = "/back-end/faq/update_faq_input2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_faq_input.jsp
 				successView.forward(req, res);
 
@@ -181,7 +181,7 @@ public class FaqServlet extends HttpServlet {
 				
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("faqVO", faqVO); // 資料庫update成功後,正確的的empVO物件,存入req
-				String url = "/back-end/faq/listOneFaq.jsp";
+				String url = "/back-end/faq/listAllFaq2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneFaq.jsp
 				successView.forward(req, res);
 
@@ -251,7 +251,7 @@ public class FaqServlet extends HttpServlet {
 				faqVO = faqSvc.addFaq(question, answer, update_Time);
 				
 				/***************************3.新增完成,準備轉交(Send the Success view)***********/
-				String url = "/back-end/faq/listAllFaq.jsp";
+				String url = "/back-end/faq/listAllFaq2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url); // 新增成功後轉交listAllFaq.jsp
 				successView.forward(req, res);				
 				
@@ -281,7 +281,7 @@ public class FaqServlet extends HttpServlet {
 				faqSvc.deleteQuestion(question_No);
 				
 				/***************************3.刪除完成,準備轉交(Send the Success view)***********/								
-				String url = "/back-end/faq/listAllFaq.jsp";
+				String url = "/back-end/faq/listAllFaq2.jsp";
 				RequestDispatcher successView = req.getRequestDispatcher(url);// 刪除成功後,轉交回送出刪除的來源網頁
 				successView.forward(req, res);
 				

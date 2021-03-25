@@ -25,7 +25,7 @@ PromotionVO promotionVO = (PromotionVO) request.getAttribute("promotionVO");
 
 <!-- Custom styles for this template-->
 <%-- <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet"> --%>
-<title>主打促銷資料新增</title>
+<title>新增主打促銷資料</title>
 </head>
 <body class="bg-gradient-primary">
 
@@ -34,8 +34,9 @@ PromotionVO promotionVO = (PromotionVO) request.getAttribute("promotionVO");
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
-                    <div class="col-lg-7">
+                    <div class="col-md-5 d-none d-lg-block bg-register-image"></div>
+<%--           		<div style="height:500px; width:300px;" ><img  src="<%=request.getContextPath()%>/resources/img/sky.jpg"></div> --%>
+                    <div class="col-md-5">
                         <div class="p-5">
                         
                         <%-- 錯誤表列 --%>
@@ -49,7 +50,7 @@ PromotionVO promotionVO = (PromotionVO) request.getAttribute("promotionVO");
 						</c:if>
 
                             <div class="">
-                                <h3 class="h1 text-gray-900 mb-4">主打促銷資料新增</h3>
+                                <h3 class="h1 text-gray-900 mb-4">新增主打促銷資料</h3>
 <%--                             	<h4><a href="<%=request.getContextPath()%>/back-end/promotion/select_promotion_page.jsp">回首頁</a></h4> --%>
                             </div>
                             
@@ -60,35 +61,35 @@ PromotionVO promotionVO = (PromotionVO) request.getAttribute("promotionVO");
 <%--                     value="<%=promotionVO==null ? "" : promotionVO.getPromot_No() %>"></div> --%>
          
 
-			<div class="">促銷廣告商品編號
-            	 <input type="text"  id="promot_Product_No" name="promot_Product_No" 
+			<div class="">廣告編號
+            	 <input type="text"  id="promot_Product_No" name="promot_Product_No" oninvalid="alert('Oh! 廣告編號沒有填寫!');" required
                   	value="<%=promotionVO==null ? "" : promotionVO.getPromot_Product_No() %>"></div>
                                                   
-            <div class="">促銷開始日期
-                 <input type="text"  id="f_date1" name="promot_Start"></div>
+            <div class="">開始日期
+                 <input type="text"  id="f_date1" name="promot_Start" style="width:100px"></div>
                           
-            <div class="">促銷結束日期
-                 <input type="text"  id="f_date2" name="promot_End"></div>
+            <div class="">結束日期
+                 <input type="text"  id="f_date2" name="promot_End" style="width:100px"></div>
                         
-            <div class="">廣告上架日期
-                 <input type="text"  id="f_date3" name="release_Date"></div>
+            <div class="">上架日期
+                 <input type="text"  id="f_date3" name="release_Date" style="width:100px"></div>
                           
             <div class="user">促銷標題
-                 <input type="text"  id="promot_Product_Title" name="promot_Product_Title"
+                 <input type="text"  id="promot_Product_Title" name="promot_Product_Title" style="width:400px" oninvalid="alert('Oh! 沒有填寫促銷標題!');" required
                   value="<%=promotionVO==null ? "" : promotionVO.getPromot_Product_Title() %>"></div>
       						            
       		<div class="user">促銷內容
-                 <input type="text"  id="promot_Content" name="promot_Content"
+                 <input type="text"  id="promot_Content" name="promot_Content" style="height:400px ;width:400px" oninvalid="alert('Oh! 沒有填寫促銷內容!');" required
                      value="<%=promotionVO==null ? "" : promotionVO.getPromot_Content() %>"></div>                                                   
                             
             <div class="user">促銷價格
-                 <input type="text"  id="promot_Product_Price" name="promot_Product_Price"
+                 <input type="text"  id="promot_Product_Price" name="promot_Product_Price" oninvalid="alert('Oh! 沒有填寫促銷價格!');" required
                   value="<%=promotionVO==null ? "" : promotionVO.getPromot_Product_Price() %>"></div>
                                                       						                 						
-            <div class="">促銷商品照片
-                 <input type="file" id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="promot_Product_Pic" 
+            <div class="">商品照片
+                 <input type="file" id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="promot_Product_Pic" oninvalid="alert('Oh! 商品照片請記得上傳!');" required
                   value="<%=promotionVO==null ? "" : promotionVO.getPromot_Product_Pic() %>">
-    				<img id="preview_progressbarTW_img" src="" /></div> 
+    				<img id="preview_progressbarTW_img"  style="height:200px;width:300px"  /></div> 
       						
   
                             <input type="hidden" name="action" value="insert">

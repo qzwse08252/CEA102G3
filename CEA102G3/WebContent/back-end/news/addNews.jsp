@@ -56,23 +56,23 @@ NewsVO newsVO = (NewsVO) request.getAttribute("newsVO");
                             <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/news/news.do" name="form1" enctype="multipart/form-data">
                           
                             <div class="">最新消息標題
-                           	<input type="text" style=width:400px; id="news_Title" name="news_Title" 
+                           	<input type="text" style=width:400px; id="news_Title" name="news_Title" oninvalid="alert('Oh! 最新消息標題沒有填寫!');" required
                             value="<%=newsVO==null ? "" : newsVO.getNews_Title() %>"></div>
                           
                             <div class="user">最新消息內容
-                            <input type="text" style=width:400px;height:100px id="news_Content" name="news_Content"
+                            <input type="text" style=width:400px;height:100px id="news_Content" name="news_Content" style="height:400px ;width:400px" oninvalid="alert('Oh! 最新消息內容沒有填寫!');" required
                             value="<%=newsVO==null ? "" : newsVO.getNews_Content() %>">
                             </div>
       						                 						
       					   <div class="">選擇發佈日期
-                           <input type="text"  id="f_date1" name="release_Date">
+                           <input type="text"  id="f_date1" name="release_Date" style="width:100px">
                            </div>   
      
 
                             <div class="">最新消息照片
-                            <input type="file" id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="news_Pic" 
+                            <input type="file" id="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="news_Pic" oninvalid="alert('Oh! 連照片沒有上傳!!!');" required
                             value="<%=newsVO==null ? "" : newsVO.getNews_Pic() %>">
-    						<img id="preview_progressbarTW_img" src="" />
+    						<img id="preview_progressbarTW_img" style="height:200px;width:300px" />
       						</div> 
       						
                               

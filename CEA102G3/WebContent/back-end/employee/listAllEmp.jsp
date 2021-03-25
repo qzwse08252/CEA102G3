@@ -365,7 +365,7 @@ $(document).ready(function(){
 							<td><fmt:formatDate value="${employeeVO.start_From}" pattern="yyyy-MM-dd"/></td>
 				<%-- 			<td>${employeeVO.emp_State}</td> --%>
 							<td>${employeeVO.emp_State==0?"離職":"在職中" }</td>
-							<td><img width="120" height="70" alt="" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=employee&column=Emp_Pic&idname=Emplo_No&id=${employeeVO.emplo_No}"/></td>
+							<td><img width="100" height="70" alt="" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=employee&column=Emp_Pic&idname=Emplo_No&id=${employeeVO.emplo_No}"/></td>
 						
 							
 						<td>
@@ -402,7 +402,7 @@ $(document).ready(function(){
 		<div class="modal-content">
 			<form METHOD="post" ACTION="<%=request.getContextPath()%>/employee/employee.do" name="form1" enctype="multipart/form-data">
 				<div class="modal-header">						
-					<h4 class="modal-title">新增員工</h4>
+					<h4 class="modal-title">Add Employee</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 	
@@ -414,27 +414,27 @@ $(document).ready(function(){
                     
 					<div class="">
 						<label>員工帳號</label>
-                          <input type="text"  id="account" name="account"
+                          <input type="text"  id="account" name="account" oninvalid="alert('Oh! 沒有填寫員工帳號!');" required
                           value="<%=employeeVO==null ? "" : employeeVO.getAccount() %>">
                           </div>
                           
 					<div class="">
 						<label>員工密碼</label>
-                           <input type="password"  id="password" name="password" 
+                           <input type="password"  id="password" name="password" oninvalid="alert('Oh! 沒有填寫員工密碼!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getPassword() %>">
                            </div>
                            
                            
 					<div class="">
 						<label>姓名</label>
-                           <input type="text"  id="name" name="name"
+                           <input type="text"  id="name" name="name" oninvalid="alert('Oh! 沒有填寫員工姓名!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getName() %>">
                            </div>
 					
 					
 					<div class="">
-						<label>性別</label>
-                           <input type="radio"  id="sex" name="sex"
+						<label>性別</label> 
+                           <input type="radio"  id="sex" name="sex" 
                             value="1">男性
                             <input type="radio"  id="sex" name="sex"
                             value="0">女性
@@ -442,13 +442,13 @@ $(document).ready(function(){
 					
 					<div class="">
 						<label>電話</label>
-                            <input type="text"   id="phone" name="phone"
+                            <input type="text"   id="phone" name="phone" oninvalid="alert('Oh! 沒有填寫電話!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getPhone() %>">
                             </div>
                             
 					<div class="">
 						<label>電子信箱</label>
-                            <input type="text"   id="email" name="email"
+                            <input type="text"   id="email" name="email"  oninvalid="alert('Oh! 沒有填寫電子信箱!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getEmail() %>">
                             </div>
                             
@@ -467,8 +467,8 @@ $(document).ready(function(){
 					<div class="">
 						<label>員工照片</label>
                             <input type="file" class="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="emp_Pic" 
-                            value="<%=employeeVO==null ? "" : employeeVO.getEmp_Pic() %>">
-    						<img class="preview_progressbarTW_img"  width="160px" height="112px"/>
+                            oninvalid="alert('Oh! 照片沒有上傳!');" required value="<%=employeeVO==null ? "" : employeeVO.getEmp_Pic() %>">
+    						<img class="preview_progressbarTW_img"  width="150px" height="112px"/>
       						</div>
 		
 				<div class="modal-footer">
@@ -502,10 +502,10 @@ $(document).ready(function(){
                             value="<%=employeeVO==null ? "" : employeeVO.getEmail() %>">
                             </div>
                             
-					<div class="">
-						<label>到職日</label>
-                            <input type="date"  id="f_date1" name="start_From">
-                            </div>
+<!-- 					<div class=""> -->
+<!-- 						<label>到職日</label> -->
+<!--                             <input type="date"  id="f_date1" name="start_From"> -->
+<!--                             </div> -->
 					
 					<div class="">
 						<label>員工狀態</label>
@@ -519,7 +519,7 @@ $(document).ready(function(){
 						<label>員工照片</label>
                             <input type="file" class="progressbarTWInput" accept="image/gif, image/jpeg, image/png" name="emp_Pic" 
                             value="<%=employeeVO==null ? "" : employeeVO.getEmp_Pic() %>">
-    						<img class="preview_progressbarTW_img"  width="160px" height="112px"/>
+    						<img class="preview_progressbarTW_img"  width="150px" height="112px"/>
       						</div>
 			
 				</div>
@@ -540,7 +540,7 @@ $(document).ready(function(){
 		
 <%-- 			<form METHOD="post" ACTION="<%=request.getContextPath()%>/employee/employee.do" style="margin-bottom: 0px;"> --%>
 				<div class="modal-header">						
-					<h4 class="modal-title">刪除員工</h4>
+					<h4 class="modal-title">Delete</h4>
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				</div>
 				<div class="modal-body">					

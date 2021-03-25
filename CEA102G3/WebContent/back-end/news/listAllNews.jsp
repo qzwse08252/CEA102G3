@@ -18,7 +18,7 @@
 
 <style>
   table#table-1 {
-	background-color: #CCCCFF;
+	background-color: #6495ed;
     border: 2px solid black;
     text-align: center;
   }
@@ -28,24 +28,24 @@
     margin-bottom: 1px;
   }
   h4 {
-    color: blue;
+    color: black;
     display: inline;
   }
 </style>
 
 <style>
   table {
-	width: 1200px;
+	width: 1100px;
 	background-color: white;
 	margin-top: 5px;
 	margin-bottom: 5px;
   }
   table, th, td {
-    border: 1px solid #CCCCFF;
+    border: 2px solid #CCCCFF;
   }
   th, td {
     padding: 5px;
-    text-align: left;
+    text-align: center;
   }
 </style>
 

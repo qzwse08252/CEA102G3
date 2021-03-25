@@ -15,6 +15,13 @@ FaqVO faqVO = (FaqVO) request.getAttribute("faqVO");
 <meta name="description" content="">
 <meta name="author" content="">
 
+
+
+
+
+
+
+
  <!-- Custom fonts for this template--> 
 <%-- <link href="<%=request.getContextPath()%>/resources/css/all.min.css" rel="stylesheet" --%>
 <!-- 	type="text/css"> -->
@@ -26,15 +33,34 @@ FaqVO faqVO = (FaqVO) request.getAttribute("faqVO");
 <!-- Custom styles for this template-->
 <%-- <link href="<%=request.getContextPath()%>/resources/css/sb-admin-2.min.css" rel="stylesheet"> --%>
 <title>新增常見問題資訊</title>
+
+
 </head>
+
+<style>
+.class text{
+margin:center;
+}
+
+</style>
+
+
+
+
 <body class="bg-gradient-primary">
+
+
+
+
+
+
 
     <div class="container">
         <div class="card o-hidden border-0 shadow-lg my-5">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="row">
-                    <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                    <div class="col-lg-5 d-none d-lg-block bg-register-image" style="height:600px"></div>
                     <div class="col-lg-7">
                         <div class="p-5">
                         
@@ -55,18 +81,18 @@ FaqVO faqVO = (FaqVO) request.getAttribute("faqVO");
                             
                           <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/faq/faq.do" name="form1">
                           <div class="user">常見問題
-                          <input type="text"  id="question" name="question"
+                          <input type="text"  id="question" name="question" style="width:400px"  oninvalid="alert('Oh! 沒有填寫常見問題!');" required
                           value="<%=faqVO==null ? "" : faqVO.getQuestion() %>">
                           </div>
       
                                                       
-                           <div class="">常見問題回覆
-                           <input type="text"  id="answer" name="answer" 
+                           <div class="">問題回覆
+                           <input type="text"  id="answer" name="answer" style="height:400px ;width:400px"  oninvalid="alert('Oh! 沒有填寫問題回覆!');" required
                             value="<%=faqVO==null ? "" : faqVO.getAnswer() %>">
                            </div>
  
-                            <div class="">常見問題更新時間
-                            <input type="text"  id="f_date1" name="update_Time">
+                            <div class="">更新時間
+                            <input type="text"  id="f_date1" name="update_Time" style="width:100px" >
                     
                             </div>
                                 
@@ -204,7 +230,7 @@ function readURL(input){
 
 }
         
-        
+
         
 </script>
 </html>

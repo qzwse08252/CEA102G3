@@ -29,7 +29,7 @@ public class NewsServlet extends HttpServlet {
 		String action = req.getParameter("action");
 		
 		
-		if ("getOne_For_Display".equals(action)) { // ¨Ó¦Ûselect_news_page.jspªº½Ð¨D
+		if ("getOne_For_Display".equals(action)) { // ï¿½Ó¦ï¿½select_news_page.jspï¿½ï¿½ï¿½Ð¨D
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -37,56 +37,56 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***************************1.±µ¦¬½Ð¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.ï¿½ï¿½ï¿½ï¿½ï¿½Ð¨Dï¿½Ñ¼ï¿½ - ï¿½ï¿½Jï¿½æ¦¡ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½Bï¿½z**********************/
 				String str = req.getParameter("news_No");
 				if (str == null || (str.trim()).length() == 0) {
-					errorMsgs.add("½Ð¿é¤J³Ì·s®ø®§½s¸¹");
+					errorMsgs.add("ï¿½Ð¿ï¿½Jï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½_
 				}
 				
 				Integer news_No = null;
 				try {
 					news_No = new Integer(str);
 				} catch (Exception e) {
-					errorMsgs.add("³Ì·s®ø®§½s¸¹®æ¦¡¤£¥¿½T");
+					errorMsgs.add("ï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½æ¦¡ï¿½ï¿½ï¿½ï¿½ï¿½T");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½_
 				}
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ*****************************************/
+				/***************************2.ï¿½}ï¿½lï¿½dï¿½ß¸ï¿½ï¿½*****************************************/
 				NewsService newsSvc = new NewsService();
 				NewsVO newsVO = newsSvc.getOneNews(news_No);
 				if (newsVO == null) {
-					errorMsgs.add("¬dµL¸ê®Æ");
+					errorMsgs.add("ï¿½dï¿½Lï¿½ï¿½ï¿½");
 				}
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back-end/news/select_news_page.jsp");
 					failureView.forward(req, res);
-					return;//µ{¦¡¤¤Â_
+					return;//ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½_
 				}
 				
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("newsVO", newsVO); // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
+				/***************************3.ï¿½dï¿½ß§ï¿½ï¿½ï¿½,ï¿½Ç³ï¿½ï¿½ï¿½ï¿½(Send the Success view)*************/
+				req.setAttribute("newsVO", newsVO); // ï¿½ï¿½Æ®wï¿½ï¿½ï¿½Xï¿½ï¿½empVOï¿½ï¿½ï¿½ï¿½,ï¿½sï¿½Jreq
 				String url = "/front-end/news/listOneNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ¦¨¥\Âà¥æ listOneNews.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ listOneNews.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************ï¿½ï¿½Lï¿½iï¿½àªºï¿½ï¿½ï¿½~ï¿½Bï¿½z*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ï¿½Lï¿½kï¿½ï¿½ï¿½oï¿½ï¿½ï¿½:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/back-end/news/select_news_page.jsp");
 				failureView.forward(req, res);
@@ -94,7 +94,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("getOne_For_Update".equals(action)) { // ¨Ó¦ÛlistAllNews.jspªº½Ð¨D
+		if ("getOne_For_Update".equals(action)) { // ï¿½Ó¦ï¿½listAllNews.jspï¿½ï¿½ï¿½Ð¨D
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -102,22 +102,22 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 			
 			try {
-				/***************************1.±µ¦¬½Ð¨D°Ñ¼Æ****************************************/
+				/***************************1.ï¿½ï¿½ï¿½ï¿½ï¿½Ð¨Dï¿½Ñ¼ï¿½****************************************/
 				Integer news_No = new Integer(req.getParameter("news_No"));
 				
-				/***************************2.¶}©l¬d¸ß¸ê®Æ****************************************/
+				/***************************2.ï¿½}ï¿½lï¿½dï¿½ß¸ï¿½ï¿½****************************************/
 				NewsService newsSvc = new NewsService();
 				NewsVO newsVO = newsSvc.getOneNews(news_No);
 								
-				/***************************3.¬d¸ß§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)************/
-				req.setAttribute("newsVO", newsVO);         // ¸ê®Æ®w¨ú¥XªºempVOª«¥ó,¦s¤Jreq
-				String url = "/back-end/news/update_news_input.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// ¦¨¥\Âà¥æ update_news_input.jsp
+				/***************************3.ï¿½dï¿½ß§ï¿½ï¿½ï¿½,ï¿½Ç³ï¿½ï¿½ï¿½ï¿½(Send the Success view)************/
+				req.setAttribute("newsVO", newsVO);         // ï¿½ï¿½Æ®wï¿½ï¿½ï¿½Xï¿½ï¿½empVOï¿½ï¿½ï¿½ï¿½,ï¿½sï¿½Jreq
+				String url = "/back-end/news/update_news_input2.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// ï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ update_news_input.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************ï¿½ï¿½Lï¿½iï¿½àªºï¿½ï¿½ï¿½~ï¿½Bï¿½z**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("µLªk¨ú±o­n­×§ïªº¸ê®Æ:" + e.getMessage());
+				errorMsgs.add("ï¿½Lï¿½kï¿½ï¿½ï¿½oï¿½nï¿½×§ïªºï¿½ï¿½ï¿½:" + e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/back-end/news/listAllNews.jsp");
 				failureView.forward(req, res);
@@ -125,7 +125,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("update".equals(action)) { // ¨Ó¦Ûupdate_news_input.jspªº½Ð¨D
+		if ("update".equals(action)) { // ï¿½Ó¦ï¿½update_news_input.jspï¿½ï¿½ï¿½Ð¨D
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -133,24 +133,24 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 		
 			try {
-				/***************************1.±µ¦¬½Ð¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z**********************/
+				/***************************1.ï¿½ï¿½ï¿½ï¿½ï¿½Ð¨Dï¿½Ñ¼ï¿½ - ï¿½ï¿½Jï¿½æ¦¡ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½Bï¿½z**********************/
 				Integer news_No = new Integer(req.getParameter("news_No").trim());
 				
 				String news_Title = req.getParameter("news_Title");
 				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
 				if (news_Title == null || news_Title.trim().length() == 0) {
-					errorMsgs.add("½Ð¶ñ¼g³Ì·s®ø®§¼ÐÃD!");
-//				} else if(!news_Title.trim().matches(news_TitleReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ð¦b³Ì·s®ø®§¼ÐÃD¤¤¡A¿é¤J3~50¥H¤ºªº¦r¼Æ¡C");
+					errorMsgs.add("ï¿½Ð¶ï¿½gï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½D!");
+//				} else if(!news_Title.trim().matches(news_TitleReg)) { //ï¿½Hï¿½Uï¿½mï¿½ß¥ï¿½ï¿½h(ï¿½W)ï¿½ï¿½Ü¦ï¿½(regular-expression)
+//					errorMsgs.add("ï¿½Ð¦bï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½Aï¿½ï¿½J3~50ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½rï¿½Æ¡C");
 //	            }
 				}
 				
 				String news_Content = req.getParameter("news_Content");
 				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (news_Content == null || news_Content.trim().length() == 0) {
-					errorMsgs.add("½Ð¶ñ¼g³Ì·s®ø®§¤º®e!");
-//				} else if(!news_Content.trim().matches(news_ContentReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-//					errorMsgs.add("½Ð¦b³Ì·s®ø®§¤º®e¤¤¡A¿é¤J3~1000¥H¤ºªº¦r¼Æ¡C");
+					errorMsgs.add("ï¿½Ð¶ï¿½gï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½e!");
+//				} else if(!news_Content.trim().matches(news_ContentReg)) { //ï¿½Hï¿½Uï¿½mï¿½ß¥ï¿½ï¿½h(ï¿½W)ï¿½ï¿½Ü¦ï¿½(regular-expression)
+//					errorMsgs.add("ï¿½Ð¦bï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½J3~1000ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½rï¿½Æ¡C");
 //	            }
 				}		
 			
@@ -159,7 +159,7 @@ public class NewsServlet extends HttpServlet {
 					release_Date = java.sql.Date.valueOf(req.getParameter("release_Date").trim());
 				} catch (IllegalArgumentException e) {
 					release_Date=new java.sql.Date(System.currentTimeMillis());
-//					errorMsgs.add("½Ð¿é¤J¤é´Á!");
+//					errorMsgs.add("ï¿½Ð¿ï¿½Jï¿½ï¿½ï¿½!");
 				}
 
 				
@@ -183,7 +183,7 @@ public class NewsServlet extends HttpServlet {
 				}
 				System.out.println("news_Pic:"+news_Pic);
 				
-//				Part News_Pic = req.getPart("news_Pic"); //¨Ó¦Û©ó¤W­±ªºformªí³æ
+//				Part News_Pic = req.getPart("news_Pic"); //ï¿½Ó¦Û©ï¿½Wï¿½ï¿½ï¿½ï¿½formï¿½ï¿½ï¿½
 //				InputStream in = News_Pic.getInputStream();
 //				byte[] news_Pic = new byte[in.available()];
 //				in.read(news_Pic);
@@ -215,33 +215,33 @@ public class NewsServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("newsVO", newsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("newsVO", newsVO); // ï¿½tï¿½ï¿½ï¿½ï¿½Jï¿½æ¦¡ï¿½ï¿½ï¿½~ï¿½ï¿½empVOï¿½ï¿½ï¿½ï¿½,ï¿½]ï¿½sï¿½Jreq
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back-end/news/update_news_input.jsp");
 					failureView.forward(req, res);
-					return; //µ{¦¡¤¤Â_
+					return; //ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½_
 				}
 				
-				/***************************2.¶}©l­×§ï¸ê®Æ*****************************************/
+				/***************************2.ï¿½}ï¿½lï¿½×§ï¿½ï¿½ï¿½*****************************************/
 				NewsService newsSvc = new NewsService();
 				newsVO = newsSvc.updateNews(news_No, news_Content, release_Date, news_Title, news_Pic);
 	
-				/***************************3.­×§ï§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)*************/
-				req.setAttribute("newsVO", newsVO); // ¸ê®Æ®wupdate¦¨¥\«á,¥¿½TªºªºempVOª«¥ó,¦s¤Jreq				
-				String url = "/back-end/news/listOneNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ­×§ï¦¨¥\«á,Âà¥ælistOneNews.jsp
+				/***************************3.ï¿½×§ï§¹ï¿½ï¿½,ï¿½Ç³ï¿½ï¿½ï¿½ï¿½(Send the Success view)*************/
+				req.setAttribute("newsVO", newsVO); // ï¿½ï¿½Æ®wupdateï¿½ï¿½ï¿½\ï¿½ï¿½,ï¿½ï¿½ï¿½Tï¿½ï¿½ï¿½ï¿½empVOï¿½ï¿½ï¿½ï¿½,ï¿½sï¿½Jreq				
+				String url = "/back-end/news/listAllNews2.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ï¿½×§ï¦¨ï¿½\ï¿½ï¿½,ï¿½ï¿½ï¿½listOneNews.jsp
 				successView.forward(req, res);
 
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z*************************************/
+				/***************************ï¿½ï¿½Lï¿½iï¿½àªºï¿½ï¿½ï¿½~ï¿½Bï¿½z*************************************/
 			} catch (Exception e) {
-				errorMsgs.add("­×§ï¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("ï¿½×§ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/back-end/news/update_news_input.jsp");
 				failureView.forward(req, res);
 			}
 		}
 
-        if ("insert".equals(action)) { // ¨Ó¦ÛaddNews.jspªº½Ð¨D  
+        if ("insert".equals(action)) { // ï¿½Ó¦ï¿½addNews.jspï¿½ï¿½ï¿½Ð¨D  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -249,25 +249,25 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 
 			try {
-				/***********************1.±µ¦¬½Ð¨D°Ñ¼Æ - ¿é¤J®æ¦¡ªº¿ù»~³B²z*************************/
+				/***********************1.ï¿½ï¿½ï¿½ï¿½ï¿½Ð¨Dï¿½Ñ¼ï¿½ - ï¿½ï¿½Jï¿½æ¦¡ï¿½ï¿½ï¿½ï¿½ï¿½~ï¿½Bï¿½z*************************/
 //				Integer news_No = new Integer(req.getParameter("news_No").trim());
 				
 				
 				String news_Title = req.getParameter("news_Title");
 				String news_TitleReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,50}$";
 				if (news_Title == null || news_Title.trim().length() == 0) {
-					errorMsgs.add("½Ð¶ñ¼g³Ì·s®ø®§¼ÐÃD!");
-				} else if(!news_Title.trim().matches(news_TitleReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-					errorMsgs.add("½Ð¦b³Ì·s®ø®§¼ÐÃD¤¤¡A¿é¤J3~50¥H¤ºªº¦r¼Æ¡C");
+					errorMsgs.add("ï¿½Ð¶ï¿½gï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½D!");
+				} else if(!news_Title.trim().matches(news_TitleReg)) { //ï¿½Hï¿½Uï¿½mï¿½ß¥ï¿½ï¿½h(ï¿½W)ï¿½ï¿½Ü¦ï¿½(regular-expression)
+					errorMsgs.add("ï¿½Ð¦bï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Dï¿½ï¿½ï¿½Aï¿½ï¿½J3~50ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½rï¿½Æ¡C");
 	            }
 				
 				
 				String news_Content = req.getParameter("news_Content");
 				String news_ContentReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
 				if (news_Content == null || news_Content.trim().length() == 0) {
-					errorMsgs.add("½Ð¶ñ¼g³Ì·s®ø®§¤º®e!");
-				} else if(!news_Content.trim().matches(news_ContentReg)) { //¥H¤U½m²ß¥¿«h(³W)ªí¥Ü¦¡(regular-expression)
-					errorMsgs.add("½Ð¦b³Ì·s®ø®§¤º®e¤¤¡A¿é¤J3~1000¥H¤ºªº¦r¼Æ¡C");
+					errorMsgs.add("ï¿½Ð¶ï¿½gï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½e!");
+				} else if(!news_Content.trim().matches(news_ContentReg)) { //ï¿½Hï¿½Uï¿½mï¿½ß¥ï¿½ï¿½h(ï¿½W)ï¿½ï¿½Ü¦ï¿½(regular-expression)
+					errorMsgs.add("ï¿½Ð¦bï¿½Ì·sï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½J3~1000ï¿½Hï¿½ï¿½ï¿½ï¿½ï¿½rï¿½Æ¡C");
 	            }
 			
 				java.sql.Date release_Date = null;
@@ -275,7 +275,7 @@ public class NewsServlet extends HttpServlet {
 					release_Date = java.sql.Date.valueOf(req.getParameter("release_Date").trim());
 				} catch (IllegalArgumentException e) {
 					release_Date=new java.sql.Date(System.currentTimeMillis());
-					errorMsgs.add("½Ð¿é¤J¤é´Á!");
+					errorMsgs.add("ï¿½Ð¿ï¿½Jï¿½ï¿½ï¿½!");
 				}
 
 	
@@ -304,23 +304,23 @@ public class NewsServlet extends HttpServlet {
 
 				// Send the use back to the form, if there were errors
 				if (!errorMsgs.isEmpty()) {
-					req.setAttribute("newsVO", newsVO); // §t¦³¿é¤J®æ¦¡¿ù»~ªºempVOª«¥ó,¤]¦s¤Jreq
+					req.setAttribute("newsVO", newsVO); // ï¿½tï¿½ï¿½ï¿½ï¿½Jï¿½æ¦¡ï¿½ï¿½ï¿½~ï¿½ï¿½empVOï¿½ï¿½ï¿½ï¿½,ï¿½]ï¿½sï¿½Jreq
 					RequestDispatcher failureView = req
 							.getRequestDispatcher("/back-end/news/addNews.jsp");
 					failureView.forward(req, res);
 					return;
 				}
 				
-				/***************************2.¶}©l·s¼W¸ê®Æ***************************************/
+				/***************************2.ï¿½}ï¿½lï¿½sï¿½Wï¿½ï¿½ï¿½***************************************/
 				NewsService newsSvc = new NewsService();
 				newsVO = newsSvc.addNews(news_Content, release_Date, news_Title, news_Pic);
 				
-				/***************************3.·s¼W§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/
-				String url = "/back-end/news/listAllNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // ·s¼W¦¨¥\«áÂà¥ælistAllNews.jsp
+				/***************************3.ï¿½sï¿½Wï¿½ï¿½ï¿½ï¿½,ï¿½Ç³ï¿½ï¿½ï¿½ï¿½(Send the Success view)***********/
+				String url = "/back-end/news/listAllNews2.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url); // ï¿½sï¿½Wï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½listAllNews.jsp
 				successView.forward(req, res);				
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************ï¿½ï¿½Lï¿½iï¿½àªºï¿½ï¿½ï¿½~ï¿½Bï¿½z**********************************/
 			} catch (Exception e) {
 				errorMsgs.add(e.getMessage());
 				RequestDispatcher failureView = req
@@ -330,7 +330,7 @@ public class NewsServlet extends HttpServlet {
 		}
 		
 		
-		if ("delete".equals(action)) { // ¨Ó¦ÛlistAllNews.jsp
+		if ("delete".equals(action)) { // ï¿½Ó¦ï¿½listAllNews.jsp
 
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -338,21 +338,21 @@ public class NewsServlet extends HttpServlet {
 			req.setAttribute("errorMsgs", errorMsgs);
 	
 			try {
-				/***************************1.±µ¦¬½Ð¨D°Ñ¼Æ***************************************/
+				/***************************1.ï¿½ï¿½ï¿½ï¿½ï¿½Ð¨Dï¿½Ñ¼ï¿½***************************************/
 				Integer news_No = new Integer(req.getParameter("news_No"));
 				
-				/***************************2.¶}©l§R°£¸ê®Æ***************************************/
+				/***************************2.ï¿½}ï¿½lï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½***************************************/
 				NewsService newsSvc = new NewsService();
 				newsSvc.deleteNews(news_No);
 				
-				/***************************3.§R°£§¹¦¨,·Ç³ÆÂà¥æ(Send the Success view)***********/								
-				String url = "/back-end/news/listAllNews.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// §R°£¦¨¥\«á,Âà¥æ¦^°e¥X§R°£ªº¨Ó·½ºô­¶
+				/***************************3.ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½Ç³ï¿½ï¿½ï¿½ï¿½(Send the Success view)***********/								
+				String url = "/back-end/news/listAllNews2.jsp";
+				RequestDispatcher successView = req.getRequestDispatcher(url);// ï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½\ï¿½ï¿½,ï¿½ï¿½ï¿½^ï¿½eï¿½Xï¿½Rï¿½ï¿½ï¿½ï¿½ï¿½Ó·ï¿½ï¿½ï¿½ï¿½ï¿½
 				successView.forward(req, res);
 				
-				/***************************¨ä¥L¥i¯àªº¿ù»~³B²z**********************************/
+				/***************************ï¿½ï¿½Lï¿½iï¿½àªºï¿½ï¿½ï¿½~ï¿½Bï¿½z**********************************/
 			} catch (Exception e) {
-				errorMsgs.add("§R°£¸ê®Æ¥¢±Ñ:"+e.getMessage());
+				errorMsgs.add("ï¿½Rï¿½ï¿½ï¿½ï¿½Æ¥ï¿½ï¿½ï¿½:"+e.getMessage());
 				RequestDispatcher failureView = req
 						.getRequestDispatcher("/back-end/news/listAllNews.jsp");
 				failureView.forward(req, res);

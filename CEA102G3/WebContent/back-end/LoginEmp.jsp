@@ -52,12 +52,12 @@
 				<form class="login100-form validate-form p-b-33 p-t-5" method="post" action="<%=request.getContextPath()%>/employee/loginHandler.do">
 				
 					<div class="wrap-input100 validate-input" data-validate = "請輸入員工帳號!">
-						<input class="input100" type="text" name="account" placeholder="User Account">
+						<input class="input100" type="text" name="account" placeholder="User Account"  oninvalid="alert('Oh! 請輸入員工帳號!');" required>
 						<span class="focus-input100" data-placeholder="&#xe82a;"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate="請輸入員工密碼!">
-						<input class="input100" type="password" name="password" placeholder="Password">
+					<div class="wrap-input100 validate-input" data-validate="請輸入員工密碼!"> 
+						<input class="input100" type="password" name="password" placeholder="Password" oninvalid="alert('Oh! 請輸入員工密碼!');" required>
 						<span class="focus-input100" data-placeholder="&#xe80f;"></span>
 					</div>
 

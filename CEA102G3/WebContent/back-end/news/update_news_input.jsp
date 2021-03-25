@@ -9,14 +9,14 @@
 <html>
 <head>
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-<title>最新消息資料修改 - update_news_input.jsp</title>
+<title>最新消息資料修改</title>
 
 <style>
-  table#table-1 {
-	background-color: #CCCCFF;
-    border: 2px solid black;
-    text-align: center;
-  }
+/*   table#table-1 { */
+/* 	background-color: black; */
+/*     border: 2px solid black; */
+/*     text-align: center; */
+/*   } */
   table#table-1 h4 {
     color: red;
     display: block;
@@ -34,9 +34,11 @@
 	background-color: white;
 	margin-top: 1px;
 	margin-bottom: 1px;
+	width:1100px;
   }
   table, th, td {
     border: 0px solid #CCCCFF;
+    
   }
   th, td {
     padding: 1px;
@@ -48,12 +50,11 @@
 
 <table id="table-1">
 	<tr><td>
-		 <h3>最新消息資料修改 - update_news_input.jsp</h3>
-		 <h4><a href="<%=request.getContextPath()%>/back-end/news/select_news_page.jsp">回首頁</a></h4>
+<!-- 		 <h3>最新消息資料修改</h3> -->
+<%-- 		 <h4><a href="<%=request.getContextPath()%>/back-end/news/select_news_page.jsp">回首頁</a></h4> --%>
 	</td></tr>
 </table>
 
-<h3>資料修改:</h3>
 
 <%-- 錯誤表列 --%>
 <c:if test="${not empty errorMsgs}">
@@ -81,13 +82,13 @@
 
 	<tr>
 		<td>最新消息內容:</td>
-		<td><input type="TEXT" name="news_Content" size="30" value="<%=newsVO.getNews_Content()%>" /></td>
+		<td><input type="TEXT" style="width:400px; height:280px" name="news_Content" size="30" value="<%=newsVO.getNews_Content()%>" /></td>
 	</tr>
 
 
 	<tr>
 		<td>最新消息發佈日期:</td>
-		<td><input type="text" id="f_date1" size="6" name="release_Date" value="<%=newsVO.getRelease_Date()%>" /></td>
+		<td><input type="text" id="f_date1"  size="10" name="release_Date" value="<%=newsVO.getRelease_Date()%>" /></td>
 	</tr>
 	
 	<tr>
