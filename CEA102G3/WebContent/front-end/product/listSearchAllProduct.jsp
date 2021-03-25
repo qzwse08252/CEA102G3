@@ -136,7 +136,7 @@ td {
 									<td>${productVO.productName}</td>
 									<td>${productVO.listPrice}</td>
 									<td>${productVO.descr}</td>
-									<td>${productVO.totalRate/productVO.totalRateCount}</td>
+									<td><i class="fas fa-star"></i>${String.format("%.2f",productVO.totalRate/productVO.totalRateCount)}</td>
 									
 									<td>
 											<img src="<%=request.getContextPath()%>/product/controllerImage.do?picCol=product_pic1&PKNumber=${productVO.productNo}" 
