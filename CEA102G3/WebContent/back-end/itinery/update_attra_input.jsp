@@ -29,6 +29,11 @@
 	pageContext.setAttribute("district",district);
 	pageContext.setAttribute("shortLocation",shortLocation);
 	
+	System.out.println("location: "+location);
+	System.out.println("county: "+county);
+	System.out.println("district: "+district);
+	System.out.println("shortLocation: "+shortLocation);
+	
 %>
 <html>
 <head>

@@ -119,6 +119,9 @@ public class AttractionServlet extends HttpServlet {
 			
 //			request.setAttribute("list", list);
 			HttpSession session = request.getSession();
+
+			session.setAttribute("paramAttraName", attraName);
+			session.setAttribute("paramSort", sort);
 			session.setAttribute("list", list);
 			RequestDispatcher successView = request.getRequestDispatcher("/back-end/itinery/listSearchForAttraction_full.jsp");
 			successView.forward(request, response);
@@ -219,7 +222,7 @@ public class AttractionServlet extends HttpServlet {
 
 			try {
 				String sort = request.getParameter("sort");
-				System.out.println(sort);
+			System.out.println(sort);
 				String attraName = request.getParameter("attraName1").trim();
 				if (attraName == null || attraName.length() == 0) {
 					errorMsgs.add("景點名稱請勿空白");
@@ -231,7 +234,7 @@ public class AttractionServlet extends HttpServlet {
 				String county = request.getParameter("county");
 				String district = request.getParameter("district");
 				String location = county+district+shortLocation;
-				if(district.length()==0) {
+				if(district.length()==0||district==null) {
 					errorMsgs.add("請至少選擇縣市");
 				}
 				System.out.println(location);
@@ -262,9 +265,9 @@ public class AttractionServlet extends HttpServlet {
 				System.out.println("paramAttraName:"+request.getParameter("paramAttraName"));
 				System.out.println("paramSort:"+request.getParameter("paramSort"));
 				
-//				List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
-//				HttpSession session = request.getSession();
-//				session.setAttribute("list",list);
+				HttpSession session = request.getSession();
+				List<AttractionVO> list = attraSvc.getSearchFor((String)session.getAttribute("paramAttraName"), (String)session.getAttribute("paramSort"));
+				session.setAttribute("list",list);
 				
 				request.setAttribute("attraVO", attractionVO);
 				RequestDispatcher successView = request.getRequestDispatcher(finishURL+"?whichPage="+whichPage);
@@ -301,11 +304,9 @@ public class AttractionServlet extends HttpServlet {
 
 			attractionVO = attraSvc.updateAttra(sort, attraName, descr, location, isOnShelf, attraPic1, attraNo);
 			
-//			System.out.println("paramAttraName:"+request.getParameter("paramAttraName"));
-//			System.out.println("paramSort:"+request.getParameter("paramSort"));
-//			List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
-//			HttpSession session = request.getSession();
-//			session.setAttribute("list",list);
+			HttpSession session = request.getSession();
+			List<AttractionVO> list = attraSvc.getSearchFor((String)session.getAttribute("paramAttraName"), (String)session.getAttribute("paramSort"));
+			session.setAttribute("list",list);
 			
 			request.setAttribute("attraVO", attractionVO);
 			
