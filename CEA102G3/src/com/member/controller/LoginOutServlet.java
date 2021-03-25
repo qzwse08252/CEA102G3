@@ -68,6 +68,13 @@ public class LoginOutServlet extends HttpServlet {
 					RequestDispatcher forwarPage = req.getRequestDispatcher(forwardUrl);
 					forwarPage.forward(req, res);
 				} else {
+					if (memberVO.getMemberState() == 2) {
+						forwardUrl = "/front-end/Login.jsp";
+						errorMsgs.add("該帳號已被停權！");
+						RequestDispatcher forwarPage = req.getRequestDispatcher(forwardUrl);
+						forwarPage.forward(req, res);
+						return;
+					}
 //					System.out.println("memberVO is not null");
 //					forwardUrl = "/front-end/index.jsp";
 					HttpSession session = req.getSession();
