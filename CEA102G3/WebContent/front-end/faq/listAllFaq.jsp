@@ -55,14 +55,14 @@
     <meta charset="utf-8" />
     <title>GuideMe - 常見問題 AND 回覆</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/bootstrap.min_L.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/font-awesome.min.css" />
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
 
 <!-- 最新消息模板  -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min_L.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/fonts/ionicons.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">

@@ -20,7 +20,7 @@
 
 
     <title>GuideMe - 最新消息</title>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min_L.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/fonts/ionicons.min.css">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
@@ -64,7 +64,7 @@
     <!-- 最新消息 -->
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min_L.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/Article-Clean.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/3.3.1/css/swiper.min.css">

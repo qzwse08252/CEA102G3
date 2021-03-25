@@ -9,7 +9,7 @@
 <!--===============================================================================================-->	
 	<link rel="icon" type="image/png" href="<%=request.getContextPath()%>/resources/img/favicon.ico"/>
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/vendor/bootstrap/css/bootstrap.min_L.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
@@ -26,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/vendor/daterangepicker/daterangepicker.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/util.css">
-	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main.css">
+	<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/resources/css/main_L.css">
 <!--===============================================================================================-->
 
 </head>
