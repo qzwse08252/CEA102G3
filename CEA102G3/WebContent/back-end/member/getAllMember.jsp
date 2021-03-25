@@ -139,7 +139,7 @@
 									<tr>
 										<td>${memberVO.memberNo}</td>
 										<td>${memberVO.account}</td>
-										<td>${memberVO.password}</td>
+										<td>*****</td>
 										<td>${memberVO.name}</td>
 										<td>${memberVO.idNumber}</td>
 										<td>${memberVO.birthDate}</td>
