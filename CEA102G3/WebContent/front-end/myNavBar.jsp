@@ -89,7 +89,7 @@
             </li>
 <!--             Nav Item - QA -->
             <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                <a class="nav-link dropdown-toggle" href="<%=request.getContextPath()%>/front-end/faq/listAllFaq.jsp" id="alertsDropdown" 
                     aria-haspopup="true" aria-expanded="false">
                     <i class="fas fa-question fa-lg"></i>
                 </a>

@@ -86,9 +86,12 @@
 		<filter-name>loginFilter</filter-name>
 		<url-pattern>/front-end/friendList/*</url-pattern>
 		<url-pattern>/front-end/member/EditProfile.jsp</url-pattern>
-		<!-- 中佑 -->
-		<url-pattern>/front-end/itinery/*</url-pattern>
-		<url-pattern>/front-end/product/Checkout.jsp</url-pattern>
+		<url-pattern>/front-end/NavPage.jsp</url-pattern>
+		<url-pattern>/front-end/NavPage2.jsp</url-pattern>
+				<!-- 中佑 -->
+<!-- 		<url-pattern>/front-end/itinery/*</url-pattern> -->
+<!-- 		<url-pattern>/front-end/product/Checkout.jsp</url-pattern> -->
+
 
 		<!-- 蕭捷 -->
 		<url-pattern>/front-end/exper_order/listExperOrder.jsp</url-pattern>
@@ -104,6 +107,27 @@
 		<dispatcher>ERROR</dispatcher>
 		<dispatcher>ASYNC</dispatcher>
 	</filter-mapping>
+
+	<filter>
+		<filter-name>loginEmpFilter</filter-name>
+		<filter-class>filters.LoginEmpFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>loginEmpFilter</filter-name>
+		<url-pattern>/back-end/employee/*</url-pattern>
+		<url-pattern>/back-end/faq/*</url-pattern>
+		<url-pattern>/back-end/functions/*</url-pattern>
+		<url-pattern>/back-end/itinery/*</url-pattern>
+		<url-pattern>/back-end/news/*</url-pattern>
+		<url-pattern>/back-end/promotion/*</url-pattern>
+		<url-pattern>/back-end/index.jsp</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+		<dispatcher>FORWARD</dispatcher>
+		<dispatcher>INCLUDE</dispatcher>
+		<dispatcher>ERROR</dispatcher>
+		<dispatcher>ASYNC</dispatcher>
+	</filter-mapping>
+
 
 	<!-- 中佑 -->
 	<servlet>
@@ -307,5 +331,14 @@
 		<servlet-name>NewsServlet</servlet-name>
 		<url-pattern>/news/news.do</url-pattern>
 	</servlet-mapping>
-
+	
+	 <servlet>
+    <servlet-name>PromotionServlet</servlet-name>
+    <servlet-class>com.promotion.controller.PromotionServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>PromotionServlet</servlet-name>
+    <url-pattern>/promotion/promotion.do</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

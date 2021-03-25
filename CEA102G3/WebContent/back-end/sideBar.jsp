@@ -85,10 +85,9 @@
 		<div id="news" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<a class="collapse-item" href="#">a1</a> 
-				<a class="collapse-item" href="#">a2</a> 
-				<a class="collapse-item" href="#">a3</a>
-			</div>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/news/addNews2.jsp">新增最新消息資訊</a> 
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/news/listAllNews2.jsp">最新消息資訊檢視</a> 
+						</div>
 		</div>
 		<a class="nav-link collapsed" href="#"
 			data-toggle="collapse" data-target="#promote"
@@ -99,9 +98,8 @@
 		<div id="promote" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<a class="collapse-item" href="#">a1</a> 
-				<a class="collapse-item" href="#">a2</a> 
-				<a class="collapse-item" href="#">a3</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/promotion/promotion2.jsp">新增主打促銷資訊</a> 
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/promotion/listAllPromotion2.jsp">主打促銷資訊檢視</a> 
 			</div>
 		</div>
 		<a class="nav-link collapsed" href="#"
@@ -113,9 +111,9 @@
 		<div id="questions" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<a class="collapse-item" href="#">a1</a> 
-				<a class="collapse-item" href="#">a2</a> 
-				<a class="collapse-item" href="#">a3</a>
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/faq/addFaq2.jsp">新增常見問題資訊</a> 
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/faq/listAllFaq2.jsp">常見問題資訊檢視</a> 
+
 			</div>
 		</div>
 	</li>
@@ -143,12 +141,12 @@
 		<div id="empManage" class="collapse"
 			aria-labelledby="headingPages" data-parent="#accordionSidebar">
 			<div class="collapse-bg py-2 collapse-inner rounded">
-				<h6 class="collapse-header">員工資料管理:</h6>
-				<a class="collapse-item" href="#">新增員工資料</a> 
-				<a class="collapse-item" href="#">修改員工資料</a> 
+<!-- 				<h6 class="collapse-header">員工資料管理:</h6> -->
+				<a class="collapse-item" href="<%=request.getContextPath()%>/back-end/employee/listAllEmp2.jsp">員工管理頁面</a> 
+<!-- 				<a class="collapse-item" href="#">修改員工資料</a>  -->
 				<div class="collapse-divider"></div>
-				<h6 class="collapse-header">員工權限管理:</h6>
-				<a class="collapse-item" href="#">查看權限</a> 
+<!-- 				<h6 class="collapse-header">員工權限管理:</h6> -->
+<!-- 				<a class="collapse-item" href="#">查看權限</a>  -->
 			</div>
 		</div>
 	</li>
