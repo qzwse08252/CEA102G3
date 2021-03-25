@@ -296,7 +296,7 @@ p[speaker=${memberVO.name}]{
 			$("#searchfor").keyup(function(){
 				if($("#searchfor").val().trim().length!==0){
 				$.ajax({
-					url: "<%=request.getContextPath()%>/itinery/attraction.do?action=search&sort="+$("#sort").val()+"&searchfor="+$("#searchfor").val(),
+					url: "<%=request.getContextPath()%>/itinery/attraction.do?action=search&sort="+$("#sortinbar").val()+"&searchfor="+$("#searchfor").val(),
 					type: "GET",
 					success: function(data){
 					
