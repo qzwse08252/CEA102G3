@@ -216,8 +216,24 @@
 
 <script>
 	$(".offBtn").click(function(){
-		swal("ok","已下架","success");
-		
+// 		swal("ok","已下架","success");
+		event.preventDefault();
+		let thisBtn = $(this);
+		let thisOffForm = $(this).closest("form");
+		swal({
+			  title: "確定下架?",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    swal("已下架", {
+			      icon: "success",
+			    });
+			    thisOffForm.submit();
+			  } 
+			});
 	})
 </script>
 

@@ -117,7 +117,9 @@ public class AttractionServlet extends HttpServlet {
 			AttractionService attraSvc = new AttractionService();
 			List<AttractionVO> list = attraSvc.getSearchFor(attraName, sort);
 			
-			request.setAttribute("list", list);
+//			request.setAttribute("list", list);
+			HttpSession session = request.getSession();
+			session.setAttribute("list", list);
 			RequestDispatcher successView = request.getRequestDispatcher("/back-end/itinery/listSearchForAttraction_full.jsp");
 			successView.forward(request, response);
 			return;
@@ -260,9 +262,9 @@ public class AttractionServlet extends HttpServlet {
 				System.out.println("paramAttraName:"+request.getParameter("paramAttraName"));
 				System.out.println("paramSort:"+request.getParameter("paramSort"));
 				
-				List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
-				HttpSession session = request.getSession();
-				session.setAttribute("list",list);
+//				List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
+//				HttpSession session = request.getSession();
+//				session.setAttribute("list",list);
 				
 				request.setAttribute("attraVO", attractionVO);
 				RequestDispatcher successView = request.getRequestDispatcher(finishURL+"?whichPage="+whichPage);
@@ -299,11 +301,11 @@ public class AttractionServlet extends HttpServlet {
 
 			attractionVO = attraSvc.updateAttra(sort, attraName, descr, location, isOnShelf, attraPic1, attraNo);
 			
-			System.out.println("paramAttraName:"+request.getParameter("paramAttraName"));
-			System.out.println("paramSort:"+request.getParameter("paramSort"));
-			List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
-			HttpSession session = request.getSession();
-			session.setAttribute("list",list);
+//			System.out.println("paramAttraName:"+request.getParameter("paramAttraName"));
+//			System.out.println("paramSort:"+request.getParameter("paramSort"));
+//			List<AttractionVO> list = attraSvc.getSearchFor(request.getParameter("paramAttraName"), request.getParameter("paramSort"));
+//			HttpSession session = request.getSession();
+//			session.setAttribute("list",list);
 			
 			request.setAttribute("attraVO", attractionVO);
 			

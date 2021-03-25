@@ -6,7 +6,7 @@
 
 	<!-- Sidebar - Brand -->
 	<a  class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="#" style="padding:0">
+		href="<%=request.getContextPath()%>/back-end/index.jsp" style="padding:0">
 		<div class="sidebar-brand-icon">
 			<img src="<%=request.getContextPath() %>/resources/img/logo.PNG" alt="" style="width:100%">
 		</div>
@@ -65,10 +65,6 @@
 			</div>
 		</div>
 		
-		<a class="nav-link" href="#"> 
-		<i class="fas fa-comments"></i> 
-		<span>線上客服回覆</span>
-		</a>
 		
 	</li>
 
@@ -156,27 +152,9 @@
 			</div>
 		</div>
 	</li>
-	<!-- Divider -->
-	<hr class="sidebar-divider">
+	
 
-	<!-- Heading -->
-	<div class="sidebar-heading">其他功能</div>
 
-	<!-- Nav Item - Charts -->
-	<li class="nav-item">
-		<a class="nav-link" href="#"> 
-		<i class="fas fa-fw fa-chart-area"></i> 
-		<span>Charts</span>
-		</a>
-	</li>
-
-	<!-- Nav Item - Tables -->
-	<li class="nav-item">
-		<a class="nav-link" href="#"> 
-		<i class="fas fa-fw fa-table"></i> 
-		<span>Tables</span>
-		</a>
-	</li>
 
 	<!-- Divider -->
 	<hr class="sidebar-divider d-none d-md-block">

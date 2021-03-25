@@ -176,7 +176,7 @@ td {
 									<td>
 										<FORM METHOD="post"
 											ACTION="<%=request.getContextPath()%>/itinery/attraction.do"
-											style="margin-bottom: 0px;">
+											style="margin-bottom: 0px;" >
 											<input type="submit" value="修改" class="btn btn-primary">
 											<input type="hidden" name="attraNo"
 												value="${attraVO.attraNo}"> <input type="hidden"
@@ -189,7 +189,7 @@ td {
 									<td>
 										<FORM METHOD="get"
 											ACTION="<%=request.getContextPath()%>/itinery/attraction.do"
-											style="margin-bottom: 0px;">
+											style="margin-bottom: 0px;" >
 											<input type="submit" value="下架" class="btn btn-primary offBtn"> 
 												<input
 												type="hidden" name="attraNo" value="${attraVO.attraNo}">
@@ -215,7 +215,24 @@ td {
 	<!-- /.container-fluid -->
 <script>
 	$(".offBtn").click(function(){
-			swal("ok","已下架","success");
+// 			swal("ok","已下架","success");
+		event.preventDefault();
+		let thisBtn = $(this);
+		let thisOffForm = $(this).closest("form");
+		swal({
+			  title: "確定下架?",
+			  icon: "warning",
+			  buttons: true,
+			  dangerMode: true,
+			})
+			.then((willDelete) => {
+			  if (willDelete) {
+			    swal("已下架", {
+			      icon: "success",
+			    });
+			    thisOffForm.submit();
+			  } 
+			});
 	})
 </script>
 </body>

@@ -297,7 +297,7 @@
 						data-dismiss="modal">繼續逛</button>
 					<form name="checkoutForm" action="<%= request.getContextPath() %>/shoppingCart/shoppingCart.do" method="POST">
               			<input type="hidden" name="action"	value="CHECKOUT"> 
-						<button type="submit" class="btn btn-primary">結帳去</button>
+						<button type="submit" class="btn btn-primary" ${sessionScope.shoppingcart==null||sessionScope.shoppingcart.size()==0?'disabled':'' }>結帳去</button>
           			</form>
 				</div>
 			</div>
