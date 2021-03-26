@@ -23,8 +23,8 @@ body {
     margin: 0;
 }
 .zz {
-	border: 1px solid blue;
 	margin:0 0 10px 0;
+	box-shadow: 2px 2px 2px 2px #808080;
 }
 ul li { 
 	display: inline-block; 
@@ -40,8 +40,7 @@ ul li {
 	background-color: #DAF7A6;
 }
 .input-area {
-	position: sticky;
-	bottom: 0;
+ 	width: 100%;
 }
 .chatBox {
 	height: 500px;
@@ -101,7 +100,8 @@ ul li {
             	<div class="chatBox">
 	                <h3 id="statusOutput" class="statusOutput"></h3>
 	                <div class="yy" id="messagesArea">messagesArea</div>
-	                <div class="panel input-area yy">
+                </div>
+                <div class="panel input-area yy">
 	                    <div class="input-group mb-3">
 	                        <input type="text" id="message" class="form-control" placeholder="Type Message"
 	                            aria-label="Recipient's username" aria-describedby="sendMessage" onkeydown="if (event.keyCode == 13) sendMessage();">
@@ -115,7 +115,6 @@ ul li {
 	                    <!-- 		<input type="button" id="connect" class="button" value="Connect" onclick="connect();" />  -->
 	                    <!-- 		<input type="button" id="disconnect" class="button" value="Disconnect" onclick="disconnect();" /> -->
 	                </div>
-                </div>
             </div>
             <div class="col-12 col-md-3 xx"></div>
         </div>
@@ -140,6 +139,7 @@ ul li {
 
 	var statusOutput = document.getElementById("statusOutput");
 	var messagesArea = document.getElementById("messagesArea");
+	var chatBox = document.getElementsByClassName("chatBox")[0];
 	var chatMemSelf = '${userName}';
 	var friendWebSocket;
 
@@ -196,7 +196,7 @@ ul li {
 // 				$('.timeStyle').css({'font-size': '8px', 'color': 'gray'});
 // 				console.log(li);
 				document.getElementById("area").appendChild(li);
-				messagesArea.scrollTop = messagesArea.scrollHeight;
+				chatBox.scrollTop = messagesArea.scrollHeight;
 				showM();
 			} else if ("close" === jsonObj.type) {
 				refreshFriendList(jsonObj);

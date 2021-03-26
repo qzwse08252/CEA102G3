@@ -28,7 +28,7 @@
 		};
 	
 		notifyWebSocket.onmessage = function(event) {
-			console.log('@@@@@@@@@@@@@@@@');
+			// console.log('@@@@@@@@@@@@@@@@');
 			let counterAlerts = document.getElementById("counterAlerts");
         	if(counterAlerts.textContent != null){
         		counterAlerts.textContent = parseInt(counterAlerts.textContent) + 1;
@@ -36,9 +36,9 @@
         	}
 			
 			var jsonObj = JSON.parse(event.data);
-			console.log(jsonObj);
-			console.log(jsonObj.notifyContent);
-			console.log('@@@@@@@@@@@@@@@@');
+			// console.log(jsonObj);
+			// console.log(jsonObj.notifyContent);
+			// console.log('@@@@@@@@@@@@@@@@');
 		};
 	
 		notifyWebSocket.onclose = function(event) {

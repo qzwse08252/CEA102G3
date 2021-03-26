@@ -36,13 +36,13 @@
 			success : function(data) {
 // 				alert("AJAX-成功666!");
 				$(data).each(function(i, item){
-					console.log("memberNo:"+item.memberNo);
-					console.log("name:"+item.name);
-					console.log("IMG:"+item.imgTag);
-					console.log("isInvitedOrIsFriend:"+item.isInvitedOrIsFriend);
-					console.log("unfriend:"+item.unfriend);
-					console.log("item.unfriend != null:"+item.unfriend != null);
-					console.log("###########################");
+// 					console.log("memberNo:"+item.memberNo);
+// 					console.log("name:"+item.name);
+// 					console.log("IMG:"+item.imgTag);
+// 					console.log("isInvitedOrIsFriend:"+item.isInvitedOrIsFriend);
+// 					console.log("unfriend:"+item.unfriend);
+// 					console.log("item.unfriend != null:"+item.unfriend != null);
+// 					console.log("###########################");
 					$('#memberInfo').append("<tr><td>"+item.imgTag+" "+item.showLabel
 							+" <input type='hidden' name='"+item.memberNo+"' id='"+item.memberNo+"'> "
 // 							+" "+(item.addFriend != null ? item.addFriend : "")+"</td></tr>");
@@ -78,6 +78,7 @@
 // 						alert("AJAX-成功_addFriendInviteBtn!");
 						$("#addFriendInviteBtn").attr('disabled', true);
 						$(data).each(function(i, item){item.result});
+						sendMessage("friendInvite", parseInt($("#getOneFriendMemNO").val())); //要求加入好友，用webSocket通知對方
 					},
 					error: function(){alert("AJAX-發生錯誤囉addFriendInviteBtn!")}
 				});
