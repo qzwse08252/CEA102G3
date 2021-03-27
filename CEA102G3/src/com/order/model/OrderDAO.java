@@ -131,6 +131,7 @@ public class OrderDAO implements OrderDAO_interface{
 		try {
 			session.beginTransaction();
 			Query query = session.createQuery("from OrderVO orderVO join fetch orderVO.orderItems where orderVO.memberNo="+memberNo +" order by orderVO.orderNo desc",OrderVO.class);
+//			Query query = session.createQuery("from OrderVO orderVO where orderVO.memberNo="+memberNo +" order by orderVO.orderNo desc",OrderVO.class);
 			list = query.getResultList();
 			session.getTransaction().commit();
 		} catch (RuntimeException e) {
