@@ -13,7 +13,12 @@
 	session = request.getSession();
 	MemberVO memberVO = (MemberVO) session.getAttribute("memberVO");
 	OrderService orderSvc = new OrderService();
-	List<OrderVO> list = orderSvc.getMemberOrders(memberVO.getMemberNo());
+	List<OrderVO> list_origin = orderSvc.getMemberOrders(memberVO.getMemberNo());
+	Set<OrderVO> list = new LinkedHashSet<OrderVO>();
+	for(OrderVO aOrderVO : list_origin){
+		list.add(aOrderVO);
+	}
+	System.out.println(list);
 	pageContext.setAttribute("list", list);
 	
 %>
