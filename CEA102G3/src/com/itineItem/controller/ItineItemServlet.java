@@ -440,7 +440,7 @@ public class ItineItemServlet extends HttpServlet {
 					Integer manager = memberVO.getMemberNo();
 					Boolean isDone = false;
 					java.sql.Date finishDate = Date.valueOf(startTimeStr.substring(0, 10));
-					String taskNote = itineItem.getString("Task_Note");
+					String taskNote = "";
 					ItineItemService itineItemSvc = new ItineItemService();
 					itineItemSvc.updateItineItem(startTime, endTime, note, manager, isDone, finishDate, taskNote, itineNo, attraNo);
 					}
