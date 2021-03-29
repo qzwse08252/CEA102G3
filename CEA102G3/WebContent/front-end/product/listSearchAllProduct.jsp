@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%-- <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> --%>
 <%@ page import="java.util.*"%>
 <%@ page import="com.attraction.model.*"%>
 <%@ page import="com.product.model.*"%>
 
 <%
-	request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("utf-8");
 	String productName = request.getParameter("productName");
 	ProductService productSvc = new ProductService();
 	List<ProductVO> list = productSvc.getProductOnShelfByName(productName);
@@ -136,7 +136,7 @@ td {
 									<td>${productVO.productName}</td>
 									<td>${productVO.listPrice}</td>
 									<td>${productVO.descr}</td>
-									<td><i class="fas fa-star"></i>${String.format("%.2f",productVO.totalRate/productVO.totalRateCount)}</td>
+									<td><i class="fas fa-star"></i>${productVO.totalRate!=null?String.format("%.2f",productVO.totalRate/productVO.totalRateCount):''}</td>
 									
 									<td>
 											<img src="<%=request.getContextPath()%>/product/controllerImage.do?picCol=product_pic1&PKNumber=${productVO.productNo}" 
