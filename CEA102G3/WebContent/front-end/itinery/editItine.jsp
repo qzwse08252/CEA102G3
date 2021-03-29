@@ -1021,6 +1021,12 @@ p[speaker=${memberVO.name}]{
         				window.alert("失敗唷");
         			},
         		});
+        		for(let i =0 ; i< schedule.itineItems.length ; i++){
+        			if($("#itine-item-note").attr("attraNo")==schedule.itineItems[i].Attra_No){
+        				schedule.itineItems[i].Note=$(this).val().trim();
+        			}
+        		}
+        		
         	});
         	
         	
