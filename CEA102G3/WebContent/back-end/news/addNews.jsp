@@ -50,17 +50,18 @@ NewsVO newsVO = (NewsVO) request.getAttribute("newsVO");
 
                             <div class="">
                                 <h3 class="h1 text-gray-900 mb-4">新增最新消息資訊</h3>
+<%--                                 <h4><a href="<%=request.getContextPath()%>/back-end/news/listAllNews2.jsp">回首頁</a></h4> --%>
                             </div>
                             
                        
                             <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/news/news.do" name="form1" enctype="multipart/form-data">
                           
                             <div class="">最新消息標題
-                           	<input type="text" style=width:400px; id="news_Title" name="news_Title" oninvalid="alert('Oh! 最新消息標題沒有填寫!');" required
+                           	<input type="text" style=width:400px; id="news_Title" placeholder="標題請輸入2~50字。" name="news_Title" oninvalid="alert('Oh! 最新消息標題沒有填寫!');" required
                             value="<%=newsVO==null ? "" : newsVO.getNews_Title() %>"></div>
                           
                             <div class="user">最新消息內容
-                            <input type="text" style=width:400px;height:100px id="news_Content" name="news_Content" style="height:400px ;width:400px" oninvalid="alert('Oh! 最新消息內容沒有填寫!');" required
+                            <input type="text" style=width:400px;height:100px id="news_Content" placeholder="內容請輸入2~10000字。" name="news_Content" style="height:400px ;width:400px" oninvalid="alert('Oh! 最新消息內容沒有填寫!');" required
                             value="<%=newsVO==null ? "" : newsVO.getNews_Content() %>">
                             </div>
       						                 						

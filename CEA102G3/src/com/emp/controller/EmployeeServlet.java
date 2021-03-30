@@ -113,7 +113,7 @@ public class EmployeeServlet extends HttpServlet {
 				/***************************3.查詢完成,準備轉交(Send the Success view)************/
 				req.setAttribute("employeeVO", employeeVO);         // 資料庫取出的empVO物件,存入req
 				String url = "/back-end/employee/update_emp_input2.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url);// 成功轉交 update_news_input.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url);
 				successView.forward(req, res);
 
 				/***************************其他可能的錯誤處理**********************************/
@@ -192,13 +192,13 @@ public class EmployeeServlet extends HttpServlet {
 //				}
 //				
 
-				java.sql.Date start_From = null;
-				try {
-					start_From = java.sql.Date.valueOf(req.getParameter("start_From").trim());
-				} catch (IllegalArgumentException e) {
-					start_From=new java.sql.Date(System.currentTimeMillis());
-//					errorMsgs.add("請輸入就職日期!");
-				}
+//				java.sql.Date start_From = null;
+//				try {
+//					start_From = java.sql.Date.valueOf(req.getParameter("start_From").trim());
+//				} catch (IllegalArgumentException e) {
+//					start_From=new java.sql.Date(System.currentTimeMillis());
+////					errorMsgs.add("請輸入就職日期!");
+//				}
 				
 				Integer emp_State = new Integer(req.getParameter("emp_State").trim());
 
@@ -268,12 +268,12 @@ public class EmployeeServlet extends HttpServlet {
 				EmployeeService empSvc = new EmployeeService();
 				EmployeeVO employeeVO2 = empSvc.getOneEmployee(emplo_No);
 				
-				employeeVO = empSvc.updateEmployee(emplo_No, employeeVO2.getAccount(),employeeVO2.getName(), employeeVO2.getSex(), phone, email, start_From, emp_State, emp_Pic);
+				employeeVO = empSvc.updateEmployee(emplo_No, employeeVO2.getAccount(),employeeVO2.getName(), employeeVO2.getSex(), phone, email, employeeVO2.getStart_From(), emp_State, emp_Pic);
 				
 				/***************************3.修改完成,準備轉交(Send the Success view)*************/
 				req.setAttribute("employeeVO", employeeVO); // 資料庫update成功後,正確的的empVO物件,存入req				
 				String url = "/back-end/employee/listAllEmp2.jsp";
-				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneNews.jsp
+				RequestDispatcher successView = req.getRequestDispatcher(url); // 修改成功後,轉交listOneEmp.jsp
 				successView.forward(req, res);
 
 				/***************************其他可能的錯誤處理*************************************/
@@ -285,7 +285,7 @@ public class EmployeeServlet extends HttpServlet {
 			}
 		}
 
-        if ("insert".equals(action)) { // 來自addNews.jsp的請求  
+        if ("insert".equals(action)) { // 來自addEmp.jsp的請求  
 			
 			List<String> errorMsgs = new LinkedList<String>();
 			// Store this set in the request scope, in case we need to
@@ -326,11 +326,11 @@ public class EmployeeServlet extends HttpServlet {
 				
 				
 				String email = req.getParameter("email").trim();
-				String emailReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,20}$";
+//				String emailReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{2,20}$";
 				if (email == null || email.trim().length() == 0) {
 					errorMsgs.add("電子信箱請勿空白!");
-				} else if(!email.trim().matches(emailReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("電子信箱請輸入英文、數字或底線!");
+//				} else if(!email.trim().matches(emailReg)) { //以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("電子信箱請輸入英文、數字或底線!");
 	            }
 		
 				

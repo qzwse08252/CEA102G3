@@ -11,72 +11,96 @@
     pageContext.setAttribute("list",list);
 %>
 
-
+<!DOCTYPE html>
 <html>
 <head>
+<!-- test -->
 <title>最新消息資訊檢視</title>
+<!-- Bootstrap core JavaScript-->
+<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript -->
+<script
+ 	src="<%=request.getContextPath()%>/resources/js/jquery.easing.min.js"></script> 
+
+<!-- Custom scripts for all pages-->
+<script
+	src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script
+	src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script> 
+<script
+ 	src="<%=request.getContextPath()%>/resources/js/dataTables.bootstrap4.min.js"></script> 
+
+<!-- Page level custom scripts -->
+<script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
+<!-- <script -->
+<!-- test -->
+
 
 <style>
-  table#table-1 {
-	background-color: #6495ed;
-    border: 2px solid black;
-    text-align: center;
-  }
-  table#table-1 h4 {
-    color: red;
-    display: block;
-    margin-bottom: 1px;
-  }
-  h4 {
-    color: black;
-    display: inline;
-  }
-</style>
+tbody>tr {
+	max-height: 300px;
+	overflow-y: auto;
+}
 
-<style>
-  table {
-	width: 1100px;
-	background-color: white;
-	margin-top: 5px;
-	margin-bottom: 5px;
-  }
-  table, th, td {
-    border: 2px solid #CCCCFF;
-  }
-  th, td {
-    padding: 5px;
-    text-align: center;
-  }
+td {
+	max-height: 300px;
+	overflow: hidden;
+}
+  .table_Title {
+	width:165px;
+	height:180px;
+
+   }
+  
+  .table_Content {
+  	width:255px;
+	height:187px;
+  	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 7;
+	-webkit-box-orient: vertical;
+    }
+	th{
+	text-align:center;
+	}
+   .table td{
+     vertical-align:middle;
+   }
 </style>
+<!-- test -->
+
+
 
 </head>
-<body bgcolor='white'>
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+
+		<!-- DataTales Example -->
+		<div class="card shadow mb-4">
+			<div class="row" style="margin:0 auto; width:4180px">
+				<div class="col-3 card-header py-3">
+					<h3 class="m-0 font-weight-bold text-primary" style="margin-right:0 ;">最新消息資訊檢視</h3>
+				</div>
 
 
-<table id="table-1">
-	<tr><td>
-		 <h3>最新消息資訊檢視</h3>
-<%--  <h4><a href="<%=request.getContextPath()%>/back-end/news/select_news_page.jsp">回首頁</a></h4> --%>
-	</td></tr>
-</table>
-
-<%-- 錯誤表列 --%>
-<c:if test="${not empty errorMsgs}">
-	<font style="color:red">請修正以下錯誤:</font>
-	<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li style="color:red">${message}</li>
-		</c:forEach>
-	</ul>
-</c:if>
-
-<table>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped"
+						id="dataTableAllAttraction" width="100%" cellspacing="0">
+						<thead>
 	<tr>
-		<th>最新消息ID</th>
-		<th>最新消息發佈日期</th>
-		<th>最新消息標題</th>
-		<th>最新消息內容</th>
-		<th>最新消息照片</th>
+		<th>No.</th>
+		<th>發佈日期</th>
+		<th>標題</th>
+		<th>內容介紹</th>
+		<th>景點照片</th>
 		<th>修改</th>
 		<th>刪除</th>
 	</tr>
@@ -86,9 +110,9 @@
 		<tr>
 			<td>${newsVO.news_No}</td>
 			<td><fmt:formatDate value="${newsVO.release_Date}" pattern="yyyy-MM-dd"/></td>
-			<td>${newsVO.news_Title}</td>
-			<td>${newsVO.news_Content}</td>
-			<td><img width="400" alt="" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=news&column=News_Pic&idname=News_No&id=${newsVO.news_No}"/></td>
+			<td class="table_Title">${newsVO.news_Title}</td>
+			<td class="table_Content">${newsVO.news_Content}</td>
+			<td><img width="270" height="160" alt="" src="<%=request.getContextPath()%>/PicFinder?pic=1&table=news&column=News_Pic&idname=News_No&id=${newsVO.news_No}"/></td>
 			
 
 
@@ -101,14 +125,25 @@
 			</td>
 			<td>
 			  <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/news/news.do" style="margin-bottom: 0px;">
+			     
+
+			     
 			     <input type="submit" value="刪除">
-			     <input type="hidden" name="news_No"  value="${newsVO.news_No}">
-			     <input type="hidden" name="action" value="delete"></FORM>
+			     <input type="hidden"  name="news_No"  value="${newsVO.news_No}">
+			     <input type="hidden"  name="action" value="delete"></FORM>
 			</td>
 		</tr>
 	</c:forEach>
+		</tbody>
 </table>
 <%@ include file="page2.file" %>
+	</div>
+		</div>
+			</div>
+				</div>
+
+
+
 
 </body>
 </html>

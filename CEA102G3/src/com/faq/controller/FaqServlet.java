@@ -206,19 +206,19 @@ public class FaqServlet extends HttpServlet {
 //				String question_No = req.getParameter("question_No");
 				
 				String question = req.getParameter("question");
-				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+//				String questionReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{1,1000}$";
 				if (question == null || question.trim().length() == 0) {
-					errorMsgs.add("請填寫常見問題內容!");
-				} else if(!question.trim().matches(questionReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("請在常見問題內容中，輸入3~1000以內的字數。");
+//					errorMsgs.add("請填寫常見問題內容!");
+//				} else if(!question.trim().matches(questionReg)) { //以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("請在常見問題內容中，輸入3~1000以內的字數。");
 	            }
 				
 				String answer = req.getParameter("answer");
-				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{3,1000}$";
+//				String answerReg = "^[(\u4e00-\u9fa5)(a-zA-Z0-9_)]{1,1000}$";
 				if (answer == null || answer.trim().length() == 0) {
-					errorMsgs.add("請在常見問題的回答中填寫內容!");
-				} else if(!answer.trim().matches(answerReg)) { //以下練習正則(規)表示式(regular-expression)
-					errorMsgs.add("請在常見問題的回答中填寫內容，輸入1000以內的字數。");
+//					errorMsgs.add("請在常見問題的回答中填寫內容!");
+//				} else if(!answer.trim().matches(answerReg)) { //以下練習正則(規)表示式(regular-expression)
+//					errorMsgs.add("請在常見問題的回答中填寫內容，輸入1000以內的字數。");
 	            }
 				
 				java.sql.Date update_Time = null;

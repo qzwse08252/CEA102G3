@@ -76,13 +76,13 @@
 	
 	<tr>
 		<td>最新消息標題:</td>
-		<td><input type="TEXT" name="news_Title" size="30"  value="<%=newsVO.getNews_Title()%>" /></td>
+		<td><input type="TEXT" name="news_Title" style="width:650px" size="30"  value="<%=newsVO.getNews_Title()%>" /></td>
 	</tr>
 	
 
 	<tr>
 		<td>最新消息內容:</td>
-		<td><input type="TEXT" style="width:400px; height:280px" name="news_Content" size="30" value="<%=newsVO.getNews_Content()%>" /></td>
+		<td><input type="TEXT" style="width:650px; height:280px" name="news_Content" size="30" value="<%=newsVO.getNews_Content()%>" /></td>
 	</tr>
 
 

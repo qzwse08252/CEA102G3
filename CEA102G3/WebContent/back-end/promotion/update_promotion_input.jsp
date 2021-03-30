@@ -87,36 +87,36 @@
 		
 			<tr>
 		<td>主打促銷開始日期:</td>
-		<td><input type="text" id="f_date1" size="6" name="promot_Start" value="<%=promotionVO.getPromot_Start()%>" /></td>
+		<td><input type="text" id="f_date1" size="6" style="width:100px" name="promot_Start" value="<%=promotionVO.getPromot_Start()%>" /></td>
 	</tr>
 	
 			<tr>
 		<td>主打促銷截止日期:</td>
-		<td><input type="text" id="f_date2" size="6" name="promot_End" value="<%=promotionVO.getPromot_End()%>" /></td>
+		<td><input type="text" id="f_date2" size="6" style="width:100px" name="promot_End" value="<%=promotionVO.getPromot_End()%>" /></td>
 	</tr>
 	
 			<tr>
 		<td>廣告上架日期:</td>
-		<td><input type="text" id="f_date3" size="6" name="release_Date" value="<%=promotionVO.getRelease_Date()%>" /></td>
+		<td><input type="text" id="f_date3" size="6" style="width:100px" name="release_Date" value="<%=promotionVO.getRelease_Date()%>" /></td>
 	</tr>
 	
 	
 				<tr>
 		<td>主打促銷標題:</td>
-		<td><input type="TEXT" name="promot_Product_Title" size="30"  value="<%=promotionVO.getPromot_Product_Title()%>" /></td>
+		<td><input type="TEXT" name="promot_Product_Title" style="width:800px" size="30"  value="<%=promotionVO.getPromot_Product_Title()%>" /></td>
 	</tr>
 
 
 				<tr>
 		<td>主打促銷內容:</td>
-		<td><input type="TEXT" name="promot_Content" size="30"  value="<%=promotionVO.getPromot_Content()%>" /></td>
+		<td><input type="TEXT" name="promot_Content" size="30" style="width:400px; height:280px" value="<%=promotionVO.getPromot_Content()%>" /></td>
 	</tr>
 	
 
 
 			<tr>
 		<td>促銷商品價格:</td>
-		<td><input type="TEXT" name="promot_Product_Price" size="30" value="<%=promotionVO.getPromot_Product_Price()%>" /></td>
+		<td><input type="TEXT" name="promot_Product_Price" style="width:100px" size="30" value="<%=promotionVO.getPromot_Product_Price()%>" /></td>
 	</tr>
 	
 	

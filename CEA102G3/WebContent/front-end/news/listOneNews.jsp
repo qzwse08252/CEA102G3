@@ -77,7 +77,7 @@
 <style>
   .page-header {
   
-	width: 1250px;
+	width: 1380px;
 	font-size: 100px;
 	color:gray;
 	font-weight:bold;
@@ -136,8 +136,8 @@
             </div>
         </div>
     </div>
-   <div class="footer-dark" style="padding: 0px;margin: 15px;width: 1400px;">
-        <footer style="width: 1200px;height: 238px;margin: 70px;padding: 6px; ">
+   <div class="footer-dark" style="padding: 0px;margin: 15px;width: 1380px;">
+        <footer style="width: 1200px;height: 238px;margin: 70px; margin-right: 60px;padding: 10px; ">
             <div class="container">
                 <div class="row" style="height: 183px;">
                     <div class="col-sm-6 col-md-3 item">

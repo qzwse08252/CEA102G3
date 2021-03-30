@@ -77,17 +77,17 @@
 		
 	<tr>
 		<td>常見問題:</td>
-		<td><input type="TEXT" name="question" size="30" value="<%=faqVO.getQuestion()%>" /></td>
+		<td><input type="TEXT" name="question" size="30" style="width:400px" value="<%=faqVO.getQuestion()%>" /></td>
 	</tr>
 	<tr>
 		<td>常見問題回覆:</td>
-		<td><input type="TEXT" name="answer" size="30"  value="<%=faqVO.getAnswer()%>" /></td>
+		<td><input type="TEXT" name="answer" size="30" style="width:400px; height:280px" value="<%=faqVO.getAnswer()%>" /></td>
 	</tr>
 
 
 		<tr>
 		<td>常見問題更新時間:</td>
-		<td><input type="text" id="f_date1" size="6" name="update_Time" value="<%=faqVO.getUpdate_Time()%>" /></td>
+		<td><input type="text" id="f_date1" size="6" style="width:100px" name="update_Time" value="<%=faqVO.getUpdate_Time()%>" /></td>
 	</tr>
 	
 	

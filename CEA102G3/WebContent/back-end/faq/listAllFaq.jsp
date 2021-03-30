@@ -11,71 +11,100 @@
     pageContext.setAttribute("list",list);
 %>
 
-
+<!DOCTYPE html>
 <html>
 <head>
-<title>所有常見問題資料 - listAllFaq.jsp</title>
+<!-- test -->
+<title>常見問題資訊檢視</title>
+<!-- Bootstrap core JavaScript-->
+<script src="<%=request.getContextPath()%>/resources/js/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/jquery-ui.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/resources/js/bootstrap.bundle.min.js"></script>
+<!-- Core plugin JavaScript -->
+<script
+ 	src="<%=request.getContextPath()%>/resources/js/jquery.easing.min.js"></script> 
+
+<!-- Custom scripts for all pages-->
+<script
+	src="<%=request.getContextPath()%>/resources/js/sb-admin-2.min.js"></script>
+<!-- Page level plugins -->
+<script
+	src="<%=request.getContextPath()%>/resources/js/jquery.dataTables.min.js"></script> 
+<script
+ 	src="<%=request.getContextPath()%>/resources/js/dataTables.bootstrap4.min.js"></script> 
+
+<!-- Page level custom scripts -->
+<script src="<%=request.getContextPath()%>/resources/js/nav-bar.js"></script>
+<!-- <script -->
+<!-- test -->
+
 
 <style>
-  table#table-1 {
-	background-color: black;
-    border: 2px solid black;
-    text-align: center;
-  }
-  table#table-1 h4 {
-    color: red;
-    display: block;
-    margin-bottom: 1px;
-  }
-  h4 {
-    color: blue;
-    display: inline;
-  }
-</style>
+tbody>tr {
+	max-height: 300px;
+	overflow-y: auto;
+	
+}
 
-<style>
-  table {
-	width: 1100px;
-	background-color: white;
-	margin-top: 5px;
-	margin-bottom: 5px;
-  }
-  table, th, td {
-    border: 3px solid #CCCCFF;
-  }
-  th, td {
-    padding: 5px;
-    text-align: center;
-  }
+td {
+	max-height: 300px;
+	overflow: hidden;
+	
+}
+
+  .table_Title {
+	width:180px;
+	height:50px;
+
+   }
+  
+  .table_Content {
+  	width:600px;
+	height:5px;
+
+    }
+
+   .table_date{
+	text-align:center;
+  	width:1px;
+  	}
+  	
+	th{
+	text-align:center;
+	}  
+
+   .table td{
+     vertical-align:middle;
+   }
 </style>
+<!-- test -->
 
 </head>
-<body bgcolor='white'>
+	<!-- Begin Page Content -->
+	<div class="container-fluid">
+
+		<!-- DataTales Example -->
+		<div class="card shadow mb-4">
+			<div class="row" style="margin:0 auto; width:4180px">
+				<div class="col-3 card-header py-3">
+					<h3 class="m-0 font-weight-bold text-primary" style="margin-right:0 ;">常見問題資訊檢視</h3>
+				</div>
 
 
-<table id="table-1">
-	<tr><td>
-		 <h3>常見問題資訊檢視</h3>
-<%--  <h4><a href="<%=request.getContextPath()%>/back-end/faq/select_faq_page.jsp">回首頁</a></h4> --%>
-	</td></tr>
-</table>
-
-<%-- 錯誤表列 --%>
-<c:if test="${not empty errorMsgs}">
-	<font style="color:red">請修正以下錯誤:</font>
-	<ul>
-		<c:forEach var="message" items="${errorMsgs}">
-			<li style="color:red">${message}</li>
-		</c:forEach>
-	</ul>
-</c:if>
-
-<table>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered table-striped"
+						id="dataTableAllAttraction" width="100%" cellspacing="0">
+						<thead>
+	
 	<tr>
-		<th>常見問題編號</th>
+		<th>No.</th>
 		<th>常見問題</th>
-		<th>常見問題回覆</th>
-		<th>常見問題更新時間</th>
+		<th>問題回覆</th>
+		<th>更新日期</th>
 		<th>修改</th>
 		<th>刪除</th>
 	</tr>
@@ -84,8 +113,8 @@
 		
 		<tr>
 			<td>${faqVO.question_No}</td>
-			<td>${faqVO.question}</td>
-			<td>${faqVO.answer}</td>
+			<td class="table_Title">${faqVO.question}</td>
+			<td class="table_Content">${faqVO.answer}</td>
 			<td><fmt:formatDate value="${faqVO.update_Time}" pattern="yyyy-MM-dd"/></td>
 			
 
@@ -105,8 +134,12 @@
 			</td>
 		</tr>
 	</c:forEach>
+		</tbody>
 </table>
 <%@ include file="page2.file" %>
-
+	</div>
+		</div>
+			</div>
+				</div>
 </body>
 </html>

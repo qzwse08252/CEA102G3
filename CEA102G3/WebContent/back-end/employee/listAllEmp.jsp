@@ -414,20 +414,20 @@ $(document).ready(function(){
                     
 					<div class="">
 						<label>員工帳號</label>
-                          <input type="text"  id="account" name="account" oninvalid="alert('Oh! 沒有填寫員工帳號!');" required
+                          <input type="text"  id="account" placeholder="請輸入 3~10位英文與數字 !" name="account" oninvalid="alert('Oh! 沒有填寫員工帳號!');" required
                           value="<%=employeeVO==null ? "" : employeeVO.getAccount() %>">
                           </div>
                           
 					<div class="">
 						<label>員工密碼</label>
-                           <input type="password"  id="password" name="password" oninvalid="alert('Oh! 沒有填寫員工密碼!');" required
+                           <input type="password"  id="password" placeholder="請輸入3~10位英文與數字 !" name="password" oninvalid="alert('Oh! 沒有填寫員工密碼!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getPassword() %>">
                            </div>
                            
                            
 					<div class="">
 						<label>姓名</label>
-                           <input type="text"  id="name" name="name" oninvalid="alert('Oh! 沒有填寫員工姓名!');" required
+                           <input type="text"  id="name" name="name" placeholder="請輸入2~10位英文或中文 !" oninvalid="alert('Oh! 沒有填寫員工姓名!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getName() %>">
                            </div>
 					
@@ -442,13 +442,13 @@ $(document).ready(function(){
 					
 					<div class="">
 						<label>電話</label>
-                            <input type="text"   id="phone" name="phone" oninvalid="alert('Oh! 沒有填寫電話!');" required
+                            <input type="text"   id="phone" placeholder="請填寫手機或家裡電話 !" name="phone" oninvalid="alert('Oh! 沒有填寫電話!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getPhone() %>">
                             </div>
                             
 					<div class="">
 						<label>電子信箱</label>
-                            <input type="text"   id="email" name="email"  oninvalid="alert('Oh! 沒有填寫電子信箱!');" required
+                            <input type="text"   id="email" name="email" placeholder="請填寫常用電子信箱!"  oninvalid="alert('Oh! 沒有填寫電子信箱!');" required
                             value="<%=employeeVO==null ? "" : employeeVO.getEmail() %>">
                             </div>
                             
@@ -492,13 +492,13 @@ $(document).ready(function(){
 				<div class="modal-body">					
 					<div class="">
 						<label>電話</label>
-                            <input type="text"   id="phone" name="phone"
+                            <input type="text"   id="phone" name="phone"  placeholder="請輸入變更電話!"
                             value="<%=employeeVO==null ? "" : employeeVO.getPhone() %>">
                             </div>
                             
 					<div class="">
 						<label>電子信箱</label>
-                            <input type="text"   id="email" name="email"
+                            <input type="text"   id="email" name="email"  placeholder="請輸入變更信箱!"
                             value="<%=employeeVO==null ? "" : employeeVO.getEmail() %>">
                             </div>
                             

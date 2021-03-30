@@ -76,18 +76,18 @@ margin:center;
 
                             <div class="">
                                 <h3 class="h1 text-gray-900 mb-4">新增常見問題資訊</h3>
-<%--                             	<h4><a href="<%=request.getContextPath()%>/back-end/faq/select_faq_page.jsp">回首頁</a></h4> --%>
+<%--                             	<h4><a href="<%=request.getContextPath()%>/back-end/faq/listAllFaq2.jsp">回首頁</a></h4> --%>
                             </div>
                             
                           <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/faq/faq.do" name="form1">
                           <div class="user">常見問題
-                          <input type="text"  id="question" name="question" style="width:400px"  oninvalid="alert('Oh! 沒有填寫常見問題!');" required
+                          <input type="text"  id="question" name="question" style="width:400px"   placeholder="常見問題請輸入2~50字。"oninvalid="alert('Oh! 沒有填寫常見問題!');" required
                           value="<%=faqVO==null ? "" : faqVO.getQuestion() %>">
                           </div>
       
                                                       
                            <div class="">問題回覆
-                           <input type="text"  id="answer" name="answer" style="height:400px ;width:400px"  oninvalid="alert('Oh! 沒有填寫問題回覆!');" required
+                           <input type="text"  id="answer" name="answer" style="height:400px ;width:400px" placeholder="問題回覆請輸入2~1000字。" oninvalid="alert('Oh! 沒有填寫問題回覆!');" required
                             value="<%=faqVO==null ? "" : faqVO.getAnswer() %>">
                            </div>
  

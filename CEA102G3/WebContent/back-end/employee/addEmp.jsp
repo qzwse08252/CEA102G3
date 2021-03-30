@@ -49,8 +49,8 @@ EmployeeVO employeeVO = (EmployeeVO) request.getAttribute("employeVO");
 						</c:if>
 
                             <div class="">
-                                <h3 class="h1 text-gray-900 mb-4">Guidme員工資料新增--addEmp</h3>
-                            	<h4><a href="<%=request.getContextPath()%>/back-end/employee/select_page.jsp">回首頁</a></h4>
+                                <h3 class="h1 text-gray-900 mb-4">Guidme員工資料新增</h3>
+                            	<h4><a href="<%=request.getContextPath()%>/back-end/employee/listAllEmp2.jsp">回首頁</a></h4>
                             </div>
                             
                           <FORM METHOD="post" ACTION="<%=request.getContextPath()%>/employee/employee.do" name="form1" enctype="multipart/form-data">
